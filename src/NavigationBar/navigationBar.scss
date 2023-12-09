@@ -1,0 +1,15 @@
+.navBar {
+  display: flex;
+  padding-left: 55px;
+  padding-bottom: 2px;
+  margin: 200px 0px 25px 55px;
+  max-width: fit-content;
+  background-color: pink;
+  border: 2px solid hotpink;
+  border-radius: 20px;
+  &__button {
+    margin-right: 50px;
+    text-decoration: none;
+    color: darkgreen;
+  }
+}
