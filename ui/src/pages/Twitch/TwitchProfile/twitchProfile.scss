@@ -1,0 +1,61 @@
+.twitch {
+  &__profile{
+    margin-left: 25px;
+    &__icon {
+      &__true, &__false {
+        height: 85px;
+        width: 85px;
+        border-radius: 50%;
+      }
+      &__true {
+        margin: 100px;
+        display: block;
+        border-radius: 50%;
+        cursor: pointer;
+        animation: pulse 2s infinite;
+        position: relative;
+        &:hover {
+          animation: none;
+        }
+      }
+      &__false {
+        border: 4px solid gray;
+        filter: gray; /* IE6-9 */
+        -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+        filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+        &:hover {
+          -webkit-filter: grayscale(0);
+          filter: none;
+        }
+      }
+    }
+  }
+}
+
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(245, 17, 17, 0.897);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(214, 46, 46, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(214, 46, 46, 0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(245, 17, 17, 0.897);
+    box-shadow: 0 0 0 0 rgba(245, 17, 17, 0.897);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(214, 46, 46, 0);
+    box-shadow: 0 0 0 40px rgba(214, 46, 46, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(214, 46, 46, 0);
+    box-shadow: 0 0 0 0 rgba(214, 46, 46, 0);
+  }
+}

@@ -1,11 +1,13 @@
-const channelName = 'pillow_senpai';
+const channelName = 'kaicenat';
 export async function GetTwitchStatus() {
-    let a = await fetch(`https://www.twitch.tv/${channelName}`);
-    if( (await a.text()).includes('isLiveBroadcast') )
-        console.log("live")
-    else
-        console.log("not live")
+  let a = await fetch(`https://www.twitch.tv/${channelName}`);
+  if ((await a.text()).includes('isLiveBroadcast')) {
+    console.log("live");
+    return true;
+  } else {
+    console.log("not live");
+    return false;
+  }
 }
 
-GetTwitchStatus()
-export default GetTwitchStatus;
+console.log(GetTwitchStatus());
