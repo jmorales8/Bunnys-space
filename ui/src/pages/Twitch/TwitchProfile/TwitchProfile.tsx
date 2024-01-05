@@ -1,12 +1,25 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
 export function TwitchProfile() {
-  return(
-    <div className="twitch__profile">
-      <img className="twitch__profile__icon__true" src="bunnyL.jpg"/>
-      <img className="twitch__profile__icon__false" src="bunnyL.jpg"/>
+  const [data, setData] = useState({isLive: false });
 
-      {/* <button className="twitch__profile__icon"> PULSE</button> */}
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/twitch');
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      {data.isLive ? "Live" : "Not live"}
     </div>
-  )
+  );
 }
