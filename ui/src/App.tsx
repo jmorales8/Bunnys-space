@@ -11,12 +11,14 @@ function App() {
       <Router basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
-          <Route path="home" element={<Home />} />
-          <Route path="twitch" element={<Twitch />}/>
+          <Route path="/home" element={<Home />} />
+          <Route path="/twitch" element={<Twitch />}/>
         </Routes>
       </Router>
     </div>
   );
 }
-
+/*
+cd ui && yarn start
+*/
 export default App;

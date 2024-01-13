@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 export function TwitchProfile() {
-  const [data, setData] = useState({isLive: false });
+  const [data, setData] = useState({ isLive: false });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -11,6 +12,8 @@ export function TwitchProfile() {
         setData(result);
       } catch (error) {
         console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -19,7 +22,13 @@ export function TwitchProfile() {
 
   return (
     <div>
-      {data.isLive ? "Live" : "Not live"}
+      {loading ?
+        <> loading </>
+          :
+        <>
+          {data.isLive ? "Live" : "Not live"}
+        </>
+      }
     </div>
   );
 }
