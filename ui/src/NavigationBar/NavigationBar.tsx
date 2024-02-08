@@ -7,7 +7,6 @@ const navButtons: NavButtons[] = [
   { label: "Home", path: "/home" },
   { label: "Twitch", path: "/twitch" },
   { label: "Discord", path: "/discord" },
-  { label: "Pornhub", path: "/pornhub" },
 ];
 
 export function NavigationBar() {
