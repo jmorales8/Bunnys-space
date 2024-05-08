@@ -5,6 +5,5 @@ export function Home() {
     <div className="home">
       <Profile />
     </div>
-    
   )
 }
