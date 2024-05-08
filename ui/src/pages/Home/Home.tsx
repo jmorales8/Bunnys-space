@@ -2,6 +2,9 @@ import { Profile } from "./Profile/Profile";
 
 export function Home() {
   return (
-    <Profile />
+    <div className="home">
+      <Profile />
+    </div>
+    
   )
 }
