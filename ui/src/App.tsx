@@ -3,6 +3,8 @@ import "../src/styles/styles.scss"
 import { Home } from "./pages/Home/Home";
 import { NavigationBar } from './NavigationBar/NavigationBar';
 import { Twitch } from "./pages/Twitch/Twitch";
+import { Commissions } from "./pages/Commissions/Commissions";
+import { Lore } from "./pages/Lore/Lore";
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/lore" element={<Lore />} />
           <Route path="/twitch" element={<Twitch />}/>
+          <Route path="/commissions" element={<Commissions />}/>
         </Routes>
       </Router>
     </div>

@@ -5,8 +5,10 @@ interface NavButtons {
 
 const navButtons: NavButtons[] = [
   { label: "Home", path: "/home" },
+  { label: "Lore", path: "/lore" },
   { label: "Twitch", path: "/twitch" },
   { label: "Discord", path: "/discord" },
+  { label: "Commissions", path: "/commissions" }
 ];
 
 export function NavigationBar() {
