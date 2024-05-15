@@ -5,10 +5,10 @@ export function Profile() {
   return (
     <div className="profile">
       <div>
-      <img className="profile__image" src="bunnyW.jpg" alt="bunnie"/>
+        <img className="profile__image" src="bunnyW.jpg" alt="bunnie"/>
       </div>
       <div className="profile__text">
-      {text}{text}
+        {text}{text}
       </div>
     </div>
   )
