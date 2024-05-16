@@ -1,0 +1,44 @@
+.discord {
+  justify-content: space-around;
+  display: flex;
+  width: 100%;
+}
+
+.left {
+  &__server {
+    &__profile {
+      width: 25%;
+      border: 1px solid brown;
+      height: min-content;
+    }
+  }
+}
+
+.right {
+  @extend .left;
+  &__server {
+    &__profile {
+      @extend .left__server__profile;
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .discord {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .left {
+    &__server {
+      &__profile {
+        width: 450px;
+        border: 1px solid black;
+        height: min-content;
+        margin: 10px;
+      }
+    }
+  }
+  
+}
