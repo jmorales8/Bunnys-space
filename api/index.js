@@ -1,7 +1,7 @@
 // server/index.js
 import express from "express";
 import { GetTwitchStatus } from "./server/GetTwitchStatus.js"
-import { db } from "./database/profiledb.js"
+import { db } from "./database/Profiledb.js"
 const PORT = process.env.PORT || 3001;
 
 const app = express();
@@ -25,7 +25,7 @@ app.get("/api/twitch", async (req, res) => {
 });
 
 
-app.get('./profile', (req, res) => {
+app.get('/profile', (req, res) => {
   db.all("SELECT * FROM Profile", [], (err, rows))
 })
 
