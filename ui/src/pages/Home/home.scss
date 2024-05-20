@@ -1,5 +1,6 @@
 .home {
   display: flex;
-  justify-content: space-evenly;
   margin: 0px 55px;
+  flex-direction: column;
+  align-items: center;
 }
