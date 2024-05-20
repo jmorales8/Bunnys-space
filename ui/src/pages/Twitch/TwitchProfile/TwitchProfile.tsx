@@ -19,17 +19,19 @@ export function TwitchProfile() {
 
     fetchData();
   }, []);
-
+  let isUserLive = data.isLive;
   return (
     <div className="profile">
       {loading ?
         <> loading </>
         :
         <>
-          {data.isLive
-            ? <img src="bunnyL.jpg" className="twitch__profile__icon__true" />
+          {isUserLive
+            ? <>
+                bruh
+                <img src="bunnyL.jpg" className="twitch__profile__icon__true" />
+              </>
             : <img src="bunnyL.jpg" className="twitch__profile__icon__false" />}
-          {"bruh"}
         </>
       }
     </div>
