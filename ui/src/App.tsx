@@ -5,6 +5,7 @@ import { NavigationBar } from './NavigationBar/NavigationBar';
 import { Twitch } from "./pages/Twitch/Twitch";
 import { Commissions } from "./pages/Commissions/Commissions";
 import { Lore } from "./pages/Lore/Lore";
+import { Discord } from "./pages/Discord/Discord";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/lore" element={<Lore />} />
           <Route path="/twitch" element={<Twitch />}/>
           <Route path="/commissions" element={<Commissions />}/>
+          <Route path="/discord" element={<Discord />}/>
         </Routes>
       </Router>
     </div>
