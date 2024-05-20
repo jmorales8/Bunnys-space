@@ -1,6 +1,5 @@
 .twitch {
   &__profile{
-    margin-left: 25px;
     &__icon {
       &__true, &__false {
         height: 85px;
@@ -26,6 +25,14 @@
         &:hover {
           -webkit-filter: grayscale(0);
           filter: none;
+        }
+      }
+      &__text {
+        &__offline {
+          display: flex;
+          margin-left: 17px;
+          width: 160px;
+          text-align: center;
         }
       }
     }
