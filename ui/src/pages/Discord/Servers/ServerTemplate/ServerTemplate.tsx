@@ -8,7 +8,7 @@ interface ServerTemplatePorps {
 
 export function ServerTemplate(props: ServerTemplatePorps) {
   const {title, description, img, joinLink} = props;
-  
+
   return(
   <div className="server">
     <div className="server__title">
