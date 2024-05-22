@@ -1,14 +1,15 @@
+.icon {
+  height: 85px;
+  width: 85px;
+  border-radius: 50%;
+  margin: 50px 20px 15px 20px;
+}
 .twitch {
-  &__profile{
-    &__icon {
-      &__true, &__false {
-        height: 85px;
-        width: 85px;
-        border-radius: 50%;
-        margin: 50px;
-      }
-      &__true {
-        display: block;
+  &__profile {
+    &__online {
+      width: 375px;
+      &__icon {
+        @extend .icon;
         border-radius: 50%;
         cursor: pointer;
         animation: pulse 2s infinite;
@@ -17,7 +18,30 @@
           animation: none;
         }
       }
-      &__false {
+      &__text {
+        &__sides {
+          display: flex;
+          align-items: flex-end;
+          &__left {
+            color: red;
+            transform: rotate(-20deg);
+          }
+          &__right {
+            color: blue;
+            transform: rotate(20deg);
+          }
+        }
+      }
+      &__group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 37px
+      }
+    }
+    &__offline {
+      &__icon {
+        @extend .icon;
         border: 4px solid gray;
         filter: gray; /* IE6-9 */
         -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
@@ -28,17 +52,27 @@
         }
       }
       &__text {
-        &__offline {
-          display: flex;
-          margin-left: 17px;
-          width: 160px;
-          text-align: center;
-        }
+        display: flex;
+        width: 160px;
+        text-align: center;
+      }
+      &__group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    &__divider {
+      border-top: 6px dotted rgb(91, 227, 143);
+      border-radius: 5px;
+    }
+    &__bio {
+      &__text {
+        text-align: center;
       }
     }
   }
 }
-
 
 @-webkit-keyframes pulse {
   0% {
