@@ -7,6 +7,17 @@
   position: fixed;
 }
 
+.footer {
+  background-color: #ffe9e9;
+  padding: 0px 10px;
+  &__content {
+    display: flex;
+    &__address {
+      padding-right: 50px;
+    }
+  }
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 15px;
