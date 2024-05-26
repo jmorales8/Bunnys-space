@@ -5,7 +5,7 @@ export function Bunzone() {
     <ServerTemplate
       title="The Bunzone"
       description=""
-      img="bunnyL.jpg"
+      img="/images/bunnyL.jpg"
       joinLink="discord/bruh"
     />
   );
