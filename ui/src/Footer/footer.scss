@@ -1,0 +1,17 @@
+.footer {
+  display: flex;
+  align-items: center;
+  &__img {
+    margin-right: 50px;
+  }
+  &__button{
+    display: inherit;
+    justify-content: center;
+    background-color: pink;
+    border: 2px solid hotpink;
+    border-radius: 20px;
+    text-decoration: none;
+    color: darkgreen;
+    width: 50px;
+  }
+}
