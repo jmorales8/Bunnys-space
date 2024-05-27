@@ -2,6 +2,59 @@
   width: 100%;
   height: 100%;
   background-color: #eecbcb;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   position: fixed;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: pink;
+  border-radius: 5px;
+  border: 3px solid black;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ff99cc;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #fe70b7;
+}
+
+/* Button (arrows) */
+::-webkit-scrollbar-button {
+  background: black;
+  height: 20px;
+  border: none;
+}
+
+/* Button (arrows) when hovered */
+::-webkit-scrollbar-button:hover {
+  background: black;
+}
+
+/* Button (arrows) up */
+::-webkit-scrollbar-button:vertical:decrement {
+  background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><polygon points="12,8 8,12 16,12"/></svg>') no-repeat center center;
+  background-size: 250%;
+  background-color: black;
+}
+
+/* Button (arrows) down */
+::-webkit-scrollbar-button:vertical:increment {
+  background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><polygon points="8,12 12,16 16,12"/></svg>') no-repeat center center;
+  background-size: 250%;
+  background-color: black;
 }
