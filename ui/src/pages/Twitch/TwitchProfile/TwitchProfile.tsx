@@ -33,7 +33,7 @@ export function TwitchProfile() {
                 <div className="twitch__profile__online__text__sides">
                   <div className="twitch__profile__online__text__sides__left">{"please click->"}</div>
                   <img
-                    src="bunnyL.jpg"
+                    src="/images/bunnyL.jpg"
                     alt="live"
                     className="twitch__profile__online__icon"
                   />
@@ -47,7 +47,7 @@ export function TwitchProfile() {
             <div className="twitch__profile__offline">
               <div className="twitch__profile__offline__group">
                 <img
-                  src="bunnyL.jpg"
+                  src="/images/bunnyL.jpg"
                   alt="not live"
                   className="twitch__profile__offline__icon"
                 />

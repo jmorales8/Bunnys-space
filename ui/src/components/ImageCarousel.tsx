@@ -17,7 +17,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
             key={index}
             style={{ '--i': index, '--degree': `${degreePerImage}deg` } as React.CSSProperties}
           >
-            <img src={image} alt={`Slide ${index}`} />
+            <img src={`/images/${image}`} alt={`Slide ${index}`} />
           </div>
         ))}
       </div>

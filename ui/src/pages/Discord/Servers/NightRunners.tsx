@@ -6,7 +6,7 @@ export function NightRunners() {
     <ServerTemplate
       title="Night Runners"
       description={text}
-      img="bunnyL.jpg"
+      img="/images/bunnyL.jpg"
       joinLink="discord/deeznuts"
     />
   );
