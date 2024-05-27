@@ -1,4 +1,16 @@
 .lore {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  &__content {
+    width: 80%;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+h3 {
+  margin-bottom: 0;
 }
