@@ -63,6 +63,10 @@
 ⠀⠀⠈⠳⣤⣄⡀⠀⠀⠀⠈⠉⠉⠁⠒⠁⠀⠠⣏⠀⠀⠀⠀⠀⠀⢀⣔⠾⡿⠃
 ⠀⠀⠀⠀⠀⠉⠙⠛⠒⠤⠤⣤⣄⣀⣀⣀⣔⣢⣀⣉⣂⣀⣀⣠⠴⠿⠛⠋⠀
 
+To start the command for backend and front end. It's
+## `yarn dev`
+
 
 [Ticket#]-BUNSPACE2024-[TicketName]
 EX. 69-BUNSPACE2024-Ticket-Name
+

@@ -1,0 +1,12 @@
+{
+  "name": "Bunspace",
+  "version": "1.0.0",
+  "scripts": {
+    "start:backend": "cd api && yarn start",
+    "start:frontend": "cd ui && yarn start",
+    "dev": "concurrently \"yarn start:backend\" \"yarn start:frontend\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
