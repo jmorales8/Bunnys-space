@@ -10,7 +10,7 @@ export function Footer() {
   return (
     <footer className="footer">
       <a className="footer__img" href="/home">
-        <img src="peachy.png" width="55" height="55"/>
+        <img src="/images/peachy.png" width="55" height="55"/>
       </a>
       {footerButtons.map((button) => {
         return (
