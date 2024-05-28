@@ -4,6 +4,9 @@
   background-color: #ffe9e9;
   padding: 0px 30px;
   height: 4rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   &__img {
     margin-right: 50px;
   }
@@ -17,10 +20,4 @@
     color: darkgreen;
     width: 50px;
   }
-}
-
-#footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 }
