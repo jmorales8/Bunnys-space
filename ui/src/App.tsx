@@ -12,16 +12,18 @@ function App() {
   return (
     <div className="app">
       <NavigationBar />
-      <Router basename={process.env.PUBLIC_URL}>
-        <Routes>
-          <Route path="/" element={<Navigate replace to="/home" />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/lore" element={<Lore />} />
-          <Route path="/twitch" element={<Twitch />}/>
-          <Route path="/commissions" element={<Commissions />}/>
-          <Route path="/discord" element={<Discord />}/>
-        </Routes>
-      </Router>
+      <div className="app__content">
+        <Router basename={process.env.PUBLIC_URL}>
+          <Routes>
+            <Route path="/" element={<Navigate replace to="/home" />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/lore" element={<Lore />} />
+            <Route path="/twitch" element={<Twitch />}/>
+            <Route path="/commissions" element={<Commissions />}/>
+            <Route path="/discord" element={<Discord />}/>
+          </Routes>
+        </Router>
+      </div>
       <Footer />
     </div>
   );

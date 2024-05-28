@@ -3,6 +3,9 @@
   flex-direction: column;
   min-height: 100vh;
   background-color: #eecbcb;
+  &__content {
+    margin-bottom: 4rem;
+  }
 }
 
 body, #root {
