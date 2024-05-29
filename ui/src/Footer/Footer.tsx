@@ -4,7 +4,7 @@ interface FooterButtons {
 }
 
 const footerButtons: FooterButtons[] = [
-  { label: "Q&A", path: "/QA" },
+  { label: "Q&A", path: "/Q-and-A" },
 ];
 export function Footer() {
   return (
