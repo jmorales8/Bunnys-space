@@ -10,6 +10,7 @@
 /* width */
 ::-webkit-scrollbar {
   width: 15px;
+  height: 15px;
 }
 
 /* Track */
@@ -19,7 +20,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: pink;
+  background: linear-gradient(180deg, pink, hotpink);;
   border-radius: 5px;
   border: 3px solid black;
 }
