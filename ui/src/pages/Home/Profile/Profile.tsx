@@ -9,7 +9,7 @@ export function Profile() {
   return (
     <div className="profile">
       <div>
-        <img className="profile__image" src={profileImages[RandomImage()]} alt="bunnie"/>
+        <img className="profile__image" src={`/images/${profileImages[RandomImage()]}`} alt="bunnie"/>
       </div>
       <div className="profile__text">
         {text}{text}
