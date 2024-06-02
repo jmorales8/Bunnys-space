@@ -1,9 +1,5 @@
-import {
-  BrowserRouter as Router,
-  Navigate,
-  Route,
-  Routes,
-} from "react-router-dom";
+import React, { useContext, useRef, useState } from 'react';
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import "../src/styles/styles.scss";
 import { Home } from "./pages/Home/Home";
 import { NavigationBar } from "./NavigationBar/NavigationBar";
@@ -17,7 +13,7 @@ import ThemeProvider from "./context/ThemeContext";
 import { AppContent } from "./components/AppContent/AppContent";
 import AudioPlayer from './components/Sound/Player';
 import { Login } from "./pages/Login/Login";
-import Player from "./components/Sound/Player";
+import AudioPlayer from './components/Sound/Player';
 
 function App() {
   return (
