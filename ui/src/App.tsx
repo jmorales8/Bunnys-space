@@ -13,6 +13,7 @@ import { Lore } from "./pages/Lore/Lore";
 import { Discord } from "./pages/Discord/Discord";
 import { Footer } from "./Footer/Footer";
 import { LoginButton } from "./components/LoginButton/LoginButton";
+import Player from "./components/Sound/Player";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/commissions" element={<Commissions />} />
             <Route path="/discord" element={<Discord />} />
           </Routes>
+          <Player />
         </Router>
       </div>
       <Footer />
