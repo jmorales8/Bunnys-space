@@ -17,6 +17,7 @@ import ThemeProvider from "./context/ThemeContext";
 import { AppContent } from "./components/AppContent/AppContent";
 import AudioPlayer from './components/Sound/Player';
 import { Login } from "./pages/Login/Login";
+import Player from "./components/Sound/Player";
 
 function App() {
   return (
