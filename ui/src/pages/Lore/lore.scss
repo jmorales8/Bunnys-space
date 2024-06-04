@@ -1,0 +1,17 @@
+.lore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__content {
+    @extend .lore;
+    width: 80%;
+  }
+}
+
+.paragraph {
+  margin: 0;
+}
+
+.header3 {
+  margin-bottom: 0;
+}
