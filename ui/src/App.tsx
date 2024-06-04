@@ -1,5 +1,9 @@
-import React, { useContext, useRef, useState } from 'react';
-import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import "../src/styles/styles.scss";
 import { Home } from "./pages/Home/Home";
 import { NavigationBar } from "./NavigationBar/NavigationBar";
@@ -9,7 +13,6 @@ import { Lore } from "./pages/Lore/Lore";
 import { Discord } from "./pages/Discord/Discord";
 import { Footer } from "./Footer/Footer";
 import { LoginButton } from "./components/LoginButton/LoginButton";
-
 import AudioPlayer from './components/Sound/Player';
 
 function App() {
@@ -30,10 +33,9 @@ function App() {
             <Route path="/commissions" element={<Commissions />} />
             <Route path="/discord" element={<Discord />} />
           </Routes>
-
-        </Router>
-      </div>
+      </Router>
       <Footer />
+      </div>
     </div>
   );
 }

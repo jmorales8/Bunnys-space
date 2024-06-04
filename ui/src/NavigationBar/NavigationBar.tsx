@@ -1,4 +1,5 @@
 import { ImgsOnNavBar } from "../components/ImgsOnNavBar/ImgsOnNavBar";
+import { Link } from "react-router-dom";
 
 interface NavButtons {
   label: string;
@@ -20,14 +21,12 @@ export function NavigationBar() {
         <ImgsOnNavBar />
       </span>
       <span className="navBar__content">
-        {navButtons.map((button) => {
-          return (
-            <a href={button.path} className="navBar__button" key={button.label}>
-              {button.label}
-            </a>
-          )
-        })}
+        {navButtons.map((button) => (
+          <Link key={button.path} to={button.path} className="navBar__button">
+            {button.label}
+          </Link>
+        ))}
       </span>
     </div>
-  )
+  );
 }
