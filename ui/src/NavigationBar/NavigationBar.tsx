@@ -9,7 +9,6 @@ const navButtons: NavButtons[] = [
   { label: "Commissions", path: "/commissions" },
   { label: "Twitch", path: "/twitch" },
   { label: "Discord", path: "/discord" },
-
 ];
 
 export function NavigationBar() {
