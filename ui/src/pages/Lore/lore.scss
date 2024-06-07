@@ -12,7 +12,7 @@
       position: relative;
       height: 64vh;
       transform: rotateX(64deg) scale(0.55, 0.3) translateY(120vh);
-      animation: 70s linear 1s infinite translateText;
+      animation: 40s linear 1s infinite translateText;
       &__text {
         color: maroon;
         font-size: 5vh;
@@ -24,21 +24,21 @@
   }
 }
 
-// #fade {
-//   position: fixed;
-//   top: 0;
-//   right: 0;
-//   left: 0;
-//   height: 40vh;
-//   background: linear-gradient(
-//     0deg,
-//     rgba(0, 0, 0, 0),
-//     rgba(0, 0, 0, 0.25),
-//     rgba(0, 0, 0, 1),
-//     rgba(0, 0, 0, 1)
-//   );
-//   z-index: 10;
-// }
+#fade {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 40vh;
+  background: linear-gradient(
+    0deg,
+    rgba(238, 203, 203, 0),
+    rgba(238, 203, 203, 0.25),
+    rgba(238, 203, 203, 1),
+    rgba(238, 203, 203, 1)
+  );
+  z-index: 10;
+}
 
 body {
   overflow: hidden;
