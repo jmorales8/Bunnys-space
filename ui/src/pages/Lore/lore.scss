@@ -1,17 +1,64 @@
 .lore {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  &__content {
-    @extend .lore;
-    width: 80%;
+  width: 80%;
+  height: 70vh;
+  margin: 0 auto;
+  &__container {
+    overflow: hidden;
+    perspective: 240px;
+    perspective-origin: center 15%;
+    &__effect {
+      position: relative;
+      height: 64vh;
+      transform: rotateX(64deg) scale(0.55, 0.3) translateY(120vh);
+      animation: 70s linear 1s infinite translateText;
+      &__text {
+        color: maroon;
+        font-size: 5vh;
+        line-height: 1.5em;
+        font-weight: bold;
+        text-align: justify;
+      }
+    }
   }
+}
+
+// #fade {
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   left: 0;
+//   height: 40vh;
+//   background: linear-gradient(
+//     0deg,
+//     rgba(0, 0, 0, 0),
+//     rgba(0, 0, 0, 0.25),
+//     rgba(0, 0, 0, 1),
+//     rgba(0, 0, 0, 1)
+//   );
+//   z-index: 10;
+// }
+
+body {
+  overflow: hidden;
 }
 
 .paragraph {
   margin: 0;
+  text-align: center;
 }
 
 .header3 {
   margin-bottom: 0;
+  text-align: center;
+}
+
+@keyframes translateText {
+  0% {
+    transform: rotateX(64deg) scale(0.55, 0.3) translateY(120vh);
+  }
+  100% {
+    transform: rotateX(64deg) scale(0.55, 0.3) translateY(-400vh);
+  }
 }
