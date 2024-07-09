@@ -17,6 +17,11 @@ import { LoginButton } from "./components/LoginButton/LoginButton";
 function App() {
   return (
     <div className="app">
+
+      <div className="app__login">
+        <img className="app__login__button" src="/images/bunnyL.jpg" />
+      </div>
+      <NavigationBar />
       <div className="app__content">
         <Router basename={process.env.PUBLIC_URL}>
           <LoginButton />
