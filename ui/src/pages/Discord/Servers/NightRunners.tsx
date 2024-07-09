@@ -7,7 +7,7 @@ export function NightRunners() {
       title="Night Runners"
       description={text}
       img="/images/bunnyL.jpg"
-      joinLink="discord/deeznuts"
+      joinLink="48UXs8NzKF"
     />
   );
 }
