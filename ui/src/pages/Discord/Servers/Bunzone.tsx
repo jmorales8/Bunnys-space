@@ -6,7 +6,7 @@ export function Bunzone() {
       title="The Bunzone"
       description=""
       img="/images/bunnyL.jpg"
-      joinLink="discord/bruh"
+      joinLink="aS2HvqyrmD"
     />
   );
 }
