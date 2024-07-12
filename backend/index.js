@@ -1,26 +1,27 @@
-// server/index.js
-import express from "express";
-import bodyParser from "body-parser";
-import authRoutes from "./routes/auth.js"
-import dotenv from "dotenv"
-import { GetTwitchStatus } from "./server/GetTwitchStatus.js";
-import { profile_db } from "./database/Profiledb.js";
-import { lore_db } from "./database/Loredb.js";
+import express from 'express';
+import bodyParser from 'body-parser';
+import authRoutes from './routes/auth.js';
+import dotenv from 'dotenv';
+import { GetTwitchStatus } from './server/GetTwitchStatus.js';
+import { profile_db } from './database/Profiledb.js';
+import { lore_db } from './database/Loredb.js';
+
+// Load environment variables
+dotenv.config();
 
 const PORT = process.env.PORT || 3001;
-// dotenv.config();
-
 const app = express();
 
+// Middleware to parse JSON bodies
 app.use(express.json());
 
 // Handle GET requests to /api route
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from the server!?!" });
+app.get('/api', (req, res) => {
+  res.json({ message: 'Hello from the server!?!' });
 });
 
-
-app.get("/api/twitch", async (req, res) => {
+// Handle GET requests to /api/twitch
+app.get('/api/twitch', async (req, res) => {
   try {
     const isLive = await GetTwitchStatus();
     res.json({ isLive });
@@ -30,22 +31,37 @@ app.get("/api/twitch", async (req, res) => {
   }
 });
 
-
+// Handle GET requests to /profile
 app.get('/profile', (req, res) => {
-  profile_db.all("SELECT * FROM Profile", [], (err, rows));
-})
-
-app.get('/lore', (req, res) => {
-  lore_db.all("SELECT * FROM Lore", [], (err, rows));
-})
-// All other GET requests not handled before will return a message
-app.get('*', (req, res) => {
-  res.json({ message: "This request doesnt exist" });;
+  profile_db.all('SELECT * FROM Profile', [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({ profiles: rows });
+  });
 });
 
+// Handle GET requests to /lore
+app.get('/lore', (req, res) => {
+  lore_db.all('SELECT * FROM Lore', [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({ lore: rows });
+  });
+});
+
+// Use the authentication routes
+app.use('/api/auth', authRoutes);
+
+// Handle all other GET requests not handled before
+app.get('*', (req, res) => {
+  res.json({ message: "This request doesn't exist" });
+});
+
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
-/*
-cd api && yarn start
-*/
