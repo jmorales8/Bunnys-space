@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 interface ServerTemplatePorps {
   title: string;
   description: string;
@@ -8,7 +7,6 @@ interface ServerTemplatePorps {
 
 export function ServerTemplate(props: ServerTemplatePorps) {
   const { title, description, img, joinLink } = props;
-  const navigate = useNavigate();
   return (
     <div className="server">
       <div className="server__title">{title}</div>
