@@ -1,4 +1,4 @@
-interface SongProps {
+export interface SongProps {
   fileName: string;
   title: string;
 }

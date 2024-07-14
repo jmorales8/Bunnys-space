@@ -1,4 +1,10 @@
 import { useState, useEffect, useMemo, RefObject, useRef } from 'react';
+import { BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipStartCircleFill, BsFillSkipEndCircleFill } from 'react-icons/bs';
+import { SongProps, Songs } from './Songs';
+
+function RandomSong(): number {
+  return Math.floor(Math.random() * Songs.length);
+}
 
 export function usePersistState<T>(initialValue: T, id: string): [T, (newState: T) => void] {
   const _initialValue = useMemo(() => {
@@ -20,24 +26,15 @@ export function usePersistState<T>(initialValue: T, id: string): [T, (newState: 
 }
 
 export function usePersistAudioState(audioRef: RefObject<HTMLAudioElement>, initialVolume = 1) {
-  const [isPlaying, setIsPlaying] = usePersistState(false, 'audio-is-playing');
-  const [currentTime, setCurrentTime] = usePersistState(0, 'audio-current-time');
-  const [volume, setVolume] = usePersistState(initialVolume, 'audio-volume');
+  const [isPlaying, setIsPlaying] = usePersistState<boolean>(false, 'audio-is-playing');
+  const [volume, setVolume] = usePersistState<number>(initialVolume, 'audio-volume');
 
   useEffect(() => {
     const audio = audioRef.current;
     if (audio) {
       audio.volume = volume;
-      audio.currentTime = currentTime;
-
-      const handleTimeUpdate = () => setCurrentTime(audio.currentTime);
-      audio.addEventListener('timeupdate', handleTimeUpdate);
-
-      return () => {
-        audio.removeEventListener('timeupdate', handleTimeUpdate);
-      };
     }
-  }, [audioRef, volume, setCurrentTime]);
+  }, [audioRef, volume]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -55,20 +52,6 @@ export function usePersistAudioState(audioRef: RefObject<HTMLAudioElement>, init
     }
   }, [isPlaying, audioRef]);
 
-  useEffect(() => {
-    const handleBeforeUnload = () => {
-      const audio = audioRef.current;
-      if (audio) {
-        setCurrentTime(audio.currentTime);
-      }
-    };
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, [audioRef, setCurrentTime]);
-
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
   };
@@ -82,8 +65,8 @@ export function usePersistAudioState(audioRef: RefObject<HTMLAudioElement>, init
 
   return {
     isPlaying,
+    setIsPlaying,
     togglePlayPause,
-    currentTime,
     volume,
     changeVolume
   };
@@ -91,14 +74,53 @@ export function usePersistAudioState(audioRef: RefObject<HTMLAudioElement>, init
 
 const AudioPlayer = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const { isPlaying, togglePlayPause, volume, changeVolume } = usePersistAudioState(audioRef);
+  const { isPlaying, setIsPlaying, togglePlayPause, volume, changeVolume } = usePersistAudioState(audioRef);
+  const [currentSongIndex, setCurrentSongIndex] = useState<number>(RandomSong());
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.load();
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.error('Audio play error:', error);
+        });
+      }
+    }
+  }, [currentSongIndex]);
+
+  const nextSong = () => {
+    setCurrentSongIndex((prevIndex) => (prevIndex + 1) % Songs.length);
+    setIsPlaying(true);
+  };
+
+  const prevSong = () => {
+    setCurrentSongIndex((prevIndex) => (prevIndex - 1 + Songs.length) % Songs.length);
+    setIsPlaying(true);
+  };
+
+  const currentSong = Songs[currentSongIndex];
 
   return (
     <div>
-      <audio ref={audioRef} preload="auto">
-        <source src='/audio/Flower_Garden.mp3' type="audio/mp3" />
+      <audio ref={audioRef}>
+        <source src={`/audio/${currentSong.fileName}`} type="audio/mp3" />
       </audio>
-      <button onClick={togglePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
+      <div className='player_container'>
+        <div className="title">
+          <p>{currentSong.title}</p>
+        </div>
+        <div className="navigation">
+          <div className="navigation_wrapper">
+            <div className="seek_bar" style={{ width: "50%" }}></div>
+          </div>
+        </div>
+        <div className="controls">
+          <BsFillSkipStartCircleFill className='btn_action' onClick={prevSong} />
+          {isPlaying ? <BsFillPauseCircleFill className='btn_action pp' onClick={togglePlayPause} /> : <BsFillPlayCircleFill className='btn_action pp' onClick={togglePlayPause} />}
+          <BsFillSkipEndCircleFill className='btn_action' onClick={nextSong} />
+        </div>
+      </div>
       <input
         type="range"
         min="0"
