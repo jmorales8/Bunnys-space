@@ -3,7 +3,6 @@ import {
   Navigate,
   Route,
   Routes,
-  Link,
 } from "react-router-dom";
 import "../src/styles/styles.scss";
 import { Home } from "./pages/Home/Home";
