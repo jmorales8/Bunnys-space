@@ -14,13 +14,18 @@ const navButtons: NavButtons[] = [
 export function NavigationBar() {
   return (
     <div className="navBar">
-      {navButtons.map((button) => {
-        return (
-          <a href={button.path} className="navBar__button" key={button.label}>
-            {button.label}
-          </a>
-        )
-      })}
+      <span className="navBar__pictures">
+        <div className="navBar__picture"/>
+      </span>
+      <span className="navBar__content">
+        {navButtons.map((button) => {
+          return (
+            <a href={button.path} className="navBar__button" key={button.label}>
+              {button.label}
+            </a>
+          )
+        })}
+      </span>
     </div>
   )
 }
