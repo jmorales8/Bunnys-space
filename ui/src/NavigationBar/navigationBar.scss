@@ -1,7 +1,7 @@
 .navBar {
   display: flex;
   padding-bottom: 2px;
-  margin: 200px 0px 25px 55px;
+  margin: 100px 0px 25px 55px;
   flex-direction: column;
   max-width: fit-content;
   &__content {
@@ -25,6 +25,7 @@
     }
     &:active {
       background-image: url("../../public/images/necoarc_pilow.webp");
+      // background-size: 121px;
     }
     &s {
       display: flex;

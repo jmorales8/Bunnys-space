@@ -13,17 +13,14 @@ import { Commissions } from "./pages/Commissions/Commissions";
 import { Lore } from "./pages/Lore/Lore";
 import { Discord } from "./pages/Discord/Discord";
 import { Footer } from "./Footer/Footer";
+import { LoginButton } from "./components/LoginButton/LoginButton";
 
 function App() {
   return (
     <div className="app">
       <div className="app__content">
         <Router basename={process.env.PUBLIC_URL}>
-          <div className="app__login">
-            <Link to="/login">
-              <img className="app__login__button" src="/images/hallo_pillow.png" alt="Pillow_corner" />
-            </Link>
-          </div>
+          <LoginButton />
           <NavigationBar />
           <Routes>
             <Route path="/login" element={<>I am the login page</>} />
