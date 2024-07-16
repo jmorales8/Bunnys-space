@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import authRoutes from './routes/auth.js';
 import dotenv from 'dotenv';
 import { GetTwitchStatus } from './server/GetTwitchStatus.js';
