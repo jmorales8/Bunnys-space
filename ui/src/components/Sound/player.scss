@@ -21,7 +21,7 @@
   &__navigation {
     width: 100%;
 
-    &__navigation_wrapper {
+    &__navigation__wrapper {
       min-width: 100%;
       background-color: rgba(119, 119, 119, 0.781);
       height: 5px;
@@ -40,19 +40,15 @@
     font-size: inherit;
     display: flex;
     align-items: center;
-
-    &__btn_action {
-      font-size: 2rem;
-      margin: 0 1rem;
+    &__btn__action {
+      height: 40px;
       cursor: pointer;
-
-      &:hover {
-        color: white;
-      }
     }
 
     &__pp {
-      font-size: 4rem;
+      height: 100px;
+      cursor: pointer;
+      margin: 10px;
     }
   }
 }

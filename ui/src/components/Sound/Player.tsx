@@ -1,6 +1,5 @@
 import { useState, useEffect, useMemo, RefObject, useRef } from 'react';
-import { BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipStartCircleFill, BsFillSkipEndCircleFill } from 'react-icons/bs';
-import { SongProps, Songs } from './Songs';
+import { Songs } from './Songs';
 
 function RandomSong(): number {
   return Math.floor(Math.random() * Songs.length);
@@ -111,14 +110,14 @@ const AudioPlayer = () => {
           <p>{currentSong.title}</p>
         </div>
         <div className="navigation">
-          <div className="navigation_wrapper">
+          <div className="navigation__wrapper">
             <div className="seek_bar" style={{ width: "50%" }}></div>
           </div>
         </div>
-        <div className="controls">
-          <BsFillSkipStartCircleFill className='btn_action' onClick={prevSong} />
-          {isPlaying ? <BsFillPauseCircleFill className='btn_action pp' onClick={togglePlayPause} /> : <BsFillPlayCircleFill className='btn_action pp' onClick={togglePlayPause} />}
-          <BsFillSkipEndCircleFill className='btn_action' onClick={nextSong} />
+        <div className="player__controls">
+          <img src="/images/left_skip.png" className='player__controls__btn__action' onClick={prevSong} alt="left_skip"/>
+          {isPlaying ? <img src="/images/pause_music.png" className='player__controls__pp' onClick={togglePlayPause} alt="pause" /> : <img src="/images/play_music.png" className='player__controls__pp' onClick={togglePlayPause} alt="paly"/>}
+          <img src="images/right_skip.png" className='player__controls__btn__action' onClick={nextSong} alt="right_skip"/>
         </div>
       </div>
       <input
