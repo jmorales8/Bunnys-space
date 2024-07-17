@@ -2,8 +2,8 @@ import express from 'express';
 import authRoutes from './routes/auth.js';
 import dotenv from 'dotenv';
 import { GetTwitchStatus } from './server/GetTwitchStatus.js';
-import { profile_db } from './database/Profiledb.js';
-import { lore_db } from './database/Loredb.js';
+import { profile_db } from './factorydb/Profiledb.js';
+import { lore_db } from './factorydb/Loredb.js';
 
 // Load environment variables
 dotenv.config();
