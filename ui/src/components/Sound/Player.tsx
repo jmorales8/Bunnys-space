@@ -101,12 +101,12 @@ const AudioPlayer = () => {
   const currentSong = Songs[currentSongIndex];
 
   return (
-    <div>
+    <div className="player">
       <audio ref={audioRef}>
         <source src={`/audio/${currentSong.fileName}`} type="audio/mp3" />
       </audio>
       <div className='player_container'>
-        <div className="title">
+        <div className="player__title">
           <p>{currentSong.title}</p>
         </div>
         <div className="navigation">
@@ -116,7 +116,7 @@ const AudioPlayer = () => {
         </div>
         <div className="player__controls">
           <img src="/images/left_skip.png" className='player__controls__btn__action' onClick={prevSong} alt="left_skip"/>
-          {isPlaying ? <img src="/images/pause_music.png" className='player__controls__pp' onClick={togglePlayPause} alt="pause" /> : <img src="/images/play_music.png" className='player__controls__pp' onClick={togglePlayPause} alt="paly"/>}
+          {isPlaying ? <img src="/images/pause_music.png" className='player__controls__pp' onClick={togglePlayPause} alt="pause" /> : <img src="/images/play_music.png" className='player__controls__pp' onClick={togglePlayPause} alt="play"/>}
           <img src="images/right_skip.png" className='player__controls__btn__action' onClick={nextSong} alt="right_skip"/>
         </div>
       </div>
@@ -124,6 +124,7 @@ const AudioPlayer = () => {
         type="range"
         min="0"
         max="1"
+        className="bruh"
         step="0.01"
         value={volume}
         onChange={(e) => changeVolume(parseFloat(e.target.value))}
