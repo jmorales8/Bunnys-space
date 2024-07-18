@@ -51,6 +51,10 @@ export function usePersistAudioState(audioRef: RefObject<HTMLAudioElement>, init
     }
   }, [isPlaying, audioRef]);
 
+  useEffect(() => {
+    setIsPlaying(false);
+  }, []); // Reset isPlaying to false on component mount
+
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
   };
@@ -90,12 +94,10 @@ const AudioPlayer = () => {
 
   const nextSong = () => {
     setCurrentSongIndex((prevIndex) => (prevIndex + 1) % Songs.length);
-    setIsPlaying(true);
   };
 
   const prevSong = () => {
     setCurrentSongIndex((prevIndex) => (prevIndex - 1 + Songs.length) % Songs.length);
-    setIsPlaying(true);
   };
 
   const currentSong = Songs[currentSongIndex];
