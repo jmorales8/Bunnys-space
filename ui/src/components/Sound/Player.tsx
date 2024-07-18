@@ -53,7 +53,7 @@ export function usePersistAudioState(audioRef: RefObject<HTMLAudioElement>, init
 
   useEffect(() => {
     setIsPlaying(false);
-  }, []); // Reset isPlaying to false on component mount
+  }, [setIsPlaying]); // Reset isPlaying to false on component mount
 
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
