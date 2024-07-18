@@ -94,10 +94,12 @@ const AudioPlayer = () => {
 
   const nextSong = () => {
     setCurrentSongIndex((prevIndex) => (prevIndex + 1) % Songs.length);
+    setIsPlaying(true)
   };
 
   const prevSong = () => {
     setCurrentSongIndex((prevIndex) => (prevIndex - 1 + Songs.length) % Songs.length);
+    setIsPlaying(true)
   };
 
   const currentSong = Songs[currentSongIndex];
