@@ -1,4 +1,4 @@
-import { user_db } from '../database/Usersdb.js';
+import { user_db } from '../factorydb/Usersdb.js';
 import bcrypt from 'bcryptjs';
 
 const User = {

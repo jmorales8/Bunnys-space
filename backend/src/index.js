@@ -1,10 +1,9 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import authRoutes from './routes/auth.js';
 import dotenv from 'dotenv';
 import { GetTwitchStatus } from './server/GetTwitchStatus.js';
-import { profile_db } from './database/Profiledb.js';
-import { lore_db } from './database/Loredb.js';
+import { profile_db } from './factorydb/Profiledb.js';
+import { lore_db } from './factorydb/Loredb.js';
 
 // Load environment variables
 dotenv.config();
@@ -21,7 +20,7 @@ app.get('/api', (req, res) => {
 });
 
 // Handle GET requests to /api/twitch
-app.get('/api/twitch', async (req, res) => {
+app.get('/twitch/livestatus', async (req, res) => {
   try {
     const isLive = await GetTwitchStatus();
     res.json({ isLive });
