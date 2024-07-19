@@ -20,7 +20,7 @@ app.get('/api', (req, res) => {
 });
 
 // Handle GET requests to /api/twitch
-app.get('/api/twitch', async (req, res) => {
+app.get('/twitch/livestatus', async (req, res) => {
   try {
     const isLive = await GetTwitchStatus();
     res.json({ isLive });

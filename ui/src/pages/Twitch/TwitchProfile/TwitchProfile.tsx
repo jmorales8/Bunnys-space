@@ -7,7 +7,7 @@ export function TwitchProfile() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/twitch");
+        const response = await fetch("/twitch/livestatus");
         const result = await response.json();
         setData(result);
       } catch (error) {
