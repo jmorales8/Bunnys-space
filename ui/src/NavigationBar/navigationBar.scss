@@ -20,13 +20,14 @@ $baseurl: "../../public/images/";
   &__picture {
     width: 100px;
     height: 100px;
-    background-image: url("#{$baseurl}goblin.webp");
+    
+    // background-image: url("#{$baseurl}goblin.webp");
     background-size: 100px;
     &:hover {
-      background-image: url("#{$baseurl}Pilbo_Goober.webp");
+      // background-image: url("#{$baseurl}Pilbo_Goober.webp");
     }
     &:active {
-      background-image: url("#{$baseurl}necoarc_pilow.webp");
+      // background-image: url("#{$baseurl}necoarc_pilow.webp");
       // background-size: 121px;
     }
     &s {
