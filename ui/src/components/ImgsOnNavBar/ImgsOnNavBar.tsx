@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 function RandomImage() {
-  return Math.floor(Math.random() * 2);
+  return Math.floor(Math.random() * 100);
 }
 
 function RandomSFX() {
