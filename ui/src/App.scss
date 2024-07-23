@@ -11,7 +11,9 @@
     display: flex;
     justify-content: flex-end;
     &__button {
-      width: 150px;
+      width: 125px;
+      position: absolute;
+      cursor: pointer;
     }
   }
 }
@@ -71,3 +73,4 @@ html {
   background-size: 250%;
   background-color: black;
 }
+
