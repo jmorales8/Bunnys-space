@@ -18,12 +18,11 @@ import AudioPlayer from './components/Sound/Player';
 function App() {
   return (
     <div className="app">
-
       <div className="app__content">
         <Router basename={process.env.PUBLIC_URL}>
           <LoginButton />
-          <NavigationBar />
           <AudioPlayer/>
+          <NavigationBar />
           <Routes>
             <Route path="/login" element={<>I am the login page</>} />
             <Route path="/" element={<Navigate replace to="/home" />} />
