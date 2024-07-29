@@ -6,6 +6,9 @@
   overflow-x: hidden;
   &__content {
     margin-bottom: 5rem;
+    &__night {
+      background-color: #5F5D92 !important;
+    }
   }
   &__login {
     display: flex;
