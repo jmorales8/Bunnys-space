@@ -19,7 +19,6 @@ import { AppContent } from "./components/AppContent/AppContent";
 function App() {
   return (
     <ThemeProvider>
-      <div className="app">
         <AppContent>
           <Router basename={process.env.PUBLIC_URL}>
             <LoginButton />
@@ -36,7 +35,6 @@ function App() {
           </Router>
         </AppContent>
         <Footer />
-      </div>
     </ThemeProvider>
   );
 }
