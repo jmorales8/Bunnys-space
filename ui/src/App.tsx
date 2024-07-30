@@ -20,7 +20,6 @@ import { AppContent } from "./components/AppContent/AppContent";
 function App() {
   return (
     <ThemeProvider>
-      <div className="app">
         <AppContent>
           <Router basename={process.env.PUBLIC_URL}>
             <div className="app__head">
@@ -39,7 +38,6 @@ function App() {
             </Routes>
           </Router>
         </AppContent>
-        </div>
         <Footer />
     </ThemeProvider>
   );

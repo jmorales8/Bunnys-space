@@ -4,12 +4,11 @@
   min-height: 100vh;
   background-color: #eecbcb;
   overflow-x: hidden;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   &__content {
-    margin-bottom: 5rem;
     &__night {
       @extend .app;
-      background-color: #5f5d92;
+      background-color: #5F5D92 !important;
     }
   }
   &__head {
