@@ -6,7 +6,6 @@ export function AppContent({children}: {children: ReactNode}) {
     throw new Error("DarkMode must be used within a ThemeProvider");
   }
   const { isDarkMode } = themeContext;
-  console.log(isDarkMode)
   return(
     <div className={isDarkMode ? "app__content__night" : "app"}>
       {children}

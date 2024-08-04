@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 interface NavButtons {
   label: string;
   path: string;
@@ -12,20 +14,29 @@ const navButtons: NavButtons[] = [
 ];
 
 export function NavigationBar() {
+  const themeContext = useContext(ThemeContext);
+  if (!themeContext) {
+    throw new Error("DarkMode must be used within a ThemeProvider");
+  }
+  const { isDarkMode } = themeContext;
   return (
     <div className="navBar">
       <span className="navBar__pictures">
-        <div className="navBar__picture"/>
+        <div className="navBar__picture" />
       </span>
-      <span className="navBar__content">
+      <span className={isDarkMode ? "navBar__content__night" : "navBar__content"}>
         {navButtons.map((button) => {
           return (
-            <a href={button.path} className="navBar__button" key={button.label}>
+            <a
+              href={button.path}
+              className={isDarkMode ? "navBar__button__night" : "navBar__button"}
+              key={button.label}
+            >
               {button.label}
             </a>
-          )
+          );
         })}
       </span>
     </div>
-  )
+  );
 }
