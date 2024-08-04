@@ -2,20 +2,34 @@ $baseurl: "../../public/images/";
 
 .navBar {
   display: flex;
-  padding-bottom: 2px;
-  margin: 0px 0px 25px 55px;
+  margin-bottom: 25px;
   flex-direction: column;
-  max-width: fit-content;
+  width: 100%;
+  align-items: center;
   &__content {
-    padding-left: 55px;
+    display: flex;
     border-radius: 20px;
     background-color: pink;
     border: 2px solid hotpink;
+    width: 500px;
+    justify-content: space-evenly;
+    &__night {
+      @extend .navBar__content;
+      background-color: #8c89d2 !important;
+      border: 2px solid #272648 !important;
+    }
   }
   &__button {
-    margin-right: 50px;
     text-decoration: none;
     color: darkgreen;
+
+    &__night {
+      @extend .navBar__button;
+      color: rgb(253, 224, 248);
+    }
+    &:hover {
+      transform: rotate(-4deg);
+    }
   }
   &__picture {
     width: 125px;
