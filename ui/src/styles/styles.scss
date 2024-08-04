@@ -6,7 +6,7 @@
 
 // Components
 @import "../components/imgCarousel.scss";
-
+@import "../components/NightModeButton/nightModeButton.scss";
 // Home
 @import "../pages/Home/home.scss";
 @import "../pages/Home/Profile/profile.scss";
@@ -20,5 +20,6 @@
 // Disord
 @import "../pages/Discord/discord.scss";
 @import "../pages/Discord/Servers/ServerTemplate/serverTemplate.scss";
+
 // App
 @import "../App.scss";
