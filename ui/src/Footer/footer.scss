@@ -13,7 +13,11 @@
     width: 55px;
     height: 55px;
   }
-  &__button {
+  &__night {
+    @extend .footer;
+    background-color: #7371ab !important;
+  }
+  &__buttons {
     display: flex;
     justify-content: center;
     text-decoration: none;
@@ -27,6 +31,17 @@
     }
     &:active {
       background-color: rgb(255, 142, 198);
+    }
+    &__night {
+      @extend .footer__buttons;
+      color: rgb(253, 224, 248);
+      &:hover {
+        background-color: darkslateblue;
+        border: 1px solid #16136b;
+      }
+      &:active {
+        background-color: #161543;
+      }
     }
   }
 }
