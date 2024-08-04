@@ -13,28 +13,29 @@ import { Lore } from "./pages/Lore/Lore";
 import { Discord } from "./pages/Discord/Discord";
 import { Footer } from "./Footer/Footer";
 import { LoginButton } from "./components/LoginButton/LoginButton";
+import ThemeProvider from "./context/ThemeContext";
+import { AppContent } from "./components/AppContent/AppContent";
 
 function App() {
   return (
-    <div className="app">
-
-      <div className="app__content">
-        <Router basename={process.env.PUBLIC_URL}>
-          <LoginButton />
-          <NavigationBar />
-          <Routes>
-            <Route path="/login" element={<>I am the login page</>} />
-            <Route path="/" element={<Navigate replace to="/home" />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/lore" element={<Lore />} />
-            <Route path="/twitch" element={<Twitch />} />
-            <Route path="/commissions" element={<Commissions />} />
-            <Route path="/discord" element={<Discord />} />
-          </Routes>
-        </Router>
-      </div>
-      <Footer />
-    </div>
+    <ThemeProvider>
+        <AppContent>
+          <Router basename={process.env.PUBLIC_URL}>
+            <LoginButton />
+            <NavigationBar />
+            <Routes>
+              <Route path="/login" element={<>I am the login page</>} />
+              <Route path="/" element={<Navigate replace to="/home" />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/lore" element={<Lore />} />
+              <Route path="/twitch" element={<Twitch />} />
+              <Route path="/commissions" element={<Commissions />} />
+              <Route path="/discord" element={<Discord />} />
+            </Routes>
+          </Router>
+        </AppContent>
+        <Footer />
+    </ThemeProvider>
   );
 }
 /*
