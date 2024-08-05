@@ -1,3 +1,5 @@
+import { ImgsOnNavBar } from "../components/ImgsOnNavBar/ImgsOnNavBar";
+
 interface NavButtons {
   label: string;
   path: string;
@@ -15,7 +17,7 @@ export function NavigationBar() {
   return (
     <div className="navBar">
       <span className="navBar__pictures">
-        <div className="navBar__picture"/>
+        <ImgsOnNavBar />
       </span>
       <span className="navBar__content">
         {navButtons.map((button) => {

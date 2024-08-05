@@ -1,3 +1,5 @@
+$baseurl: "../../public/images/";
+
 .navBar {
   display: flex;
   padding-bottom: 2px;
@@ -16,16 +18,25 @@
     color: darkgreen;
   }
   &__picture {
-    width: 100px;
-    height: 100px;
-    background-image: url("../../public/images/goblin.webp");
-    background-size: 100px;
+    width: 125px;
+    height: 125px;
+    background-size: 125px;
+    background-image: url("#{$baseurl}goblin.png");
     &:hover {
-      background-image: url("../../public/images/Pilbo_Goober.webp");
+      background-image: url("#{$baseurl}Pilbo_Goober.png");
     }
-    &:active {
-      background-image: url("../../public/images/necoarc_pilow.webp");
-      // background-size: 121px;
+    &__necoarc {
+      width: 125px;
+      height: 125px;
+      background-size: 125px;
+      background-image: url("#{$baseurl}necoarc_pilow.png");
+
+    }
+    &__gokufeet {
+      width: 125px;
+      height: 125px;
+      background-size: 125px;
+      background-image: url("#{$baseurl}goku_feet.png");
     }
     &s {
       display: flex;
