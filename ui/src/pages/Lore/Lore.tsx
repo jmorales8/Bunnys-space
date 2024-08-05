@@ -31,7 +31,7 @@ export function Lore() {
     };
     fetchData();
   }, []);
-
+  console.log(lore[currentLoreSelection])
   return (
     <div className="lore">
       {loading ? (
