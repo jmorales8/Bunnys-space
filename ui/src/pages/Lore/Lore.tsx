@@ -37,12 +37,15 @@ export function Lore() {
       {loading ? (
         <> loading </>
       ) : (
-        <div className="lore__content">
-          <h3 className="header3">LOCATION:</h3>
-          <p className="paragraph">{lore[currentLoreSelection].location}</p>
-          <h3 className="header3">Character:</h3>
-          <p className="paragraph">{lore[currentLoreSelection].character}</p>
-          <h3 className="header3">Background:</h3>
+      <div className="lore__container">
+      <div id="fade"></div>
+        <div className="lore__container__effect">
+          <div className="lore__container__effect__text">
+            <h3 className="header3">LOCATION:</h3>
+            <p className="paragraph">{lore[currentLoreSelection].location}</p>
+            <h3 className="header3">Character:</h3>
+            <p className="paragraph">{lore[currentLoreSelection].character}</p>
+            <h3 className="header3">Background:</h3>
             {sectionedBackground.map((section) => (
               <div key={section}>
                 <p className="paragraph">
@@ -51,8 +54,10 @@ export function Lore() {
                 <br />
               </div>
             ))}
+          </div>
         </div>
+      </div>
       )}
     </div>
-  );
+  )
 }
