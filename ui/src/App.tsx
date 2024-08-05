@@ -13,14 +13,17 @@ import { Lore } from "./pages/Lore/Lore";
 import { Discord } from "./pages/Discord/Discord";
 import { Footer } from "./Footer/Footer";
 import { LoginButton } from "./components/LoginButton/LoginButton";
+import AudioPlayer from "./components/Sound/Player";
 
 function App() {
   return (
     <div className="app">
-
       <div className="app__content">
         <Router basename={process.env.PUBLIC_URL}>
-          <LoginButton />
+          <div className="app__head">
+            <AudioPlayer />
+            <LoginButton />
+          </div>
           <NavigationBar />
           <Routes>
             <Route path="/login" element={<>I am the login page</>} />
@@ -32,12 +35,10 @@ function App() {
             <Route path="/discord" element={<Discord />} />
           </Routes>
         </Router>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }
-/*
-cd ui && yarn start
-*/
+
 export default App;

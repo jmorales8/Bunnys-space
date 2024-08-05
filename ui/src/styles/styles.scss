@@ -5,7 +5,8 @@
 @import "../Footer/footer.scss";
 
 // Components
-@import "../components/imgCarousel.scss";
+@import "../components/ImageCarousel/imgCarousel.scss";
+@import "../components/Sound/player.scss";
 
 // Home
 @import "../pages/Home/home.scss";
@@ -20,5 +21,6 @@
 // Disord
 @import "../pages/Discord/discord.scss";
 @import "../pages/Discord/Servers/ServerTemplate/serverTemplate.scss";
+
 // App
 @import "../App.scss";

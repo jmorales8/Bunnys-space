@@ -7,9 +7,12 @@
   &__content {
     margin-bottom: 5rem;
   }
-  &__login {
+  &__head {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+
+  }
+  &__login {
     &__button {
       width: 125px;
       cursor: pointer;
