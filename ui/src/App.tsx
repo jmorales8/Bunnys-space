@@ -13,6 +13,7 @@ import { Lore } from "./pages/Lore/Lore";
 import { Discord } from "./pages/Discord/Discord";
 import { Footer } from "./Footer/Footer";
 import { LoginButton } from "./components/LoginButton/LoginButton";
+import { Login } from "./pages/Login/Login";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
           <LoginButton />
           <NavigationBar />
           <Routes>
-            <Route path="/login" element={<>I am the login page</>} />
+            <Route path="/login" element={<Login/>} />
             <Route path="/" element={<Navigate replace to="/home" />} />
             <Route path="/home" element={<Home />} />
             <Route path="/lore" element={<Lore />} />

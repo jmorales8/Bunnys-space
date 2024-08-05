@@ -1,0 +1,33 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__input {
+    margin-bottom: 25px;
+    // background-color: gainsboro;
+    border-radius: 5px;
+    color: darkorchid;
+  }
+  &__button {
+    width: 75px;
+    height: 25px;
+    background-color: thistle;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    &:focus:active {
+      padding-top: 4px;
+      padding-left: 4px;
+      padding-right: 6px;
+      padding-bottom: 6px;
+      color: #5e5e5e;
+    }
+  }
+  &__bunnies {
+    width: 169px;
+  }
+}
+
+.login__input::placeholder {
+  color: rgb(5, 109, 5);
+}
