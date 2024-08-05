@@ -3,14 +3,14 @@ $baseurl: "../../public/images/";
 .navBar {
   display: flex;
   padding-bottom: 2px;
-  margin: 100px 0px 25px 55px;
-  padding-left: 55px;
-  border-radius: 20px;
-  background-color: pink;
-  border: 2px solid hotpink;
+  margin: 0px 0px 25px 55px;
+  flex-direction: column;
   max-width: fit-content;
   &__content {
-    
+    padding-left: 55px;
+    border-radius: 20px;
+    background-color: pink;
+    border: 2px solid hotpink;
   }
   &__button {
     margin-right: 50px;
