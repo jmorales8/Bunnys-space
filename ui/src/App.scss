@@ -15,7 +15,11 @@
     display: flex;
     justify-content: space-between;
   }
+  &__head {
+    display: flex;
+    justify-content: space-between;
 
+  }
   &__login {
     &__button {
       width: 125px;

@@ -13,9 +13,10 @@ import { Lore } from "./pages/Lore/Lore";
 import { Discord } from "./pages/Discord/Discord";
 import { Footer } from "./Footer/Footer";
 import { LoginButton } from "./components/LoginButton/LoginButton";
-import AudioPlayer from "./components/Sound/Player";
 import ThemeProvider from "./context/ThemeContext";
 import { AppContent } from "./components/AppContent/AppContent";
+import AudioPlayer from './components/Sound/Player';
+import { Login } from "./pages/Login/Login";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
             </div>
             <NavigationBar />
             <Routes>
-              <Route path="/login" element={<>I am the login page</>} />
+              <Route path="/login" element={<Login />} />
               <Route path="/" element={<Navigate replace to="/home" />} />
               <Route path="/home" element={<Home />} />
               <Route path="/lore" element={<Lore />} />

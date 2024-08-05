@@ -1,0 +1,53 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__input {
+    width: 165px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    color: darkorchid;
+  }
+  &__button {
+    width: 75px;
+    height: 25px;
+    background-color: thistle;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      border: rgb(66, 66, 66) 1px solid;
+    }
+    &:focus:active {
+      padding-top: 4px;
+      padding-left: 4px;
+      padding-right: 6px;
+      padding-bottom: 6px;
+      color: #5e5e5e;
+    }
+  }
+  &__bunnies {
+    width: 169px;
+  }
+  &__scream {
+    width: 169px;
+    border-radius: 5px;
+    margin-bottom: 4px;
+  }
+  &__input::placeholder {
+    color: rgb(5, 109, 5);
+  }
+  &__link {
+    display: flex;
+    color: darkred;
+    text-decoration: underline;
+    margin: 20px 0px;
+    cursor: pointer;
+    flex-direction: row-reverse;
+    align-items: center;
+    &__icons {
+      height: 50px;
+      padding-right: 10px;
+    }
+  }
+}
