@@ -1,4 +1,5 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import authRoutes from './routes/auth.js';
 import dotenv from 'dotenv';
 import { GetTwitchStatus } from './server/GetTwitchStatus.js';
@@ -12,7 +13,10 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Middleware to parse JSON bodies
-app.use(express.json());
+app.use(bodyParser.json());
+
+// Use the authentication routes
+app.use('/auth', authRoutes);
 
 // Handle GET requests to /api route
 app.get('/api', (req, res) => {
@@ -51,9 +55,6 @@ app.get('/lore', (req, res) => {
     res.json({ lore: rows });
   });
 });
-
-// Use the authentication routes
-app.use('/api/auth', authRoutes);
 
 // Handle all other GET requests not handled before
 app.get('*', (req, res) => {
