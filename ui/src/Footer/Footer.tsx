@@ -1,3 +1,4 @@
+import { NightModeButton } from "../components/NightModeButton/NightModeButton";
 interface FooterButtons {
   label: string;
   path: string;
@@ -10,7 +11,7 @@ export function Footer() {
   return (
     <footer className="footer">
       <a className="footer__img" href="/home">
-        <img src="/images/peachy.png" width="55" height="55"/>
+        <img src="/images/peachy.png" width="55" height="55" alt="peach"/>
       </a>
       {footerButtons.map((button) => {
         return (
@@ -19,6 +20,9 @@ export function Footer() {
           </a>
         )
       })}
+      <div className="footer__button__night">
+        <NightModeButton />
+      </div>
     </footer>
   )
 }
