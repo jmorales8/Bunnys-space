@@ -23,7 +23,6 @@ app.use('/auth', authRoutes);
 app.get('/protected', auth, (req, res) => {
   res.send({ message: 'This is a protected route', user: req.user });
 });
-
 // Handle GET requests to /api route
 app.get('/api', (req, res) => {
   res.json({ message: 'Hello from the server!?!' });
