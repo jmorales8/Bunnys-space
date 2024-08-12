@@ -1,6 +1,6 @@
 .footer {
   display: grid;
-  grid-template: [row1-start] "footer1 footer2 footer3 footer4 footer5" [row1-end] / auto 20% auto;
+  grid-template: [row1-start] "footer1 footer2" [row1-end]/auto 20% auto;
   align-items: center;
   background-color: #ffe9e9;
   padding: 0px 30px;
@@ -8,6 +8,7 @@
   position: fixed;
   bottom: 0;
   width: -webkit-fill-available;
+  justify-content: space-between;
   &__img {
     width: 55px;
     height: 55px;
