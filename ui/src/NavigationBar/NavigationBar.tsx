@@ -24,7 +24,7 @@ export function NavigationBar() {
   return (
     <div className="navBar">
       <span className="navBar__pictures">
-        <div className="navBar__picture" />
+        <ImgsOnNavBar />
       </span>
       <span className={isDarkMode ? "navBar__content__night" : "navBar__content"}>
         {navButtons.map((button) => {
