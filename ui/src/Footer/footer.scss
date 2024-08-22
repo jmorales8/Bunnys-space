@@ -18,12 +18,12 @@
     width: inherit;
     justify-content: space-between;
     &__buttons {
-      padding-left: 20px;
+      padding-left: 65px;
       display: grid;
       height: max-content;
       grid-template-columns: repeat(6, 1fr);
       grid-template-rows: 1fr;
-      grid-column-gap: 40px;
+      grid-column-gap: 15px;
     }
   }
   &__button {
@@ -31,7 +31,7 @@
     justify-content: center;
     text-decoration: none;
     color: darkgreen;
-    width: 50px;
+    width: 80px;
     border: 1px dashed rgba(0,0,0,0);
     border-radius: 20px;
     &:hover {
