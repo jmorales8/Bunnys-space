@@ -33,7 +33,6 @@ export function Footer() {
           )
         })}
       </div>
-      <NightModeButton />
     </footer>
   )
 }
