@@ -1,6 +1,5 @@
 .footer {
-  display: grid;
-  grid-template: [row1-start] "footer1 footer2" [row1-end]/auto 20% auto;
+  display: inline-flex;
   align-items: center;
   background-color: #ffe9e9;
   padding: 0px 30px;
@@ -17,7 +16,14 @@
     @extend .footer;
     background-color: #7371ab !important;
   }
-  &__buttons {
+  &__container {
+    display: grid;
+    height: max-content;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 50px;
+  }
+  &__button {
     display: flex;
     justify-content: center;
     text-decoration: none;

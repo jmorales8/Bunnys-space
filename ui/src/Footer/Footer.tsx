@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { NightModeButton } from "../components/NightModeButton/NightModeButton";
 import { ThemeContext } from "../context/ThemeContext";
 interface FooterButtons {
@@ -6,7 +7,12 @@ interface FooterButtons {
   path: string;
 }
 
-const footerButtons: FooterButtons[] = [{ label: "Q&A", path: "/Q-and-A" }];
+const footerButtons: FooterButtons[] = [
+  { label: "Q&A", path: "/Q-and-A" },
+  { label: "Q&A", path: "/Q-and-A" },
+  { label: "Q&A", path: "/Q-and-A" },
+  { label: "Q&A", path: "/Q-and-A" },
+];
 export function Footer() {
   const themeContext = useContext(ThemeContext);
   if (!themeContext) {
@@ -15,17 +21,18 @@ export function Footer() {
   const { isDarkMode } = themeContext;
   return (
     <footer className={isDarkMode ? "footer__night" : "footer"}>
-      <a className="footer__img" href="/home">
-        <img src="/images/peachy.png" width="55" height="55" alt="peach" />
-      </a>
-      {footerButtons.map((button) => {
-        return (
-          <a className={isDarkMode ? "footer__buttons__night" : "footer__buttons"} href={button.path} key={button.label}>
-            {button.label}
-          </a>
-        );
-      })}
-
+      <Link className="footer__img" to="/home">
+        <img src="/images/peachy.png" width="55" height="55" alt="peach"/>
+      </Link>
+      <div className="footer__container">
+        {footerButtons.map((button) => {
+          return (
+            <Link className={isDarkMode ? "footer__buttons__night" : "footer__buttons"} to={button.path} key={button.label}>
+              {button.label}
+            </Link>
+          )
+        })}
+      </div>
       <NightModeButton />
     </footer>
   )
