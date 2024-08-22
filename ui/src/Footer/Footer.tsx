@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NightModeButton } from "../components/NightModeButton/NightModeButton";
 interface FooterButtons {
   label: string;
@@ -6,23 +7,28 @@ interface FooterButtons {
 
 const footerButtons: FooterButtons[] = [
   { label: "Q&A", path: "/Q-and-A" },
+  // { label: "Q&A", path: "/Q-and-A" },
+  // { label: "Q&A", path: "/Q-and-A" },
+  { label: "Q&A", path: "/Q-and-A" },
+  { label: "Q&A", path: "/Q-and-A" },
+  { label: "Q&A", path: "/Q-and-A" },
 ];
 export function Footer() {
   return (
     <footer className="footer">
-      <a className="footer__img" href="/home">
+      <Link className="footer__img" to="/home">
         <img src="/images/peachy.png" width="55" height="55" alt="peach"/>
-      </a>
-      {footerButtons.map((button) => {
-        return (
-          <a className="footer__button" href={button.path} key={button.label}>
-            {button.label}
-          </a>
-        )
-      })}
-      <div className="footer__button__night">
-        <NightModeButton />
+      </Link>
+      <div className="footer__container">
+        {footerButtons.map((button) => {
+          return (
+            <Link className="footer__button" to={button.path} key={button.label}>
+              {button.label}
+            </Link>
+          )
+        })}
       </div>
+      <NightModeButton />
     </footer>
   )
 }
