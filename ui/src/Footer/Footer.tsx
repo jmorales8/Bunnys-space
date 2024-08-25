@@ -6,7 +6,7 @@ interface FooterButtons {
   path: string;
 }
 
-const footerButtons: FooterButtons[] = [{ label: "Q&A", path: "/Q-and-A" }];
+const footerButtons: FooterButtons[] = [{ label: "Q&A", path: "/q-and-a" }];
 export function Footer() {
   const themeContext = useContext(ThemeContext);
   if (!themeContext) {
