@@ -15,10 +15,11 @@ router.post('/register', (req, res) => {
   User.create(username, email, password, (err, userId) => {
     if (err) {
       console.error("Error in User.create:", err);
-      if (err.message === 'Username already exists') {
+      if (err.message.includes('UNIQUE constraint failed')) {
+        console.log("hit")
         return res.status(400).send({ error: 'Username already exists.' });
       }
-      return res.status(500).send({ error: 'Internal Server Error' });
+      return res.sendStatus(500);
     }
     res.status(201).send({ id: userId, username });
   });
@@ -29,8 +30,7 @@ router.post('/login', (req, res) => {
 
   User.findByUsername(username, (err, user) => {
     if (err) {
-      console.error("Error in User.findByUsername:", err);
-      return res.status(500).send({ error: 'Internal Server Error' });
+      return res.status(500).send({ error: 'Error trying to find the existing User' });
     }
     if (!user || !bcrypt.compareSync(password, user.password)) {
       console.log("Invalid username or password.");
