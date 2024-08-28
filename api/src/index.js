@@ -19,7 +19,6 @@ app.use(bodyParser.json());
 // Use the authentication routes
 app.use('/auth', authRoutes);
 
-
 // Example of a protected route
 app.get('/protected', auth, (req, res) => {
   res.send({ message: 'This is a protected route', user: req.user });

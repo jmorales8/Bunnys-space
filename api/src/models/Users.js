@@ -21,7 +21,7 @@ const User = {
 
   findByUsername: (username, email, callback) => {
     console.log("Finding user:", username);
-    user_db.get('SELECT * FROM Users WHERE username = ? AND email = ?', [username, email], (err, row) => {
+    user_db.get('SELECT * FROM Users WHERE username = ? OR email = ?', [username, email], (err, row) => {
       if (err) {
         console.error("Error finding user:", err);
         return callback(err);
