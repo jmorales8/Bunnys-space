@@ -16,7 +16,6 @@ router.post('/register', (req, res) => {
     if (err) {
       console.error("Error in User.create:", err);
       if (err.message.includes('UNIQUE constraint failed')) {
-        console.log("hit")
         return res.status(400).send({ error: 'Username already exists.' });
       }
       return res.sendStatus(500);
@@ -26,9 +25,9 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  const { username, password } = req.body;
+  const { username, email, password } = req.body;
 
-  User.findByUsername(username, (err, user) => {
+  User.findByUsername(username, email, (err, user) => {
     if (err) {
       return res.status(500).send({ error: 'Error trying to find the existing User' });
     }
