@@ -14,7 +14,7 @@ type ApiResponse = {
 const currentLoreSelection = 0;
 export function Lore() {
   const [lore, setLore] = useState<LoreTypes[]>([]);
-  const [toggled, setToggled] = useState(false);
+  const [plainText, setPlainText] = useState(false);
   const [loading, setLoading] = useState(true);
   const [sectionedBackground, setSectionedBackground] = useState<string[]>([])
   useEffect(() => {
@@ -33,21 +33,23 @@ export function Lore() {
     fetchData();
   }, []);
 
-  const isToggled = () => {
-    setToggled(!toggled);
+  const isPlainText = () => {
+    setPlainText(!plainText);
   }
-  console.log(toggled)
+
+  let text = (depth: string) => plainText ? 'lore__no_effect' : 'lore__container' + [depth];
+
   return (
     <div className="lore">
       {loading ? (
         <> loading </>
       ) : (
         <>
-          <button type="button" onClick={isToggled}>PRESS TO CHANGE</button>
-          <div className={toggled ? "lore__no_effect" : "lore__container"}>
-            {toggled ? null : <div id="fade"></div>}
-            <div className={toggled ? "lore__no_effect" : "lore__container__effect"}>
-              <div className={toggled ? "lore__no_effect" : "lore__container__effect__text"}>
+          <button type="button" onClick={isPlainText}>PRESS TO CHANGE</button>
+          <div className={text("")}>
+            {plainText ? null : <div id="fade"/>}
+            <div className={text("__effect")}>
+              <div className={text("__effect__text")}>
                 <h3 className="header3">LOCATION:</h3>
                 <p className="paragraph">{lore[currentLoreSelection].location}</p>
                 <h3 className="header3">Character:</h3>
