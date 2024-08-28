@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
 const profileImages: string[] = [
-  "bunnyW.jpg",
-  "bunnyW2.jpg",
-  "bunnyL.jpg",
-  "bunnyL2.jpg",
+  "bunnyW.png",
+  "bunnyW2.png",
+  "bunnyL.png",
+  "bunnyL2.png",
 ];
 
 function RandomImage() {

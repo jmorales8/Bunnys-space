@@ -1,9 +1,11 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import authRoutes from './routes/auth.js';
 import dotenv from 'dotenv';
 import { GetTwitchStatus } from './server/GetTwitchStatus.js';
 import { profile_db } from './factorydb/Profiledb.js';
 import { lore_db } from './factorydb/Loredb.js';
+import auth from './middleware/auth.js';
 
 // Load environment variables
 dotenv.config();
@@ -12,7 +14,16 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Middleware to parse JSON bodies
-app.use(express.json());
+app.use(bodyParser.json());
+
+// Use the authentication routes
+app.use('/auth', authRoutes);
+
+
+// Example of a protected route
+app.get('/protected', auth, (req, res) => {
+  res.send({ message: 'This is a protected route', user: req.user });
+});
 
 // Handle GET requests to /api route
 app.get('/api', (req, res) => {
@@ -51,9 +62,6 @@ app.get('/lore', (req, res) => {
     res.json({ lore: rows });
   });
 });
-
-// Use the authentication routes
-app.use('/api/auth', authRoutes);
 
 // Handle all other GET requests not handled before
 app.get('*', (req, res) => {
