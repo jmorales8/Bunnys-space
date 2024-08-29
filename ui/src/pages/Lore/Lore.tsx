@@ -37,7 +37,7 @@ export function Lore() {
     setPlainText(!plainText);
   }
 
-  let text = (depth: string) => plainText ? 'lore__no_effect' : 'lore__container' + [depth];
+  let text = (textDepth: string) => plainText ? 'lore__no_effect' : 'lore__container' + [textDepth];
 
   return (
     <div className="lore">
@@ -45,7 +45,6 @@ export function Lore() {
         <> loading </>
       ) : (
         <>
-          <button type="button" onClick={isPlainText}>PRESS TO CHANGE</button>
           <div className={text("")}>
             {plainText ? null : <div id="fade"/>}
             <div className={text("__effect")}>
@@ -66,6 +65,7 @@ export function Lore() {
               </div>
             </div>
           </div>
+          <button type="button" className="lore__button" onClick={isPlainText}>Switch Text</button>
         </>
       )}
     </div>
