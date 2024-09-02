@@ -24,7 +24,18 @@ type ApiResponse = {
 export function Profile() {
   const [profile, setProfile] = useState<ProfileTypes[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [preloadedImage, setPreloadedImage] = useState<string>("");
+
   useEffect(() => {
+    const image = new Image();
+    const randomImage = profileImages[RandomImage()];
+    image.src = `/images/${randomImage}`;
+    image.onload = () => {
+      setIsImageLoaded(true);
+    };
+    setPreloadedImage(image.src);
+
     const fetchData = async () => {
       try {
         const response = await fetch("/profile");
@@ -36,24 +47,26 @@ export function Profile() {
         setLoading(false);
       }
     };
+
     fetchData();
   }, []);
+
   return (
     <div className="profile">
       {loading ? (
-        <>loading</>
+        <div className="profile__skeleton">
+          <div className="profile__skeleton__text">loading</div>
+        </div>
       ) : (
         <>
-          <div>
-            <img
-              className="profile__image"
-              src={`/images/${profileImages[RandomImage()]}`}
-              alt="bunnie"
-            />
-          </div>
-          <div className="profile__text">
-            {profile[0].bio}
-          </div>
+          <img
+            className={
+              isImageLoaded ? "profile__image" : "profile__image__loading"
+            }
+            src={preloadedImage}
+            alt="bunnie"
+          />
+          <div className="profile__text">{profile[0]?.bio}</div>
         </>
       )}
     </div>
