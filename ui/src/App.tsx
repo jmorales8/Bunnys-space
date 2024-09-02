@@ -1,9 +1,5 @@
-import {
-  BrowserRouter as Router,
-  Navigate,
-  Route,
-  Routes,
-} from "react-router-dom";
+import React, { useContext, useRef, useState } from 'react';
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import "../src/styles/styles.scss";
 import { Home } from "./pages/Home/Home";
 import { NavigationBar } from "./NavigationBar/NavigationBar";
