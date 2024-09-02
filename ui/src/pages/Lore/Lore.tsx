@@ -37,7 +37,7 @@ export function Lore() {
     setPlainText(!plainText);
   }
 
-  let textDepth = (depth: string) => plainText ? 'lore__no_effect' : 'lore__container' + [depth];
+  let textDepth = (depth: string) => plainText ? undefined : 'lore__container__' + [depth];
 
   return (
     <div className="lore">
@@ -45,10 +45,10 @@ export function Lore() {
         <> loading </>
       ) : (
         <>
-          <div className={textDepth("")}>
+           <div className="lore__container">
             {plainText ? null : <div id="fade"/>}
-            <div className={textDepth("__effect")}>
-              <div className={textDepth("__effect__text")}>
+            <div className={textDepth("effect")}>
+              <div className={textDepth("effect__text")}>
                 <h3 className="header3">LOCATION:</h3>
                 <p className="paragraph">{lore[currentLoreSelection].location}</p>
                 <h3 className="header3">Character:</h3>
