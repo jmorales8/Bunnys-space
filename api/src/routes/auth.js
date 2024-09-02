@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import Questions from '../models/Questions.js';
+import Response from '../models/Response.js';
 
 dotenv.config();
 
@@ -41,7 +42,13 @@ router.post('/q-and-a', (req, res) => {
     if (err) {
       return res.sendStatus(500)
     }
-  })
+  });
+
+  Response.create((err) => {
+    if (err) {
+      return res.sendStatus(500)
+    }
+  });
 });
 
 export default router;

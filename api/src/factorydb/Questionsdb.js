@@ -9,7 +9,6 @@ export let question_db = new sqlite3.Database("./database/Questions.db", (err) =
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       userId INTEGER NOT NULL,
       question TEXT NOT NULL,
-      response TEXT,
       FOREIGN KEY (userId) REFERENCES Userdb(id)
     )`,
     (err) => {
