@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { GetTwitchStatus } from './server/GetTwitchStatus.js';
 import { profile_db } from './factorydb/Profiledb.js';
 import { lore_db } from './factorydb/Loredb.js';
+import { user_db } from './factorydb/Usersdb.js';
 
 // Load environment variables
 dotenv.config();
@@ -44,6 +45,36 @@ app.get('/profile', (req, res) => {
 // Handle GET requests to /lore
 app.get('/lore', (req, res) => {
   lore_db.all('SELECT * FROM Lore', [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({ lore: rows });
+  });
+});
+
+app.get('/users', (req, res) => {
+  user_db.all('SELECT * FROM Users', [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({ lore: rows });
+  });
+});
+
+app.get('/questions', (req, res) => {
+  user_db.all('SELECT * FROM Questions', [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({ lore: rows });
+  });
+});
+
+app.get('/responses', (req, res) => {
+  user_db.all('SELECT * FROM responses', [], (err, rows) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
