@@ -3,8 +3,6 @@ import User from '../models/Users.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import Questions from '../models/Questions.js';
-import Response from '../models/Response.js';
 
 dotenv.config();
 
@@ -40,20 +38,6 @@ router.post('/login', (req, res) => {
 
     const token = jwt.sign({ id: user.id, username: user.username }, process.env.JWT_SECRET);
     res.send({ token });
-  });
-});
-
-router.post('/q-and-a', (req, res) => {
-  Questions.create((err) => {
-    if (err) {
-      return res.sendStatus(500)
-    }
-  });
-
-  Response.create((err) => {
-    if (err) {
-      return res.sendStatus(500)
-    }
   });
 });
 

@@ -8,7 +8,7 @@ export let user_db = new sqlite3.Database("./database/Users.db", (err) => {
 
   user_db.run(
     `CREATE TABLE IF NOT EXISTS Users (
-      id INTEGER PRIMARY KEY,
+      userID INTEGER PRIMARY KEY,
       username TEXT UNIQUE,
       email TEXT UNIQUE,
       password TEXT
@@ -29,4 +29,43 @@ export let user_db = new sqlite3.Database("./database/Users.db", (err) => {
       })
     }
   )
+  user_db.run(
+  `CREATE TABLE IF NOT EXISTS Questions (
+    questionID INTEGER PRIMARY KEY,
+    questionText TEXT,
+    userQuestion INTEGER,
+    FOREIGN KEY(userQuestion) REFERENCES User(userID)
+  )`,
+  (err) => {
+    ErrorCheckDB(err, "Questions", "Error creating table")
+    user_db.get('SELECT COUNT(*) AS count FROM Questions', (err, row) => {
+      ErrorCheckDB(err, "Questions", "Error checking table count")
+      if (row.count === 0) {
+        console.log("Questions Table is ready. Inserting initial data.");
+        const insert = 'INSERT INTO Questions (questionText, userQuestion) VALUES (?, ?)';
+        user_db.run(insert, ['When does the sun explode?', 1]);
+        user_db.run(insert, ['Who invented the mona lisa?', 2]);
+      }
+    })
+  })
+  user_db.run(
+    `CREATE TABLE IF NOT EXISTS Responses (
+      responseID INTEGER PRIMARY KEY,
+      responseText TEXT,
+      questionResponse INTEGER,
+      FOREIGN KEY(questionResponse) REFERENCES Question(questionID)
+    )`,
+    (err) => {
+      ErrorCheckDB(err, "Responses", "Error creating table")
+      user_db.get('SELECT COUNT(*) AS count FROM Responses', (err, row) => {
+        ErrorCheckDB(err, "Response", "Error checking table count")
+        if (row.count === 0) {
+          console.log("Responses Table is ready. Inserting initial data.");
+          const insert = 'INSERT INTO Responses (responseText, questionResponse) VALUES (?, ?)';
+          user_db.run(insert, ['In a gazillion years', 1]);
+          user_db.run(insert, ['Da vinki?!', 2]);
+          user_db.run(insert, ['Leonardo Da Vinci', 2]);
+        }
+      })
+    })
 })
