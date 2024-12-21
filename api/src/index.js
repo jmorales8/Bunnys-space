@@ -6,8 +6,10 @@ import { GetTwitchStatus } from './server/GetTwitchStatus.js';
 import { profile_db } from './factorydb/Profiledb.js';
 import { lore_db } from './factorydb/Loredb.js';
 import auth from './middleware/auth.js';
+import { user_db } from './factorydb/Usersdb.js';
+import questionRoutes from './routes/Questions.js';
+// Load environment variable
 
-// Load environment variables
 dotenv.config();
 
 const PORT = process.env.PORT || 3001;
@@ -61,6 +63,40 @@ app.get('/lore', (req, res) => {
     res.json({ lore: rows });
   });
 });
+
+app.get('/users', (req, res) => {
+  user_db.all('SELECT * FROM Users', [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({ lore: rows });
+  });
+});
+
+app.get('/questions', (req, res) => {
+  user_db.all('SELECT * FROM Questions', [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({ lore: rows });
+  });
+});
+
+app.get('/responses', (req, res) => {
+  user_db.all('SELECT * FROM responses', [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({ lore: rows });
+  });
+});
+
+// Use the authentication routes
+app.use('/api/auth', authRoutes);
+app.use('/api/auth', questionRoutes);
 
 // Handle all other GET requests not handled before
 app.get('*', (req, res) => {

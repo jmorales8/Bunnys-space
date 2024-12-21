@@ -26,7 +26,7 @@ const User = {
         console.error("Error finding user:", err);
         return callback(err);
       }
-      callback(null, row);
+      callback(err, row);
     });
   }
 };
