@@ -5,7 +5,7 @@ import { GetTwitchStatus } from './server/GetTwitchStatus.js';
 import { profile_db } from './factorydb/Profiledb.js';
 import { lore_db } from './factorydb/Loredb.js';
 import { user_db } from './factorydb/Usersdb.js';
-
+import questionRoutes from './routes/Questions.js';
 // Load environment variables
 dotenv.config();
 
@@ -85,6 +85,7 @@ app.get('/responses', (req, res) => {
 
 // Use the authentication routes
 app.use('/api/auth', authRoutes);
+app.use('/api/auth', questionRoutes);
 
 // Handle all other GET requests not handled before
 app.get('*', (req, res) => {

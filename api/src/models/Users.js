@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 
 const User = {
   create: (username, password, callback) => {
-    user_db.get('SELECT * FROM User WHERE username = ?', [username], (err, row) => {
+    user_db.get('SELECT * FROM Users WHERE username = ?', [username], (err, row) => {
       if (err) {
         callback(err, null);
         return;
@@ -14,7 +14,7 @@ const User = {
       }
 
       const hashedPassword = bcrypt.hashSync(password, 10);
-      user_db.run('INSERT INTO User (username, password) VALUES (?, ?)', [username, hashedPassword], function(err) {
+      user_db.run('INSERT INTO Users (username, password) VALUES (?, ?)', [username, hashedPassword], function(err) {
         if (err) {
           callback(err, null);
         } else {
@@ -25,7 +25,7 @@ const User = {
   },
 
   findByUsername: (username, callback) => {
-    user_db.get('SELECT * FROM User WHERE username = ?', [username], (err, row) => {
+    user_db.get('SELECT * FROM Users WHERE username = ?', [username], (err, row) => {
       callback(err, row);
     });
   }

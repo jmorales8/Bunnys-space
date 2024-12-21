@@ -10,13 +10,13 @@ const router = express.Router();
 
 router.post('/register', (req, res) => {
   const { username, password } = req.body;
-
   User.create(username, password, (err, userId) => {
     if (err) {
+      console.log(err)
       if (err.message === 'Username already exists') {
         return res.status(400).send({ error: 'Username already exists.' });
       }
-      return res.status(500).send({ error: 'Internal Server Error' });
+      return res.status(500).send({ error: 'Internal Server Error', err });
     }
     res.status(201).send({ id: userId, username });
   });
