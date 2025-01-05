@@ -14,6 +14,8 @@ const auth = (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     console.log('Decoded Token:', decoded);
     req.user = decoded;
+    console.log("req.user", req.user.userID)
+    console.log("decoded", decoded)
     next();
   } catch (ex) {
     console.log('Invalid token:', ex);

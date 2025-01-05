@@ -5,16 +5,18 @@ import auth from '../middleware/auth.js';  // Import your auth middleware
 
 const router = express.Router();
 
+// user_db.run('PRAGMA foreign_keys = ON;');
+
 // POST endpoint to create a new question
 router.post('/questions', auth, (req, res) => {
   const { questionText } = req.body;
-  const userID = req.user.id; // Get user ID from decoded token
+  const userID = req.user.userID;  // Get the user ID from the decoded token
 
   if (!questionText) {
     return res.status(400).json({ error: 'Question text is required' });
   }
 
-  const sql = 'INSERT INTO Questions (questionText, userQuestion) VALUES (?, ?)';
+  const sql = 'INSERT INTO Questions (questionText, userID) VALUES (?, ?)';
 
   user_db.run(sql, [questionText, userID], function(err) {
     if (err) {
@@ -26,7 +28,7 @@ router.post('/questions', auth, (req, res) => {
       message: 'Question created successfully',
       questionId: this.lastID,
       questionText,
-      userQuestion: userID
+      userID: userID
     });
   });
 });

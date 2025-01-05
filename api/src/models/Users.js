@@ -28,7 +28,7 @@ const User = {
       }
       callback(err, row);
     });
-  }
+  },
 };
 
 export default User;

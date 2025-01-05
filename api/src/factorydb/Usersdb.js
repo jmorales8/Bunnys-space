@@ -33,8 +33,8 @@ export let user_db = new sqlite3.Database("./database/Users.db", (err) => {
   `CREATE TABLE IF NOT EXISTS Questions (
     questionID INTEGER PRIMARY KEY,
     questionText TEXT,
-    userQuestion INTEGER,
-    FOREIGN KEY(userQuestion) REFERENCES User(userID)
+    userID INTEGER,
+    FOREIGN KEY(userID) REFERENCES Users(userID)
   )`,
   (err) => {
     ErrorCheckDB(err, "Questions", "Error creating table")
@@ -42,7 +42,7 @@ export let user_db = new sqlite3.Database("./database/Users.db", (err) => {
       ErrorCheckDB(err, "Questions", "Error checking table count")
       if (row.count === 0) {
         console.log("Questions Table is ready. Inserting initial data.");
-        const insert = 'INSERT INTO Questions (questionText, userQuestion) VALUES (?, ?)';
+        const insert = 'INSERT INTO Questions (questionText, userID) VALUES (?, ?)';
         user_db.run(insert, ['When does the sun explode?', 1]);
         user_db.run(insert, ['Who invented the mona lisa?', 2]);
       }
@@ -52,8 +52,8 @@ export let user_db = new sqlite3.Database("./database/Users.db", (err) => {
     `CREATE TABLE IF NOT EXISTS Responses (
       responseID INTEGER PRIMARY KEY,
       responseText TEXT,
-      questionResponse INTEGER,
-      FOREIGN KEY(questionResponse) REFERENCES Question(questionID)
+      questionID INTEGER,
+      FOREIGN KEY(questionID) REFERENCES Question(questionID)
     )`,
     (err) => {
       ErrorCheckDB(err, "Responses", "Error creating table")
@@ -61,11 +61,11 @@ export let user_db = new sqlite3.Database("./database/Users.db", (err) => {
         ErrorCheckDB(err, "Response", "Error checking table count")
         if (row.count === 0) {
           console.log("Responses Table is ready. Inserting initial data.");
-          const insert = 'INSERT INTO Responses (responseText, questionResponse) VALUES (?, ?)';
+          const insert = 'INSERT INTO Responses (responseText, questionID) VALUES (?, ?)';
           user_db.run(insert, ['In a gazillion years', 1]);
           user_db.run(insert, ['Da vinki?!', 2]);
           user_db.run(insert, ['Leonardo Da Vinci', 2]);
         }
       })
-    })
+    });
 })
