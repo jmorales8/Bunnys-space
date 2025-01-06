@@ -16,7 +16,7 @@ export let user_db = new sqlite3.Database("./database/Users.db", (err) => {
     (err) => {
       ErrorCheckDB(err, "Users", "Error creating table")
       user_db.get('SELECT COUNT(*) AS count FROM Users', (err, row) => {
-        ErrorCheckDB(err, "Profile", "Error checking table count")
+        ErrorCheckDB(err, "Users", "Error checking table count")
         if (row.count === 0) {
           console.log("Users Table is ready. Inserting initial data.");
           const insert = 'INSERT INTO Users (username, email, password) VALUES (?, ?, ?)';
@@ -53,7 +53,9 @@ export let user_db = new sqlite3.Database("./database/Users.db", (err) => {
       responseID INTEGER PRIMARY KEY,
       responseText TEXT,
       questionID INTEGER,
-      FOREIGN KEY(questionID) REFERENCES Question(questionID)
+      userID INTEGER,
+      FOREIGN KEY(questionID) REFERENCES Questions(questionID)
+      FOREIGN KEY(userID) REFERENCES Users(userID)
     )`,
     (err) => {
       ErrorCheckDB(err, "Responses", "Error creating table")
@@ -61,10 +63,10 @@ export let user_db = new sqlite3.Database("./database/Users.db", (err) => {
         ErrorCheckDB(err, "Response", "Error checking table count")
         if (row.count === 0) {
           console.log("Responses Table is ready. Inserting initial data.");
-          const insert = 'INSERT INTO Responses (responseText, questionID) VALUES (?, ?)';
-          user_db.run(insert, ['In a gazillion years', 1]);
-          user_db.run(insert, ['Da vinki?!', 2]);
-          user_db.run(insert, ['Leonardo Da Vinci', 2]);
+          const insert = 'INSERT INTO Responses (responseText, questionID, userID) VALUES (?, ?, ?)';
+          user_db.run(insert, ['In a gazillion years', 1, 1]);
+          user_db.run(insert, ['Da vinki?!', 2, 2]);
+          user_db.run(insert, ['Leonardo Da Vinci', 2, 2]);
         }
       })
     });

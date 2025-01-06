@@ -36,14 +36,20 @@ router.post('/questions', auth, (req, res) => {
 // POST endpoint to create a new response to a question
 router.post('/questions/:questionId/responses', auth, (req, res) => {
   const { responseText } = req.body;
-  const { questionId } = req.params;
+  const questionID = req.params.questionId;
+  const userID  = req.user.userID;
+  console.log("Running query:", `SELECT * FROM Questions WHERE questionID = ${questionID}`);
 
-  if (!responseText) {
-    return res.status(400).json({ error: 'Response text is required' });
-  }
+  user_db.get('SELECT * FROM Questions WHERE userID = ?', [questionID], (err, question) => {
+      if (err) {
+          console.error("Error:", err);
+          return;
+      }
+      console.log("Query results:", question);
+  });
 
   // First verify that the question exists
-  user_db.get('SELECT * FROM Questions WHERE questionID = ?', [questionId], (err, question) => {
+  user_db.get('SELECT * FROM Questions WHERE questionID = ?', [questionID], (err, question) => {
     if (err) {
       console.error('Error checking question:', err);
       return res.status(500).json({ error: 'Database error' });
@@ -54,9 +60,9 @@ router.post('/questions/:questionId/responses', auth, (req, res) => {
     }
 
     // Insert the response
-    const sql = 'INSERT INTO Responses (responseText, questionResponse) VALUES (?, ?)';
+    const sql = 'INSERT INTO Responses (responseText, questionID, userID) VALUES (?, ?, ?)';
 
-    user_db.run(sql, [responseText, questionId], function(err) {
+    user_db.run(sql, [responseText, questionID, userID], function(err) {
       if (err) {
         console.error('Error creating response:', err);
         return res.status(500).json({ error: 'Failed to create response' });
@@ -66,7 +72,8 @@ router.post('/questions/:questionId/responses', auth, (req, res) => {
         message: 'Response created successfully',
         responseId: this.lastID,
         responseText,
-        questionResponse: questionId
+        questionID: questionID,
+        userID: userID
       });
     });
   });
