@@ -5,8 +5,6 @@ import auth from '../middleware/auth.js';  // Import your auth middleware
 
 const router = express.Router();
 
-// user_db.run('PRAGMA foreign_keys = ON;');
-
 // POST endpoint to create a new question
 router.post('/questions', auth, (req, res) => {
   const { questionText } = req.body;
@@ -38,15 +36,6 @@ router.post('/questions/:questionId/responses', auth, (req, res) => {
   const { responseText } = req.body;
   const questionID = req.params.questionId;
   const userID  = req.user.userID;
-  console.log("Running query:", `SELECT * FROM Questions WHERE questionID = ${questionID}`);
-
-  user_db.get('SELECT * FROM Questions WHERE userID = ?', [questionID], (err, question) => {
-      if (err) {
-          console.error("Error:", err);
-          return;
-      }
-      console.log("Query results:", question);
-  });
 
   // First verify that the question exists
   user_db.get('SELECT * FROM Questions WHERE questionID = ?', [questionID], (err, question) => {

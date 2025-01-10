@@ -8,8 +8,9 @@ import { lore_db } from './factorydb/Loredb.js';
 import auth from './middleware/auth.js';
 import { user_db } from './factorydb/Usersdb.js';
 import questionRoutes from './routes/Questions.js';
-// Load environment variable
+import User from './models/Users.js';
 
+// Load environment variables
 dotenv.config();
 
 const PORT = process.env.PORT || 3001;
@@ -65,13 +66,13 @@ app.get('/lore', (req, res) => {
 });
 
 app.get('/users', (req, res) => {
-  user_db.all('SELECT * FROM Users', [], (err, rows) => {
+  User.getAllInfo((err, user) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
     }
-    res.json({ lore: rows });
-  });
+    res.send({ users: user})
+  })
 });
 
 app.get('/questions', (req, res) => {
@@ -80,17 +81,17 @@ app.get('/questions', (req, res) => {
       res.status(500).json({ error: err.message });
       return;
     }
-    res.json({ lore: rows });
+    res.json({ questions: rows });
   });
 });
 
 app.get('/responses', (req, res) => {
-  user_db.all('SELECT * FROM responses', [], (err, rows) => {
+  user_db.all('SELECT * FROM Responses', [], (err, rows) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
     }
-    res.json({ lore: rows });
+    res.json({ responses: rows });
   });
 });
 

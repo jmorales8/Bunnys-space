@@ -29,6 +29,55 @@ const User = {
       callback(err, row);
     });
   },
+  getAllInfo: (callback) => {
+    user_db.all(`
+      SELECT
+        Users.*,
+        Questions.questionID,
+        Questions.questionText,
+        Responses.responseID,
+        Responses.responseText
+      FROM Users
+      LEFT JOIN Questions ON Users.userID = Questions.userID
+      LEFT JOIN Responses ON Questions.questionID = Responses.questionID`, [], (err, rows) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+        return;
+      }
+      const formatted = rows.reduce((acc, row) => {
+        if (!acc[row.userID]) {
+          acc[row.userID] = {
+            userID: row.userID,
+            username: row.username,
+            email: row.email,
+            password: row.password,
+            questions: [],
+            responses: []
+          };
+        }
+
+        const existingQuestion = acc[row.userID].questions.find(q => q.questionID === row.questionID);
+        if (row.questionID && !existingQuestion) {
+          acc[row.userID].questions.push({
+            questionID: row.questionID,
+            questionText: row.questionText
+          });
+        }
+
+        const existingResponse = acc[row.userID].responses.find(r => r.responseID === row.responseID);
+        if (row.responseID && !existingResponse) {
+          acc[row.userID].responses.push({
+            responseID: row.responseID,
+            questionID: row.questionID,
+            responseText: row.responseText
+          });
+        }
+
+        return acc;
+      }, {});
+      callback(err, Object.values(formatted));
+    });
+  }
 };
 
 export default User;
