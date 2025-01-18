@@ -59,8 +59,8 @@ router.post('/questions/:questionId/responses', auth, (req, res) => {
 
       res.status(201).json({
         message: 'Response created successfully',
-        responseId: this.lastID,
         responseText,
+        responseId: this.lastID,
         questionID: questionID,
         userID: userID
       });

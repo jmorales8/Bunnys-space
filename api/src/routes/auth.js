@@ -36,6 +36,7 @@ router.post('/login', (req, res) => {
       return res.status(400).send({ error: 'Invalid username or password.' });
     }
     const token = jwt.sign({ userID: user.userID, username: user.username }, process.env.JWT_SECRET);
+    console.log(token)
     res.send({ token });
   });
 });
