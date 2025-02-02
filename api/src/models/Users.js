@@ -31,19 +31,23 @@ const User = {
   },
   getAllInfo: (callback) => {
     user_db.all(`
-      SELECT
-        Users.*,
+      SELECT 
+        Users.*, 
         Questions.questionID,
         Questions.questionText,
         Responses.responseID,
-        Responses.responseText
+        Responses.responseText,
+        Responses.userID as responseUserID,
+        Responses.questionID as responseQuestionID  /* Added this line */
       FROM Users
       LEFT JOIN Questions ON Users.userID = Questions.userID
-      LEFT JOIN Responses ON Questions.questionID = Responses.questionID`, [], (err, rows) => {
+      LEFT JOIN Responses ON Responses.userID = Users.userID
+      `, [], (err, rows) => {
       if (err) {
         res.status(500).json({ error: err.message });
         return;
       }
+  
       const formatted = rows.reduce((acc, row) => {
         if (!acc[row.userID]) {
           acc[row.userID] = {
@@ -55,7 +59,8 @@ const User = {
             responses: []
           };
         }
-
+  
+        // Add questions where user is the author
         const existingQuestion = acc[row.userID].questions.find(q => q.questionID === row.questionID);
         if (row.questionID && !existingQuestion) {
           acc[row.userID].questions.push({
@@ -63,16 +68,17 @@ const User = {
             questionText: row.questionText
           });
         }
-
+  
+        // Add responses where user is the responder
         const existingResponse = acc[row.userID].responses.find(r => r.responseID === row.responseID);
-        if (row.responseID && !existingResponse) {
+        if (row.responseID && !existingResponse && row.responseUserID === row.userID) {
           acc[row.userID].responses.push({
             responseID: row.responseID,
-            questionID: row.questionID,
+            questionID: row.responseQuestionID,  // Use responseQuestionID instead of questionID
             responseText: row.responseText
           });
         }
-
+  
         return acc;
       }, {});
       callback(err, Object.values(formatted));

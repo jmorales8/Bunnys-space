@@ -30,12 +30,15 @@ router.post('/questions', auth, (req, res) => {
     });
   });
 });
-
-// POST endpoint to create a new response to a question
 router.post('/questions/:questionId/responses', auth, (req, res) => {
   const { responseText } = req.body;
-  const questionID = req.params.questionId;
-  const userID  = req.user.userID;
+  const questionID = parseInt(req.params.questionId, 10); // Convert to number
+  const userID = req.user.userID;
+
+  // Add some validation
+  if (isNaN(questionID)) {
+    return res.status(400).json({ error: 'Invalid question ID' });
+  }
 
   // First verify that the question exists
   user_db.get('SELECT * FROM Questions WHERE questionID = ?', [questionID], (err, question) => {
@@ -48,6 +51,9 @@ router.post('/questions/:questionId/responses', auth, (req, res) => {
       return res.status(404).json({ error: 'Question not found' });
     }
 
+    // Log the question for debugging
+    console.log('Found question:', question);
+
     // Insert the response
     const sql = 'INSERT INTO Responses (responseText, questionID, userID) VALUES (?, ?, ?)';
 
@@ -56,6 +62,15 @@ router.post('/questions/:questionId/responses', auth, (req, res) => {
         console.error('Error creating response:', err);
         return res.status(500).json({ error: 'Failed to create response' });
       }
+
+      // Verify the insertion
+      user_db.get('SELECT * FROM Responses WHERE responseID = ?', [this.lastID], (err, response) => {
+        if (err) {
+          console.error('Error verifying response:', err);
+        } else {
+          console.log('Inserted response:', response);
+        }
+      });
 
       res.status(201).json({
         message: 'Response created successfully',
