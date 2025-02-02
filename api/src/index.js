@@ -6,6 +6,9 @@ import { GetTwitchStatus } from './server/GetTwitchStatus.js';
 import { profile_db } from './factorydb/Profiledb.js';
 import { lore_db } from './factorydb/Loredb.js';
 import auth from './middleware/auth.js';
+import { user_db } from './factorydb/Usersdb.js';
+import questionRoutes from './routes/Questions.js';
+import User from './models/Users.js';
 
 // Load environment variables
 dotenv.config();
@@ -61,6 +64,40 @@ app.get('/lore', (req, res) => {
     res.json({ lore: rows });
   });
 });
+
+app.get('/users', (req, res) => {
+  User.getAllInfo((err, user) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.send({ users: user})
+  })
+});
+
+app.get('/questions', (req, res) => {
+  user_db.all('SELECT * FROM Questions', [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({ questions: rows });
+  });
+});
+
+app.get('/responses', (req, res) => {
+  user_db.all('SELECT * FROM Responses', [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({ responses: rows });
+  });
+});
+
+// Use the authentication routes
+app.use('/api/auth', authRoutes);
+app.use('/api/auth', questionRoutes);
 
 // Handle all other GET requests not handled before
 app.get('*', (req, res) => {

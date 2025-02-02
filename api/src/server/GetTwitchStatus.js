@@ -1,6 +1,6 @@
 // const channelName = 'caseoh_';
 // const channelName = 'kaicenat';
-const channelName = 'locklear';
+const channelName = 'admyron';
 export async function GetTwitchStatus() {
   let a = await fetch(`https://www.twitch.tv/${channelName}`);
   let isLive = false;
