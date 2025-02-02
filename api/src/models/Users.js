@@ -31,8 +31,8 @@ const User = {
   },
   getAllInfo: (callback) => {
     user_db.all(`
-      SELECT 
-        Users.*, 
+      SELECT
+        Users.*,
         Questions.questionID,
         Questions.questionText,
         Responses.responseID,
@@ -47,7 +47,6 @@ const User = {
         res.status(500).json({ error: err.message });
         return;
       }
-  
       const formatted = rows.reduce((acc, row) => {
         if (!acc[row.userID]) {
           acc[row.userID] = {
@@ -59,7 +58,7 @@ const User = {
             responses: []
           };
         }
-  
+
         // Add questions where user is the author
         const existingQuestion = acc[row.userID].questions.find(q => q.questionID === row.questionID);
         if (row.questionID && !existingQuestion) {
@@ -68,7 +67,7 @@ const User = {
             questionText: row.questionText
           });
         }
-  
+
         // Add responses where user is the responder
         const existingResponse = acc[row.userID].responses.find(r => r.responseID === row.responseID);
         if (row.responseID && !existingResponse && row.responseUserID === row.userID) {
@@ -78,7 +77,7 @@ const User = {
             responseText: row.responseText
           });
         }
-  
+
         return acc;
       }, {});
       callback(err, Object.values(formatted));
