@@ -33,9 +33,9 @@ function App() {
               <Route path="/commissions" element={<Commissions />} />
               <Route path="/discord" element={<Discord />} />
             </Routes>
+            <Footer />
           </Router>
         </AppContent>
-        <Footer />
     </ThemeProvider>
   );
 }
