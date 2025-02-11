@@ -52,7 +52,7 @@ app.get('/commissions', (req, res) => {
       res.status(500).json({ error: err.message });
       return;
     }
-    res.json({ lore: rows });
+    res.json({ commissions: rows });
   });
 });
 
