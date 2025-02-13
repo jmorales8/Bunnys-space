@@ -9,6 +9,7 @@ import auth from './middleware/auth.js';
 import { user_db } from './factorydb/Usersdb.js';
 import questionRoutes from './routes/Questions.js';
 import User from './models/Users.js';
+import { commission_db } from './factorydb/Commissiondb.js';
 
 // Load environment variables
 dotenv.config();
@@ -41,6 +42,18 @@ app.get('/twitch/livestatus', async (req, res) => {
     console.error('Error getting Twitch status:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
+});
+
+
+// Handle GET requests to /lore
+app.get('/commissions', (req, res) => {
+  commission_db.all('SELECT * FROM Commissions', [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({ commissions: rows });
+  });
 });
 
 // Handle GET requests to /profile
