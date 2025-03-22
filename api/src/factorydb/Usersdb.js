@@ -4,7 +4,7 @@ import { ErrorCheckDB } from '../../components/ErrorHandling/ErrorCheckDB.js';
 
 export let user_db = new sqlite3.Database("./database/Users.db", (err) => {
   ErrorCheckDB(err, "Users", "User Database Connection error");
-  console.log("Connected to the Users SQlite db.")
+  // console.log("Connected to the Users SQlite db.")
 
   user_db.run(
     `CREATE TABLE IF NOT EXISTS Users (

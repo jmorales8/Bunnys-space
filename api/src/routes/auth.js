@@ -25,20 +25,19 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  const { username, email, password } = req.body;
-
-  User.findByUsername(username, email, (err, user) => {
-    if (err) {
-      return res.status(500).send({ error: 'Error trying to find the existing User' });
-    }
-    if (!user || !bcrypt.compareSync(password, user.password)) {
-      console.log("Invalid username or password.");
-      return res.status(400).send({ error: 'Invalid username or password.' });
-    }
-    const token = jwt.sign({ userID: user.userID, username: user.username }, process.env.JWT_SECRET);
-    console.log(token)
-    res.send({ token });
-  });
+  const { userValue, password } = req.body;
+    User.findByUsernameOrEmail(userValue, (err, user) => {
+      if (err) {
+        return res.status(500).send({ error: 'Error trying to find the existing User' });
+      }
+      if (!user || !bcrypt.compareSync(password, user.password)) {
+        console.log("Invalid username or password.");
+        return res.status(400).send({ error: 'Invalid username, email or password.' });
+      }
+      const token = jwt.sign({ userID: user.userID, username: user.username }, process.env.JWT_SECRET);
+      console.log(token)
+      res.send({ token });
+    });
 });
 
 export default router;

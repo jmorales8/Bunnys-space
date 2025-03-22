@@ -3,7 +3,7 @@ import { ErrorCheckDB } from "../../components/ErrorHandling/ErrorCheckDB.js";
 
 export let profile_db = new sqlite3.Database("./database/Profile.db", (err) => {
   ErrorCheckDB(err, "Profile", "Profile Database Connection error");
-  console.log("Connected To the Profile SQLite db");
+  // console.log("Connected To the Profile SQLite db");
   profile_db.run(
     `CREATE TABLE IF NOT EXISTS Profile (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

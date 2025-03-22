@@ -3,7 +3,7 @@ import { ErrorCheckDB } from "../../components/ErrorHandling/ErrorCheckDB.js";
 
 export let lore_db = new sqlite3.Database("./database/Lore.db", (err) => {
   ErrorCheckDB(err, "Lore", "Database Connection error");
-  console.log("Connected to the Lore SQLite db")
+  // console.log("Connected to the Lore SQLite db")
   lore_db.run(
     `CREATE TABLE IF NOT EXISTS Lore (
       id INTEGER PRIMARY KEY AUTOINCREMENT,

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 export function SignIn() {
-  const [username, setUsername] = useState<string>("");
+  const [userValue, setUserValue] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
+  const [loginMessage, setLoginMessage] = useState<string>("");
 
-  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value);
+  const handleUserValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserValue(event.target.value);
   };
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,14 +15,13 @@ export function SignIn() {
 
   const fetchRegister = async () => {
     try {
-      const response = await fetch("/auth/register", {
+      const response = await fetch("/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Set Content-Type header
         },
         body: JSON.stringify({
-          username: username,  // Use state values for the username and password
-          email: email,
+          username: userValue,
           password: password
         }),
       });
@@ -30,9 +29,16 @@ export function SignIn() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const result = await response.json();
-      console.log("Username: ", username, "\nPassword: ", password, "\nResponse: ", result);
+      if (result.token) {
+        setLoginMessage(`You logged in as ${userValue}`);
+      } else {
+        setLoginMessage("Login successful, but no token received.");
+      }
+
+      console.log("Login successful:", result);
     } catch (error) {
       console.error("Error fetching data:", error);
+      setLoginMessage("Login failed. Please check your credentials.");
     }
   };
   return (
@@ -42,8 +48,8 @@ export function SignIn() {
         <input
           className="login__input"
           placeholder="Username or Email"
-          value={username}
-          onChange={handleUsernameChange}
+          value={userValue}
+          onChange={handleUserValueChange}
         />
         <img
           src="/images/terreria-bunnyFLIPPEd.gif"
@@ -56,9 +62,10 @@ export function SignIn() {
           onChange={handlePasswordChange}
         />
       </>
-      <button className="login__button" onClick={fetchRegister}>
+      <button className="login__button" onClick={fetchRegister} disabled={(userValue && password)== ""}>
         Sign in!!!
       </button>
+      {loginMessage && <div className="login__message">{loginMessage}</div>}
     </>
   );
 }
