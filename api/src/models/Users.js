@@ -19,15 +19,33 @@ const User = {
     );
   },
 
-  findByUsername: (username, email, callback) => {
-    console.log("Finding user:", username);
-    user_db.get('SELECT * FROM Users WHERE username = ? OR email = ?', [username, email], (err, row) => {
+  findByUsername: (username, callback) => {
+    console.log("Finding user by username:", username);
+    user_db.get('SELECT * FROM Users WHERE username = ?', [username], (err, row) => {
       if (err) {
         console.error("Error finding user:", err);
         return callback(err);
       }
       callback(err, row);
     });
+  },
+  findByEmail: (email, callback) => {
+    console.log("Finding user by email:", email);
+    user_db.get('SELECT * FROM Users WHERE email = ?', [email], (err, row) => {
+      if (err) {
+        console.error("Error finding user:", err);
+        return callback(err);
+      }
+      callback(err, row);
+    });
+  },
+  findByUsernameOrEmail: (userValue, callback) => {
+    console.log("Finding user:", userValue);
+    if(userValue.includes("@")) {
+      User.findByEmail(userValue, callback);
+    } else {
+      User.findByUsername(userValue, callback);
+    }
   },
   getAllInfo: (callback) => {
     user_db.all(`
