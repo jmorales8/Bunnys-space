@@ -21,7 +21,7 @@ export function SignIn() {
           "Content-Type": "application/json", // Set Content-Type header
         },
         body: JSON.stringify({
-          username: userValue,
+          userValue: userValue,
           password: password
         }),
       });
@@ -47,7 +47,7 @@ export function SignIn() {
         <img src="/images/terraria-bunny1.gif" className="login__bunnies" />
         <input
           className="login__input"
-          placeholder="Username or Email"
+          placeholder="Username/Email"
           value={userValue}
           onChange={handleUserValueChange}
         />
