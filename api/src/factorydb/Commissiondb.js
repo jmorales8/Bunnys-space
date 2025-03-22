@@ -9,7 +9,6 @@ export let commission_db = new sqlite3.Database(
   "./database/Commissions.db",
     (err) => {
     ErrorCheckDB(err, "Commission", "Database Connection error");
-    // console.log("Connected to the Commission SQLite db");
     commission_db.run(
       `CREATE TABLE IF NOT EXISTS Commissions (
       id INTEGER PRIMARY KEY AUTOINCREMENT,

@@ -10,7 +10,6 @@ import { user_db } from './factorydb/Usersdb.js';
 import questionRoutes from './routes/Questions.js';
 import User from './models/Users.js';
 import { commission_db } from './factorydb/Commissiondb.js';
-import bcrypt from 'bcryptjs';
 
 // Load environment variables
 dotenv.config();

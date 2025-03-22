@@ -42,21 +42,9 @@ const User = {
   findByUsernameOrEmail: (userValue, callback) => {
     console.log("Finding user:", userValue);
     if(userValue.includes("@")) {
-      user_db.get('SELECT * FROM Users WHERE email = ?', [userValue], (err, row) => {
-        if (err) {
-          console.error("Error finding user:", err);
-          return callback(err);
-        }
-        callback(err, row);
-      });
+      User.findByEmail(userValue, callback);
     } else {
-      user_db.get('SELECT * FROM Users WHERE username = ?', [userValue], (err, row) => {
-        if (err) {
-          console.error("Error finding user:", err);
-          return callback(err);
-        }
-        callback(err, row);
-      });
+      User.findByUsername(userValue, callback);
     }
   },
   getAllInfo: (callback) => {
