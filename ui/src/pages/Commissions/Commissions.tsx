@@ -20,8 +20,8 @@ const vtubers = [
   "Yozzy",
   "Natkiki",
   "RelariaStorm",
-  "Sugie",
   "YukiShima",
+  "Sugie",
 ];
 export function Commissions() {
   const themeContext = useContext(ThemeContext);
