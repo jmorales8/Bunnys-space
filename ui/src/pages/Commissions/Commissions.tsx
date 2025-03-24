@@ -32,9 +32,9 @@ export function Commissions() {
   return (
     <div className="commissions">
       {vtubers.map((vtuber) => (
-        <div className="border" key={vtuber}>
+        <div className={isDarkMode ? "border__night" : "border"} key={vtuber}>
           <img
-            className={isDarkMode ? "commissions__vtubers__night" : "commissions__vtubers"}
+            className="commissions__vtubers"
             alt={vtuber}
             src={`/images/com-vtubers/${vtuber}.png`}
           />

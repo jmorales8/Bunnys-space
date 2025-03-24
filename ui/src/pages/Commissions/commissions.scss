@@ -12,6 +12,10 @@
     margin: 10px 0;
     z-index: 0;
     border: 3px double black;
+    &__night {
+      @extend .border;
+      border: 3px double black;
+    }
     &:hover {
       border: none;
     }
@@ -39,7 +43,7 @@
       height: calc(100% + 4px);
       z-index: -2;
       animation: steam 20s linear infinite;
-            filter: blur(50px);
+      filter: blur(50px);
     }
 
     img {
@@ -50,8 +54,7 @@
     }
   }
 
-  &__vtubers,
-  &__vtubers__night {
+  &__vtubers {
     width: 300px;
     padding: 15px;
     margin: 0;
@@ -71,18 +74,12 @@
 @media only screen and (max-width: 1250px) {
   .commissions {
     grid-template-columns: auto auto;
-    &__vtubers {
-      // height: 490px;
-    }
   }
 }
 
 @media only screen and (max-width: 925px) {
   .commissions {
     grid-template-columns: auto;
-    &__vtubers {
-      // height: 525px;
-    }
   }
 }
 
@@ -106,23 +103,5 @@
   }
   100% {
     background-position: 0 0;
-  }
-}
-
-@keyframes shake {
-  10%, 90% {
-    transform: rotate(0deg);
-  }
-
-  20%, 80% {
-    transform: rotate(0deg);
-  }
-
-  30%, 50%, 70% {
-    transform: rotate(5deg);
-  }
-
-  40%, 60% {
-    transform: rotate(0deg);
   }
 }
