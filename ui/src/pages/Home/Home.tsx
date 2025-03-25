@@ -6,11 +6,8 @@ const bruh:string[] = ["bunnyL.png", "bunnyL.png", "bunnyL.png"];
 export function Home() {
   return (
     <div className="home">
-
       <Profile />
-
       <Carousel images={bruh} />
-
     </div>
   )
 }

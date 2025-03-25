@@ -1,29 +1,38 @@
 .profile {
-  border: 2px solid black;
-  margin-left: 25px;
-  width: 35%;
+  border-width: 3px;
+  border-style: inset;
+  border-color: #fc9484;
+  width: 45%;
   max-width: 550px;
   min-width: 375px;
   min-height: 200px;
+  background-image: linear-gradient(to right,rgb(242, 204, 210),#e19f95);
+  &__night {
+    @extend .profile;
+    border-color: #0d0c1b;
+    background-image: linear-gradient(to right,#8c89d2,#4845a3);
+    color: rgb(253, 224, 248);
+  }
   &__image {
     text-align: center;
     float: left;
     padding: 10px;
     height: auto;
-    width: auto\9; /* ie8 */
+    width: auto\9;
     &__loading {
       display: none;
     }
   }
   &__text {
-    text-align: justify;
+    text-align: left;
     padding-right: 10px;
+    font-size: x-large;
+    transition: 0.4s;
   }
   &__skeleton {
     width: 100%;
     height: 200px;
     background-color: rgb(255, 176, 191);
-    // border: 1px solid black;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -33,5 +42,11 @@
       transform: rotate(-45deg);
       font-family: cursive;
     }
+  }
+}
+
+@media only screen and (max-width: 900px){
+  .profile__text{
+    font-size: larger;
   }
 }
