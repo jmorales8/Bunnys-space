@@ -22,7 +22,7 @@ export function NavigationBar() {
   }
   const { isDarkMode } = themeContext;
   return (
-    <div className="navBar">
+    <nav className="navBar">
       <span className="navBar__pictures">
         <ImgsOnNavBar />
       </span>
@@ -39,6 +39,6 @@ export function NavigationBar() {
           );
         })}
       </span>
-    </div>
+    </nav>
   );
 }

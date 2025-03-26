@@ -9,20 +9,27 @@ $baseurl: "../../public/images/";
   &__content {
     display: flex;
     border-radius: 20px;
-    background-color: pink;
+    background-image: linear-gradient(pink, rgb(252, 162, 177));
     border: 2px solid hotpink;
-    width: 500px;
+    max-width: 950px;
+    width: 100%;
     justify-content: space-evenly;
+    height: 35px;
+    align-items: center;
+    font-size: x-large;
+    transition: 0.4s;
     &__night {
       @extend .navBar__content;
-      background-color: #8c89d2 !important;
+      background-image: linear-gradient(#8c89d2, #6460df);
       border: 2px solid #272648 !important;
     }
   }
   &__button {
     text-decoration: none;
     color: darkgreen;
-
+    display: flex;
+    transition: 0.4s;
+    justify-content: center;
     &__night {
       @extend .navBar__button;
       color: rgb(253, 224, 248);
@@ -44,7 +51,6 @@ $baseurl: "../../public/images/";
       height: 125px;
       background-size: 125px;
       background-image: url("#{$baseurl}necoarc_pilow.png");
-
     }
     &__gokufeet {
       width: 125px;
@@ -55,6 +61,30 @@ $baseurl: "../../public/images/";
     &s {
       display: flex;
       justify-content: flex-end;
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .navBar{
+    &__content {
+      flex-direction: column;
+      align-items: center;
+      width: 250px;
+      min-height: 170px;
+      padding: 5px 0px;
+    }
+    &__button {
+      width: 200px;
+      border-radius: 25px;
+      &:hover {
+        background-image: linear-gradient(pink, rgb(255, 150, 167));
+      }
+      &__night {
+        &:hover {
+          background-image: linear-gradient(#9a97dc, #6d68f7);
+        }
+      }
     }
   }
 }
