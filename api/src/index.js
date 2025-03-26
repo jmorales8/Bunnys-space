@@ -88,6 +88,23 @@ app.get('/users', (req, res) => {
   })
 });
 
+app.delete('/user', (req, res) => {
+  const { userValue } = req.body;
+  console.log("/hit")
+  if(userValue.includes("@")) {
+    user_db.run("DELETE FROM Users WHERE email = ?", [userValue], (err, row) => {
+    if (err) {
+      console.error("Error deleting user by email:", err);
+    }})} else {
+      user_db.run("DELETE FROM Users WHERE username = ?", [userValue], (err, row) => {
+      if (err) {
+        console.error("Error deleting user by username:", err);
+      }
+    })
+  }
+  res.send({"Deleted: ": userValue})
+})
+
 app.get('/questions', (req, res) => {
   user_db.all('SELECT * FROM Questions', [], (err, rows) => {
     if (err) {
@@ -107,6 +124,7 @@ app.get('/responses', (req, res) => {
     res.json({ responses: rows });
   });
 });
+
 
 // Use the authentication routes
 app.use('/api/auth', authRoutes);
