@@ -1,6 +1,6 @@
 .carousel {
-  width: 500px; /* Adjust as needed */
-  height: 300px; /* Adjust as needed */
+  width: 500px;
+  height: 300px;
   perspective: 1000px;
   overflow: hidden;
 }
@@ -15,8 +15,8 @@
 
 .carousel-item {
   position: absolute;
-  width: 200px; /* Adjust as needed */
-  height: 200px; /* Adjust as needed */
+  width: 200px;
+  height: 200px;
   top: 50%;
   left: 50%;
   transform-origin: center;
