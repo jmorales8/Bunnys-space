@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 const profileImages: string[] = [
   "bunnyW.png",
@@ -26,7 +27,11 @@ export function Profile() {
   const [loading, setLoading] = useState(true);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [preloadedImage, setPreloadedImage] = useState<string>("");
-
+  const themeContext = useContext(ThemeContext);
+  if (!themeContext) {
+    throw new Error("DarkMode must be used within a ThemeProvider");
+  }
+  const { isDarkMode } = themeContext;
   useEffect(() => {
     const image = new Image();
     const randomImage = profileImages[RandomImage()];
@@ -52,7 +57,7 @@ export function Profile() {
   }, []);
 
   return (
-    <div className="profile">
+    <div className={isDarkMode ? "profile__night" : "profile"}>
       {loading ? (
         <div className="profile__skeleton">
           <div className="profile__skeleton__text">loading</div>
@@ -66,7 +71,7 @@ export function Profile() {
             src={preloadedImage}
             alt="bunnie"
           />
-          <div className="profile__text">{profile[0]?.bio}</div>
+          <div className="profile__text">I farted and this is some more text i suppose. I farted and this is some more text i suppose. I farted and this is some more text i suppose. I farted and this is some more text i suppose</div>
         </>
       )}
     </div>
