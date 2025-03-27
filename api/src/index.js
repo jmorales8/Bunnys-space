@@ -57,7 +57,7 @@ app.get('/commissions', (req, res) => {
   });
 });
 
-// Handle GET requests to /lore
+// Handle GET requests to /discord
 app.get('/discord', (req, res) => {
   discord_db.all('SELECT serverID, title, description, joinLink FROM Discord', [], (err, rows) => {
     if (err) {
