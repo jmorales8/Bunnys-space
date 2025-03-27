@@ -1,0 +1,48 @@
+.floating-drawer {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 250px;
+  background-color: #fff;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+  z-index: 1000;
+
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+.drawer-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.floating-toggle {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  transform: translateX(0);
+  background-color: #ccc;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 1001;
+  transition: left 0.4s ease;
+  background-image: linear-gradient(43deg, rgb(199, 149, 158) 0%, rgb(243, 185, 224) 46%, rgb(222, 133, 198) 100%);
+  font-size: xx-large;
+  color: darkgreen;
+  &:hover {
+    background-color: #bbb;
+  }
+
+  &.open {
+    left: 290px; // match the drawer width so it stays on its right edge
+  }
+}
