@@ -10,6 +10,7 @@ import { user_db } from './factorydb/Usersdb.js';
 import questionRoutes from './routes/Questions.js';
 import User from './models/Users.js';
 import { commission_db } from './factorydb/Commissiondb.js';
+import { discord_db } from './factorydb/Discorddb.js';
 
 // Load environment variables
 dotenv.config();
@@ -55,6 +56,33 @@ app.get('/commissions', (req, res) => {
     res.json({ commissions: rows });
   });
 });
+
+// Handle GET requests to /discord
+app.get('/discord', (req, res) => {
+  discord_db.all('SELECT serverID, title, description, joinLink FROM Discord', [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({ Discord: rows });
+  });
+});
+
+app.get("/discord/img/:id", (req, res) => {
+  const { id } = req.params;
+  const sql = 'SELECT img FROM Discord WHERE serverID = ?';
+  discord_db.get(sql, [id], (err, row) => {
+    if(err) {
+      console.log(err);
+      return res.sendStatus(500);
+    }
+    if(!row || !row.img) {
+      return res.sendStatus(404);
+    }
+    res.set('Content-Type', 'image/png')
+    res.send(row.img)
+  })
+})
 
 // Handle GET requests to /profile
 app.get('/profile', (req, res) => {

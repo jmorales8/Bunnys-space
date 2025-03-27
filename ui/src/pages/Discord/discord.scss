@@ -2,42 +2,38 @@
   justify-content: space-evenly;
   display: flex;
   width: 100%;
-}
-
-.left {
   &__server {
-    &__profile {
-      width: 25%;
-      border: 1px solid brown;
-      height: min-content;
-      margin-bottom: 25px;
+    border-radius: 15px;
+    width: 40%;
+    background-image: linear-gradient(43deg, pink 0%, rgb(245, 153, 215) 46%, rgb(243, 114, 208) 100%);
+    border-image: linear-gradient(to right,rgb(243, 114, 208) 0%, rgb(245, 153, 215) 46%, pink ) 1;
+    border-width: 4px;
+    border-style: solid;
+    margin-bottom: 25px;
+    transition: 0.4s;
+    &__night {
+      @extend .discord__server;
+      background-image: linear-gradient(43deg, #8c89d2 0%, #4d4aa6 46%, #2d2990 100%);
+      border-image: linear-gradient(to right,#2d2990 0%, #4d4aa6 46%, #8c89d2 ) 1;
+      color: rgb(253, 224, 248);
+    }
+    &s {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
     }
   }
 }
 
-.right {
-  @extend .left;
-  &__server {
-    &__profile {
-      @extend .left__server__profile;
-    }
-  }
-}
-
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 950px) {
   .discord {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-  }
-  .left {
     &__server {
-      &__profile {
-        width: 450px;
-        border: 1px solid black;
-        height: min-content;
-        margin: 10px;
+      width: 70%;
+      &s {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
       }
     }
   }
