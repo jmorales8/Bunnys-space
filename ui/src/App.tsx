@@ -13,6 +13,7 @@ import ThemeProvider from "./context/ThemeContext";
 import { AppContent } from "./components/AppContent/AppContent";
 import AudioPlayer from './components/Sound/Player';
 import { Login } from "./pages/Login/Login";
+import BottomDrawer from './components/BottomDrawer/FloatingDrawer';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         <AppContent>
           <Router basename={process.env.PUBLIC_URL}>
             <div className="app__head">
-              <AudioPlayer />
+              <BottomDrawer />
               <LoginButton />
             </div>
             <NavigationBar />
