@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ServerTemplate } from "./Servers/ServerTemplate/ServerTemplate";
 import { DiscordDataProps } from "./Servers/ServerTemplate/ServerTemplate";
+import { ThemeContext } from "../../context/ThemeContext";
 
 export function Discord() {
   const [loading, setLoading] = useState(true);
   const [discordData, setDiscordData] = useState<DiscordDataProps[]>([]);
-
+  const themeContext = useContext(ThemeContext);
+  if (!themeContext) {
+    throw new Error("DarkMode must be used within a ThemeProvider");
+  }
+  const { isDarkMode } = themeContext;
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -28,7 +33,7 @@ export function Discord() {
         <div className="discord">
           <div className="discord__servers">
             {discordData.map((data) => (
-              <div className="discord__server">
+              <div className={isDarkMode ? "discord__server__night" : "discord__server"}>
                 <ServerTemplate key={data.serverID} serverID={data.serverID} title={data.title} description={data.description} joinLink={data.joinLink}/>
               </div>
             ))}
