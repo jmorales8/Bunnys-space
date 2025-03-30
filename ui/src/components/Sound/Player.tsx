@@ -111,7 +111,7 @@ const AudioPlayer = () => {
       </audio>
       <div className='player_container'>
         <div className="player__title">
-          <p>{currentSong.title}</p>
+          {currentSong.title}
         </div>
         <div className="navigation">
           <div className="navigation__wrapper">

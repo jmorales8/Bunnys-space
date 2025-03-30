@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './floatingDrawer.scss';
+import AudioPlayer from '../Sound/Player';
 
 const FloatingDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,8 +11,7 @@ const FloatingDrawer = () => {
     <>
       <div className={`floating-drawer ${isOpen ? 'open' : ''}`}>
         <div className="drawer-content">
-          <h2>Mini Panel</h2>
-          <p>This is a floating panel that slides in with a button on its edge.</p>
+          <AudioPlayer />
         </div>
       </div>
 

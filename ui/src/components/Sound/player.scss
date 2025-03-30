@@ -1,8 +1,8 @@
 .player {
   width: 250px;
-  padding: 1rem;
+  padding: 13px;
   border: 1px solid rgb(141, 141, 141);
-  border-radius: 10px;
+  border-radius: 0px 20px 20px 0px;
   color: rgb(218, 218, 218);
   display: flex;
   flex-direction: column;
@@ -15,6 +15,8 @@
     color: rgb(27, 170, 53);
     font-weight: 800;
     font-style: italic;
+    font-size: larger;
+    padding-bottom: 5px;
   }
   &__navigation {
     width: 100%;
