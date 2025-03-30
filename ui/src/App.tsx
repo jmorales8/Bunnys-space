@@ -17,7 +17,7 @@ import ThemeProvider from "./context/ThemeContext";
 import { AppContent } from "./components/AppContent/AppContent";
 import AudioPlayer from "./components/Sound/Player";
 import { Login } from "./pages/Login/Login";
-import BottomDrawer from "./components/BottomDrawer/FloatingDrawer";
+import BottomDrawer from "./components/FloatingDrawer/FloatingDrawer";
 
 function App() {
   return (
