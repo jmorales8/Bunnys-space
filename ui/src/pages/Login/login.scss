@@ -1,3 +1,4 @@
+@import "../../styles/variables.scss";
 .login {
   display: flex;
   flex-direction: column;
@@ -39,7 +40,7 @@
   }
   &__link {
     display: flex;
-    color: darkred;
+    color: $light-link-font-color;
     text-decoration: underline;
     margin: 20px 0px;
     cursor: pointer;

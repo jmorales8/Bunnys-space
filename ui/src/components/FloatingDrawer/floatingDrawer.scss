@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .floating-drawer {
   position: fixed;
   top: 20px;
@@ -33,9 +35,9 @@
   font-size: 18px;
   z-index: 1001;
   transition: left 0.375s ease;
-  background-image: linear-gradient(43deg, rgb(199, 149, 158) 0%, rgb(243, 185, 224) 46%, rgb(222, 133, 198) 100%);
+  background-image: linear-gradient(43deg, $light-bg-color8 0%, $light-bg-color9 46%, $light-bg-color10 100%);
   font-size: xx-large;
-  color: darkgreen;
+  color: $light-font-color;
   &:hover {
     background-color: #bbb;
   }

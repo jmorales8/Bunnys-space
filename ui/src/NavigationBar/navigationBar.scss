@@ -1,3 +1,4 @@
+@import '.././styles/variables.scss';
 $baseurl: "../../public/images/";
 
 .navBar {
@@ -9,7 +10,7 @@ $baseurl: "../../public/images/";
   &__content {
     display: flex;
     border-radius: 20px;
-    background-image: linear-gradient(pink, rgb(252, 162, 177));
+    background-image: linear-gradient($light-bg-color1, $light-bg-color2);
     border: 2px solid hotpink;
     max-width: 950px;
     width: 100%;
@@ -20,19 +21,19 @@ $baseurl: "../../public/images/";
     transition: 0.4s;
     &__night {
       @extend .navBar__content;
-      background-image: linear-gradient(#8c89d2, #6460df);
-      border: 2px solid #272648 !important;
+      background-image: linear-gradient($night-bg-color1, $night-bg-color2);
+      border: 2px solid $night-bg-color7 !important;
     }
   }
   &__button {
     text-decoration: none;
-    color: darkgreen;
+    color: $light-font-color;
     display: flex;
     transition: 0.4s;
     justify-content: center;
     &__night {
       @extend .navBar__button;
-      color: rgb(253, 224, 248);
+      color: $night-font-color;
     }
     &:hover {
       transform: rotate(-4deg);
@@ -78,11 +79,11 @@ $baseurl: "../../public/images/";
       width: 200px;
       border-radius: 25px;
       &:hover {
-        background-image: linear-gradient(pink, rgb(255, 150, 167));
+        background-image: linear-gradient($light-bg-color1, $light-bg-color2);
       }
       &__night {
         &:hover {
-          background-image: linear-gradient(#9a97dc, #6d68f7);
+          background-image: linear-gradient($night-bg-color1, $night-bg-color2);
         }
       }
     }
