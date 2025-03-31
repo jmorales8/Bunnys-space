@@ -1,3 +1,4 @@
+@import "../../../styles/variables.scss";
 .profile {
   border-width: 3px;
   border-style: inset;
@@ -5,13 +6,13 @@
   max-width: 550px;
   min-width: 380px;
   min-height: 200px;
-  background-image: linear-gradient(to right,rgb(242, 204, 210),#e19f95);
+  background-image: linear-gradient(to right, $light-bg-color3, $light-bg-color4);
 
   &__night {
     @extend .profile;
     border-color: #0d0c1b;
-    background-image: linear-gradient(to right,#8c89d2,#4845a3);
-    color: rgb(253, 224, 248);
+    background-image: linear-gradient(to right,$night-bg-color1, $night-bg-color6);
+    color: $night-font-color;
   }
   &__image {
     text-align: center;
@@ -33,7 +34,7 @@
   &__skeleton {
     width: 100%;
     height: 200px;
-    background-color: rgb(255, 176, 191);
+    background-color: $light-bg-color5;
     position: relative;
     overflow: hidden;
     display: flex;

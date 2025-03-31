@@ -1,3 +1,5 @@
+@import '.././styles/variables.scss';
+
 .footer {
   display: inline-flex;
   align-items: center;
@@ -13,7 +15,7 @@
   }
   &__night {
     @extend .footer;
-    background-color: #7371ab !important;
+    background-color: $night-bg-color4 !important;
   }
   &__group {
     display: flex;
@@ -34,7 +36,7 @@
     justify-content: center;
     text-decoration: none;
     align-items: center;
-    color: darkgreen;
+    color: $light-font-color;
     border: 1px dashed rgba(0, 0, 0, 0);
     border-radius: 20px;
     padding: 5px;
@@ -46,14 +48,14 @@
       background-color: rgb(255, 142, 198);
     }
     &__night {
-      color: rgb(253, 224, 248) !important;
+      color: $night-font-color !important;
       @extend .footer__button;
       &:hover {
         background-color: darkslateblue;
-        border: 1px solid #16136b;
+        border: 1px solid $night-bg-color7;
       }
       &:active {
-        background-color: #161543;
+        background-color: $night-bg-color8;
       }
     }
   }
