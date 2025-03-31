@@ -1,5 +1,6 @@
-import { useState, useEffect, useMemo, RefObject, useRef } from 'react';
+import { useState, useEffect, useMemo, RefObject, useRef, useContext } from 'react';
 import { Songs } from './Songs';
+import { ThemeContext } from '../../context/ThemeContext';
 
 function RandomSong(): number {
   return Math.floor(Math.random() * Songs.length);
@@ -104,13 +105,19 @@ const AudioPlayer = () => {
 
   const currentSong = Songs[currentSongIndex];
 
+  const themeContext = useContext(ThemeContext);
+  if (!themeContext) {
+    throw new Error("DarkMode must be used within a ThemeProvider");
+  }
+  const { isDarkMode } = themeContext;
+
   return (
-    <div className="player">
+    <div className={isDarkMode ? "player__night" : "player"}>
       <audio ref={audioRef}>
         <source src={`/audio/${currentSong.fileName}`} type="audio/mp3" />
       </audio>
       <div className='player_container'>
-        <div className="player__title">
+        <div className={isDarkMode ? "player__title__night" : "player__title"}>
           {currentSong.title}
         </div>
         <div className="navigation">
