@@ -11,7 +11,6 @@ export function Login() {
     <div className="login">
       {form ? (
         <>
-          New to the website?! Sign Up!!!
           <SignUp />
           <div className="login__link" onClick={handlePageChange}>
             Already have an account?

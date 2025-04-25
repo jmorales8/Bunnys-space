@@ -3,11 +3,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  &__input {
-    width: 165px;
-    margin-bottom: 25px;
-    border-radius: 5px;
-    color: darkorchid;
+  &__header {
+    color: $light-font-color2;
   }
   &__button {
     width: 75px;
@@ -28,7 +25,10 @@
     }
   }
   &__bunnies {
-    width: 169px;
+    width: 27.33%;
+    max-width: 375px;
+    min-width: 250px;
+    margin-top: 30px;
   }
   &__scream {
     width: 169px;
@@ -51,4 +51,79 @@
       padding-right: 10px;
     }
   }
+}
+
+:focus {
+  outline: none;
+}
+.col-3 {
+  float: left;
+  width: 27.33%;
+  max-width: 375px;
+  min-width: 250px;
+  margin: 0px 0px 10px 0px;
+  position: relative;
+  border-radius: 15px;
+}
+input[type="text"] {
+  color: $light-font-color2;
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  font-family: math;
+  font-size: large;
+}
+.effect-20 {
+  border: 2px solid $light-bg-color17;
+  padding: 7px 14px;
+  transition: 0.4s;
+  background: $light-bg-color9;
+}
+.effect-20 ~ .focus-border:before,
+.effect-20 ~ .focus-border:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: $light-bg-color10;
+  transition: 0.3s;
+}
+.effect-20 ~ .focus-border:after {
+  top: auto;
+  bottom: 0;
+  left: auto;
+  right: 0;
+}
+.effect-20 ~ .focus-border i:before,
+.effect-20 ~ .focus-border i:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 0;
+  background-color: $light-bg-color10;
+  transition: 0.4s;
+}
+.effect-20 ~ .focus-border i:after {
+  left: auto;
+  right: 0;
+  top: auto;
+  bottom: 0;
+}
+.effect-20:focus ~ .focus-border:before,
+.effect-20:focus ~ .focus-border:after,
+.has-content.effect-20 ~ .focus-border:before,
+.has-content.effect-20 ~ .focus-border:after {
+  width: 100%;
+  transition: 0.3s;
+}
+.effect-20:focus ~ .focus-border i:before,
+.effect-20:focus ~ .focus-border i:after,
+.has-content.effect-20 ~ .focus-border i:before,
+.has-content.effect-20 ~ .focus-border i:after {
+  height: 100%;
+  transition: 0.4s;
 }
