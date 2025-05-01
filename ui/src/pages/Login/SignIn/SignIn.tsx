@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import LiquidButton from "../../../components/LiquidButton/LiquidButton";
+import { ThemeContext } from "../../../context/ThemeContext";
 
-export function SignIn() {
+interface SignInProps {
+  isDarkmode: boolean;
+}
+export function SignIn({isDarkmode}: SignInProps) {
   const [userValue, setUserValue] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loginMessage, setLoginMessage] = useState<string>("");
   const isDisabled = (userValue && password) == "";
+
   const handleUserValueChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -48,11 +53,11 @@ export function SignIn() {
   return (
     <>
       <>
-      <h3 className="login__header">Have an Account alreadu?! Sign In!!!</h3>
+      <h3 className={isDarkmode ? "login__header__night__1" : "login__header__1"}>Have An Account Already?! Sign In!!!</h3>
         <img src="/images/terraria-bunny1.gif" className="login__bunnies" />
         <div className="col-3 input-effect">
           <input
-            className={`effect-20 ${userValue ? "has-content" : ""}`}
+            className={`${isDarkmode ? "effect-20__night login__input__night": "effect-20"} ${userValue ? "has-content" : ""} login__input`}
             type="text"
             value={userValue}
             onChange={handleUserValueChange}
@@ -68,7 +73,7 @@ export function SignIn() {
         />
         <div className="col-3 input-effect">
           <input
-            className={`effect-20 ${password ? "has-content" : ""}`}
+            className={`${isDarkmode ? "effect-20__night login__input__night": "effect-20"} ${password ? "has-content" : ""} login__input`}
             type="text"
             value={password}
             onChange={handlePasswordChange}

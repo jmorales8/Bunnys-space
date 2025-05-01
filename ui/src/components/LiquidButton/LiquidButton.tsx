@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import "./liquidButton.scss";
+import { ThemeContext } from "../../context/ThemeContext";
 
 interface LiquidButtonProps {
   text?: string;
@@ -31,7 +32,15 @@ const LiquidButton: React.FC<LiquidButtonProps> = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLAnchorElement | null>(null);
+  const themeContext = useContext(ThemeContext);
+  if (!themeContext) {
+    throw new Error("DarkMode must be used within a ThemeProvider");
+  }
 
+  const { isDarkMode } = themeContext;
+  const colorStart = isDarkMode ? "#2d2990" : "#FF007F";     // dark vs light
+  const colorEnd = isDarkMode ? "#4d4aa6" : "#FF6EC7";
+  const fillColor = isDarkMode ? "#5F5D92" : "rgb(242, 204, 210)";
   useEffect(() => {
     if (disabled) return;
     let pointsA: PointType[] = [];
@@ -168,7 +177,7 @@ const LiquidButton: React.FC<LiquidButtonProps> = ({
       requestAnimationFrame(render);
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "pink";
+      ctx.fillStyle = fillColor;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       for (let i = 0; i < pointsA.length; i++) {
@@ -201,11 +210,11 @@ const LiquidButton: React.FC<LiquidButtonProps> = ({
         gradientY,
         0
       );
-      gradient.addColorStop(0, "#FF007F");
-      gradient.addColorStop(1, "#FF6EC7");
+      gradient.addColorStop(0, colorStart);
+      gradient.addColorStop(1, colorEnd);
 
       [pointsA, pointsB].forEach((points, j) => {
-        ctx.fillStyle = j === 0 ? "rgb(242, 204, 210)" : gradient;
+        ctx.fillStyle = j === 0 ? fillColor : gradient;
         ctx.beginPath();
         ctx.moveTo(points[0].x, points[0].y);
 
@@ -229,7 +238,7 @@ const LiquidButton: React.FC<LiquidButtonProps> = ({
     return () => {
       document.removeEventListener("mousemove", updateMouseDirection);
     };
-  }, [disabled]);
+  }, [disabled, isDarkMode]);
 
   return (
     <a
@@ -242,7 +251,7 @@ const LiquidButton: React.FC<LiquidButtonProps> = ({
           onClick();
         }
       }}
-      className={`btn-liquid ${disabled ? "disabled" : ""}`}
+      className={`${isDarkMode ? "btn-liquid__night" : "btn-liquid"} ${disabled ? "disabled" : ""}`}
       ref={containerRef}
     >
       <span className="inner">{text}</span>

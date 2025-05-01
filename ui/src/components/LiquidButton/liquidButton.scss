@@ -1,3 +1,4 @@
+@import "../../styles/variables.scss";
 .btn-liquid {
   display: inline-block;
   position: relative;
@@ -11,6 +12,11 @@
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
+  transition-duration: 0.4s;
+  &__night {
+    @extend .btn-liquid;
+    color: $night-font-color !important;
+  }
 }
 
 .btn-liquid .inner {
@@ -31,4 +37,9 @@
   pointer-events: none;
   opacity: 0.5;
   background-color: rgb(245, 153, 215);
+}
+.btn-liquid__night.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  background-color: $night-bg-color6;
 }
