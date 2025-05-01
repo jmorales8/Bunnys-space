@@ -3,52 +3,157 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  &__input {
-    width: 165px;
-    margin-bottom: 25px;
-    border-radius: 5px;
-    color: darkorchid;
-  }
-  &__button {
-    width: 75px;
-    height: 25px;
-    background-color: thistle;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    &:hover {
-      border: rgb(66, 66, 66) 1px solid;
+  &__header {
+    transition: 0.4s;
+    font-family: "Honk", system-ui;
+    font-weight: 600;
+    font-size: xx-large;
+    letter-spacing: 0.2ch;
+    filter: drop-shadow(-2px 1px 0px #E75480) drop-shadow(-10px 10px 10px #000);
+    transform: rotate(5deg);
+    text-shadow: -2px 0px 0 rgb(245, 153, 215), 3px 0px 0 #1dfbe7;
+    margin: 25px 0px 35px 68px;
+    &__night {
+      @extend .login__header;
+      filter: drop-shadow(-2px 1px 0px $night-bg-color2) drop-shadow(-10px 10px 10px #000) !important;
     }
-    &:focus:active {
-      padding-top: 4px;
-      padding-left: 4px;
-      padding-right: 6px;
-      padding-bottom: 6px;
-      color: #5e5e5e;
+    &__1 {
+      @extend .login__header;
+      transform: rotate(-5deg);
+    }
+  }
+  &__input {
+    color: $light-font-color2;
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    font-family: math;
+    font-size: large;
+    &__night {
+      @extend .login__input;
+      color: $night-font-color;
     }
   }
   &__bunnies {
-    width: 169px;
+    width: 27.33%;
+    max-width: 375px;
+    min-width: 250px;
+    margin-top: 30px;
   }
   &__scream {
-    width: 169px;
+    width: 200px;
     border-radius: 5px;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
   }
-  &__input::placeholder {
-    color: rgb(5, 109, 5);
-  }
+
   &__link {
-    display: flex;
     color: $light-link-font-color;
-    text-decoration: underline;
-    margin: 20px 0px;
     cursor: pointer;
-    flex-direction: row-reverse;
-    align-items: center;
+    text-decoration: underline;
+    font-size: large;
+    letter-spacing: 2px;
+    font-weight: 700;
+    transition-duration: 0.4s;
     &__icons {
       height: 50px;
       padding-right: 10px;
+      cursor: pointer;
+    }
+    &__container {
+      display: flex;
+      margin: 20px 0px;
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+    &__night {
+      @extend .login__link;
+      color: $night-font-color2;
     }
   }
+}
+
+:focus {
+  outline: none;
+}
+.col-3 {
+  float: left;
+  width: 27.33%;
+  max-width: 375px;
+  min-width: 250px;
+  margin: 0px 0px 10px 0px;
+  position: relative;
+  border-radius: 15px;
+
+}
+
+.effect-20 {
+  border: 2px solid $light-bg-color17;
+  padding: 7px 14px;
+  transition: 0.4s;
+  background: $light-bg-color9;
+  &__night {
+    @extend .effect-20;
+    background: $night-bg-color4;
+    border: 2px solid $night-bg-color1;
+  }
+}
+.effect-20 ~ .focus-border:before,
+.effect-20 ~ .focus-border:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: $light-bg-color10;
+  transition: 0.3s;
+}
+
+.effect-20__night ~ .focus-border:before,
+.effect-20__night ~ .focus-border:after {
+  background-color: $night-bg-color9; // or any other dark mode color variable you have
+}
+
+.effect-20 ~ .focus-border:after {
+  top: auto;
+  bottom: 0;
+  left: auto;
+  right: 0;
+}
+.effect-20 ~ .focus-border i:before,
+.effect-20 ~ .focus-border i:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 0;
+  background-color: $light-bg-color10;
+  transition: 0.4s;
+}
+
+.effect-20__night ~ .focus-border i:before,
+.effect-20__night ~ .focus-border i:after {
+  background-color: $night-bg-color9; // or any other dark mode color variable you have
+}
+
+.effect-20 ~ .focus-border i:after {
+  left: auto;
+  right: 0;
+  top: auto;
+  bottom: 0;
+}
+.effect-20:focus ~ .focus-border:before,
+.effect-20:focus ~ .focus-border:after,
+.has-content.effect-20 ~ .focus-border:before,
+.has-content.effect-20 ~ .focus-border:after {
+  width: 100%;
+  transition: 0.3s;
+}
+.effect-20:focus ~ .focus-border i:before,
+.effect-20:focus ~ .focus-border i:after,
+.has-content.effect-20 ~ .focus-border i:before,
+.has-content.effect-20 ~ .focus-border i:after {
+  height: 100%;
+  transition: 0.4s;
 }

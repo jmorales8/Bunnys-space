@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import LiquidButton from "../../../components/LiquidButton/LiquidButton";
+import { ThemeContext } from "../../../context/ThemeContext";
 
-export function SignIn() {
+interface SignInProps {
+  isDarkmode: boolean;
+}
+export function SignIn({isDarkmode}: SignInProps) {
   const [userValue, setUserValue] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loginMessage, setLoginMessage] = useState<string>("");
+  const isDisabled = (userValue && password) == "";
 
-  const handleUserValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUserValueChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setUserValue(event.target.value);
   };
 
@@ -22,7 +30,7 @@ export function SignIn() {
         },
         body: JSON.stringify({
           userValue: userValue,
-          password: password
+          password: password,
         }),
       });
       if (!response.ok) {
@@ -41,30 +49,46 @@ export function SignIn() {
       setLoginMessage("Login failed. Please check your credentials.");
     }
   };
+
   return (
     <>
       <>
+      <h3 className={isDarkmode ? "login__header__night__1" : "login__header__1"}>Have An Account Already?! Sign In!!!</h3>
         <img src="/images/terraria-bunny1.gif" className="login__bunnies" />
-        <input
-          className="login__input"
-          placeholder="Username/Email"
-          value={userValue}
-          onChange={handleUserValueChange}
-        />
+        <div className="col-3 input-effect">
+          <input
+            className={`${isDarkmode ? "effect-20__night login__input__night": "effect-20"} ${userValue ? "has-content" : ""} login__input`}
+            type="text"
+            value={userValue}
+            onChange={handleUserValueChange}
+            placeholder="Username or Email"
+          />
+          <span className="focus-border">
+            <i></i>
+          </span>
+        </div>
         <img
           src="/images/terreria-bunnyFLIPPEd.gif"
           className="login__bunnies"
         />
-        <input
-          className="login__input"
-          placeholder="Password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
+        <div className="col-3 input-effect">
+          <input
+            className={`${isDarkmode ? "effect-20__night login__input__night": "effect-20"} ${password ? "has-content" : ""} login__input`}
+            type="text"
+            value={password}
+            onChange={handlePasswordChange}
+            placeholder="Password"
+          />
+          <span className="focus-border">
+            <i></i>
+          </span>
+        </div>
       </>
-      <button className="login__button" onClick={fetchRegister} disabled={(userValue && password)== ""}>
-        Sign in!!!
-      </button>
+       <LiquidButton
+        text="Sign in!!!"
+        onClick={fetchRegister}
+        disabled={isDisabled}
+      />
       {loginMessage && <div className="login__message">{loginMessage}</div>}
     </>
   );
