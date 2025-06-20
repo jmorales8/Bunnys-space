@@ -18,6 +18,7 @@ import { AppContent } from "./components/AppContent/AppContent";
 import AudioPlayer from "./components/Sound/Player";
 import { Login } from "./pages/Login/Login";
 import BottomDrawer from "./components/FloatingDrawer/FloatingDrawer";
+import { QAndA } from "./pages/Q-and-A/Q-and-A";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/twitch" element={<Twitch />} />
           <Route path="/commissions" element={<Commissions />} />
           <Route path="/discord" element={<Discord />} />
+          <Route path="/Q-and-A" element={<QAndA />} />
         </Routes>
         <Footer />
       </AppContent>

@@ -8,6 +8,9 @@
 @import "../components/ImageCarousel/imgCarousel.scss";
 @import "../components/Sound/player.scss";
 @import "../components/NightModeButton/nightModeButton.scss";
+@import "../components/AuroraText/auroraText.scss";
+@import "../components/LinkSplit/linkSplit.scss";
+@import"../components/FloatingWords/floatingWords.scss";
 
 // Home
 @import "../pages/Home/home.scss";
@@ -22,6 +25,10 @@
 // Disord
 @import "../pages/Discord/discord.scss";
 @import "../pages/Discord/Servers/ServerTemplate/serverTemplate.scss";
+
+//Q-And-A
+@import "../pages/Q-and-A/q-and-a.scss";
+@import "../pages/Q-and-A/QuestionCard/questionCard.scss";
 
 // Login
 @import "../pages/Login/login.scss";

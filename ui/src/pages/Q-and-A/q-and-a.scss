@@ -1,0 +1,53 @@
+@import "../../styles/variables.scss";
+.QA {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__question {
+    font-family: monospace;
+    font-size: x-large;
+    &__container {
+      width: 80%;
+      background-color: $light-bg-color1;
+      border: 4px solid #fff;
+      padding: 2em;
+      width: 80%;
+      position: relative;
+      margin: 0 auto;
+      ::before {
+        background: none;
+        border: 4px solid #fff;
+        content: "";
+        display: block;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        right: 4px;
+        bottom: 4px;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &__pillow {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-family: sans-serif;
+    font-size: 2rem;
+    background: linear-gradient(to right, #ef5350, #f48fb1, #7e57c2, #2196f3, #26c6da, #43a047, #eeff41, #f9a825, #ff5722);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    &__answer {
+      &__container {
+      }
+    }
+  }
+  &__user {
+    &__answer {
+    }
+    &__question {
+      font-size: x-large;
+      margin: 20px 0px 20px 5px;
+    }
+  }
+}

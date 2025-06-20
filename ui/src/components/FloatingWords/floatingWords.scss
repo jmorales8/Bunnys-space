@@ -1,0 +1,35 @@
+.headline {
+  font-size: 16px;
+  font-weight: 800;
+  font-family: sans-serif;
+  display: flex;
+  gap: 0.25em;
+}
+
+.char {
+  display: inline-block;
+  animation-duration: 2200ms;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  transform-origin: 50% 100%;
+}
+
+@keyframes float {
+  from {
+    transform: translate(2%, -10%) rotate(-1deg);
+  }
+  to {
+    transform: translate(-2%, 5%) rotate(3deg);
+  }
+}
+
+@keyframes float-alt {
+  from {
+    transform: translate(0%, -5%) rotate(-1deg);
+  }
+  to {
+    transform: translate(2%, 10%) rotate(3deg);
+  }
+}

@@ -1,0 +1,115 @@
+@import "../../../styles/variables.scss";
+
+.card {
+  background: $light-bg-color3;
+  border: 1px solid $light-bg-color2;
+  border-radius: 16px;
+  margin: 24px auto;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  font-family: "Inter", sans-serif;
+  transition: box-shadow 0.3s ease;
+  width: 80%;
+}
+
+.card:hover {
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  padding: 20px 20px 10px 20px;
+  background-color: $light-bg-color5;
+  border-radius: 16px 16px 0px 0px;
+}
+.card-body {
+  padding: 20px;
+}
+.username {
+  display: flex;
+  font-weight: 600;
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  color: #ffffff;
+  align-items: center;
+}
+
+.date {
+  color: $light-font-color1;
+  font-weight: bolder;
+  font-size: 24px;
+}
+
+.question {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 16px 0 12px;
+  color: #1f2937;
+}
+
+.status-tags {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: flex;
+  font-size: 18px;
+  border-radius: 999px;
+  height: 30px;
+  font-weight: 500;
+  align-items: center;
+  padding: 5px;
+}
+
+.tag-success {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.tag-waiting {
+  background-color: #fef9c3;
+  color: #92400e;
+}
+
+.tag-replies {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.reply {
+  background-color: $light-bg-color7;
+  border: px solid $light-bg-color5;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: $light-font-color2;
+}
+
+.all-replies {
+  max-height: 1000px;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.view-replies {
+  background: none;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 8px;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+
+.view-replies:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
