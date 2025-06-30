@@ -1,9 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import {
-  Navigate,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "../src/styles/styles.scss";
 import { Home } from "./pages/Home/Home";
 import { NavigationBar } from "./NavigationBar/NavigationBar";
@@ -16,8 +12,8 @@ import { LoginButton } from "./components/LoginButton/LoginButton";
 import ThemeProvider from "./context/ThemeContext";
 import { AppContent } from "./components/AppContent/AppContent";
 import AudioPlayer from "./components/Sound/Player";
+import FloatingDrawer from "./components/FloatingDrawer/FloatingDrawer";
 import { Login } from "./pages/Login/Login";
-import BottomDrawer from "./components/FloatingDrawer/FloatingDrawer";
 import { QAndA } from "./pages/Q-and-A/Q-and-A";
 
 function App() {
@@ -25,7 +21,9 @@ function App() {
     <ThemeProvider>
       <AppContent>
         <div className="app__head">
-          <BottomDrawer />
+          <FloatingDrawer>
+            <AudioPlayer />
+          </FloatingDrawer>
           <LoginButton />
         </div>
         <NavigationBar />
