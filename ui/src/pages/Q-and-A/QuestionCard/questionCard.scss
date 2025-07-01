@@ -171,20 +171,17 @@
   }
 }
 
-/* Hidden drawer that slides out from behind */
-.drawer-behind {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
+.drawer-behind-replies,
+.drawer-behind-keyboard {
+  position: relative;
   background-color: $light-bg-color1;
   overflow: hidden;
   border-radius: 0 0 8px 8px;
   transition: height 0.3s ease, opacity 0.3s ease;
   padding: 0 16px;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-  pointer-events: none; /* So it doesn't interfere with hover/clicks */
   display: flex;
+  flex-direction: column;
 }
 
 .card2 {
