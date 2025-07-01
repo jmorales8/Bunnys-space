@@ -37,7 +37,6 @@ export function QuestionCardCopy({
     <div className="card2">
       <div
         className={`box-container ${isRepliesOpen || isKeyboardOpen ? "expanded" : ""}`}
-        style={{ marginBottom: totalDrawerHeight }}
       >
         <div className="card-header">
           <span className="username">
@@ -74,6 +73,7 @@ export function QuestionCardCopy({
               <span>🐰 Awaiting Pillow's Gracious Response</span>
             )}
           </div>
+      </div>
 
           {/* Drawer - Replies */}
           <div
@@ -123,14 +123,13 @@ export function QuestionCardCopy({
             )}
           </div>
         </div>
-      </div>
 
       <div className="drawer__button__container">
         <button
           className="drawer__button"
           onClick={() => setIsKeyboardOpen(!isKeyboardOpen)}
         >
-          🧠 Toggle Keyboard
+          Toggle Keyboard
         </button>
       </div>
     </div>
