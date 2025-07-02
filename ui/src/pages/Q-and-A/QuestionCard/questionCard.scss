@@ -100,10 +100,16 @@
 }
 
 .reply {
+  padding: 7px 0;
+  &_pillow {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: 18px;
+  }
   &__info {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
     &__emoji {
       background-color: rgba(243, 114, 209, 0.258);
       border: px solid $light-bg-color5;
@@ -113,7 +119,6 @@
       padding: 5px;
     }
     &__viewAll {
-
     }
   }
   &__amount {
@@ -123,14 +128,13 @@
     border-radius: 30px;
     margin-right: 25px;
     &__none {
-
     }
   }
 }
 .all-replies {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .view-replies {
@@ -165,23 +169,30 @@
   padding: 20px;
   border-radius: 0px 0px 20px 20px;
   border-bottom: $light-bg-color2 solid 1px;
-  &-open{
+  &-open {
     @extend .box;
     border-radius: 0px;
   }
 }
 
-.drawer-behind-replies,
-.drawer-behind-keyboard {
+.drawer-behind {
   position: relative;
-  background-color: $light-bg-color1;
   overflow: hidden;
   border-radius: 0 0 8px 8px;
   transition: height 0.3s ease, opacity 0.3s ease;
   padding: 0 16px;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
+  &-replies {
+    @extend .drawer-behind;
+    display: flex;
+    background-color: $light-bg-color1;
+  }
+  &-keyboard {
+    @extend .drawer-behind;
+    background-color: $light-bg-color5;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .card2 {

@@ -22,20 +22,27 @@ export function QuestionCard({
   otherReplies,
   date,
 }: QuestionCardProps) {
-  const [showAllReplies, setShowAllReplies] = useState(false);
+  const drawerKeyboardHeight = 150;
+
+  const [isRepliesOpen, setIsRepliesOpen] = useState(false);
+  const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
 
   return (
-    <>
-      <div className="card" style={{zIndex: 2}}>
+    <div className="card2">
+      <div
+        className={`box-container ${
+          isRepliesOpen || isKeyboardOpen ? "expanded" : ""
+        }`}
+      >
         <div className="card-header">
           <span className="username">
             <AuroraText text={`@ ${username} asks:`} />
           </span>
           <span className="date">{date.toLocaleDateString()}</span>
         </div>
-        <div className="card-body">
-          <p className="question">❓{question}</p>
 
+        <div className={isRepliesOpen || isKeyboardOpen ? "box-open" : "box"}>
+          <span className="question">❓{question}</span>
           <div className="reply__info">
             <div>
               {otherReplies.length > 0 ? (
@@ -43,18 +50,21 @@ export function QuestionCard({
                   <span className="reply__amount">
                     💬 {otherReplies.length} Replies
                   </span>
-
-                  {!showAllReplies && (
-                    <button
-                      className="view-replies"
-                      onClick={() => setShowAllReplies(true)}
-                    >
-                      <LinkSplit text="View all replies →" />
-                    </button>
-                  )}
+                  <button
+                    className="view-replies"
+                    onClick={() => setIsRepliesOpen(!isRepliesOpen)}
+                  >
+                    <LinkSplit
+                      text={
+                        isRepliesOpen
+                          ? "Close All Replies ↑"
+                          : "View all replies →"
+                      }
+                    />
+                  </button>
                 </>
               ) : (
-                <> No replies yet</>
+                <>No replies yet</>
               )}
             </div>
             {rabbitReply ? (
@@ -63,14 +73,25 @@ export function QuestionCard({
               <span>🐰 Awaiting Pillow's Gracious Response</span>
             )}
           </div>
-          {showAllReplies && (
+        </div>
+
+        {/* Drawer - Replies */}
+        <div
+          className="drawer-behind-replies"
+          style={{
+            borderRadius: isKeyboardOpen ? 0 : "0px 0px 8px 8px",
+            height: isRepliesOpen ? otherReplies.length * 60 : 0,
+            opacity: isRepliesOpen ? 1 : 0,
+          }}
+        >
+          {isRepliesOpen && (
             <div className="all-replies">
               {rabbitReply && (
-                <div className="reply">
+                <div className="reply_pillow">
                   <strong>🐰💊 Pillow:</strong> {rabbitReply}
                 </div>
               )}
-              {otherReplies.map((reply: otherReplyProps, idx: number) => (
+              {otherReplies.map((reply, idx) => (
                 <div key={idx} className="reply">
                   <strong>{reply.username}:</strong> {reply.text}
                 </div>
@@ -78,20 +99,41 @@ export function QuestionCard({
             </div>
           )}
         </div>
-      </div>
-      <Drawer direction={3}>
-        <div className="card-footer">
-          <AuroraText text="Want to input your own thoughts??" />
-          <textarea
-            style={{ resize: "none", height: "60px", marginTop: "5px" }}
-            className={"effect-20 login__input"}
-            placeholder="What do you think?!"
-          />
-          <button>
-            <FloatingWords text="bruh" />
-          </button>
+
+        {/* Drawer - Keyboard */}
+        <div
+          className="drawer-behind-keyboard"
+          style={{
+            height: isKeyboardOpen ? drawerKeyboardHeight : 0,
+            opacity: isKeyboardOpen ? 1 : 0,
+          }}
+        >
+          {isKeyboardOpen && (
+            <div className="keyboard-content">
+              <div style={{ marginTop: "5px" }}>
+                <AuroraText text="Want to input your own thoughts??" />
+              </div>
+              <textarea
+                style={{ resize: "none", height: "60px", marginTop: "5px" }}
+                className={"effect-20 login__input"}
+                placeholder="What do you think?!"
+              />
+              <button>
+                <FloatingWords text="Add comment" />
+              </button>
+            </div>
+          )}
         </div>
-      </Drawer>
-    </>
+      </div>
+
+      <div className="drawer__button__container">
+        <button
+          className="drawer__button"
+          onClick={() => setIsKeyboardOpen(!isKeyboardOpen)}
+        >
+          Toggle Keyboard
+        </button>
+      </div>
+    </div>
   );
 }

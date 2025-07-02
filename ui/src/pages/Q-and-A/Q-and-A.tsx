@@ -1,6 +1,5 @@
 import "./q-and-a.scss";
 import { QuestionCard } from "./QuestionCard/QuestionCard";
-import { QuestionCardCopy } from "./QuestionCard/QuestionCard copy";
 
 interface otherRepliesProps {
   username: string;
@@ -39,7 +38,7 @@ export function QAndA() {
         const { username, question, rabbitReply, otherReplies, date } = data;
 
         return (
-          <QuestionCardCopy
+          <QuestionCard
             key={username + date.toISOString()} // good practice for React lists
             username={username}
             question={question}
