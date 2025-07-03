@@ -36,7 +36,7 @@ export function QuestionCard({
       >
         <div className="card-header">
           <span className="username">
-            <AuroraText text={`@ ${username} asks:`} />
+            <AuroraText text={`@ ${username} asks:`} color1="#FF007F" color2="rgb(243, 114, 208)" color3="#FF007F" />
           </span>
           <span className="date">{date.toLocaleDateString()}</span>
         </div>
@@ -80,8 +80,8 @@ export function QuestionCard({
           className="drawer-behind-replies"
           style={{
             borderRadius: isKeyboardOpen ? 0 : "0px 0px 8px 8px",
-            height: isRepliesOpen ? otherReplies.length * 60 : 0,
             opacity: isRepliesOpen ? 1 : 0,
+            maxHeight: isRepliesOpen ? 400 : 0,
           }}
         >
           {isRepliesOpen && (
@@ -111,14 +111,14 @@ export function QuestionCard({
           {isKeyboardOpen && (
             <div className="keyboard-content">
               <div style={{ marginTop: "5px" }}>
-                <AuroraText text="Want to input your own thoughts??" />
+                <AuroraText text="Want to input your own thoughts??" color1="darkgreen" color2="rgb(82, 14, 40)" color3="darkgreen"/>
               </div>
               <textarea
                 style={{ resize: "none", height: "60px", marginTop: "5px" }}
                 className={"effect-20 login__input"}
                 placeholder="What do you think?!"
               />
-              <button>
+              <button className="button-55">
                 <FloatingWords text="Add comment" />
               </button>
             </div>

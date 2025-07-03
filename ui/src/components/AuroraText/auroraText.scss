@@ -4,10 +4,7 @@
 }
 
 .loading-text {
-  background: linear-gradient(90deg, $light-bg-color14, $light-bg-color7, $light-bg-color14) -100% / 200%;
-  background-clip: text;
   -webkit-background-clip: text;
-  color: transparent;
   animation: shimmer 2s linear infinite;
   font-family: "Inter", "DM Sans", Arial, sans-serif;
 }
