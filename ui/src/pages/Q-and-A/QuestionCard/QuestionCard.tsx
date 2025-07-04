@@ -28,30 +28,26 @@ export function QuestionCard({
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
 
   return (
-    <div className="card2">
-      <div
-        className={`box-container ${
-          isRepliesOpen || isKeyboardOpen ? "expanded" : ""
-        }`}
-      >
-        <div className="card-header">
-          <span className="username">
+    <div className="card">
+
+        <div className="card__header">
+          <span className="card__question__username">
             <AuroraText text={`@ ${username} asks:`} color1="#FF007F" color2="rgb(243, 114, 208)" color3="#FF007F" />
           </span>
-          <span className="date">{date.toLocaleDateString()}</span>
+          <span className="card__date">{date.toLocaleDateString()}</span>
         </div>
 
-        <div className={isRepliesOpen || isKeyboardOpen ? "box-open" : "box"}>
-          <span className="question">❓{question}</span>
-          <div className="reply__info">
+        <div className={isRepliesOpen || isKeyboardOpen ? "card__body-open" : "card__body"}>
+          <span className="card__question">❓{question}</span>
+          <div className="card__reply__info">
             <div>
               {otherReplies.length > 0 ? (
                 <>
-                  <span className="reply__amount">
+                  <span className="card__reply__amount">
                     💬 {otherReplies.length} Replies
                   </span>
                   <button
-                    className="view-replies"
+                    className="card__replies__view__button"
                     onClick={() => setIsRepliesOpen(!isRepliesOpen)}
                   >
                     <LinkSplit
@@ -68,7 +64,7 @@ export function QuestionCard({
               )}
             </div>
             {rabbitReply ? (
-              <span className="reply__info__emoji">🐰✏️</span>
+              <span className="card__reply__info__emoji">🐰✏️</span>
             ) : (
               <span>🐰 Awaiting Pillow's Gracious Response</span>
             )}
@@ -77,7 +73,7 @@ export function QuestionCard({
 
         {/* Drawer - Replies */}
         <div
-          className="drawer-behind-replies"
+          className="card__drawer__behind-replies"
           style={{
             borderRadius: isKeyboardOpen ? 0 : "0px 0px 8px 8px",
             opacity: isRepliesOpen ? 1 : 0,
@@ -85,14 +81,14 @@ export function QuestionCard({
           }}
         >
           {isRepliesOpen && (
-            <div className="all-replies">
+            <div className="card__replies">
               {rabbitReply && (
-                <div className="reply_pillow">
+                <div className="card__reply__pillow">
                   <strong>🐰💊 Pillow:</strong> {rabbitReply}
                 </div>
               )}
               {otherReplies.map((reply, idx) => (
-                <div key={idx} className="reply">
+                <div key={idx} className="card__reply">
                   <strong>{reply.username}:</strong> {reply.text}
                 </div>
               ))}
@@ -102,7 +98,7 @@ export function QuestionCard({
 
         {/* Drawer - Keyboard */}
         <div
-          className="drawer-behind-keyboard"
+          className="card__drawer__behind-keyboard"
           style={{
             height: isKeyboardOpen ? drawerKeyboardHeight : 0,
             opacity: isKeyboardOpen ? 1 : 0,
@@ -118,17 +114,16 @@ export function QuestionCard({
                 className={"effect-20 login__input"}
                 placeholder="What do you think?!"
               />
-              <button className="button-55">
+              <button className="card__drawer__behind-keyboard__button">
                 <FloatingWords text="Add comment" />
               </button>
             </div>
           )}
-        </div>
       </div>
 
-      <div className="drawer__button__container">
+      <div className="card__drawer__button__container">
         <button
-          className="drawer__button"
+          className="card__drawer__button"
           onClick={() => setIsKeyboardOpen(!isKeyboardOpen)}
         >
           Toggle Keyboard
