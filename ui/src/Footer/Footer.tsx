@@ -12,9 +12,6 @@ const footerButtons: FooterButtons[] = [
   { label: "This", path: "/Q-and-A" },
   { label: "part o", path: "/Q-and-A" },
   { label: "Q&A", path: "/Q-and-A" },
-  { label: "Q&A", path: "/Q-and-A" },
-  { label: "Q&A", path: "/Q-and-A" },
-  { label: "Q&A", path: "/Q-and-A" },
 ];
 export function Footer() {
  const themeContext = useContext(ThemeContext);

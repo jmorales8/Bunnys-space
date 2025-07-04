@@ -1,29 +1,32 @@
-import React, { useContext, useState } from 'react';
-import './floatingDrawer.scss';
-import AudioPlayer from '../Sound/Player';
+import React, { useContext, useState, ReactNode } from 'react';
 import { ThemeContext } from '../../context/ThemeContext';
 
-const FloatingDrawer = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface FloatingDrawerProps {
+  children: ReactNode;
+}
 
+const FloatingDrawer: React.FC<FloatingDrawerProps> = ({ children }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const toggleDrawer = () => setIsOpen(prev => !prev);
+
   const themeContext = useContext(ThemeContext);
   if (!themeContext) {
-    throw new Error("DarkMode must be used within a ThemeProvider");
+    throw new Error("FloatingDrawer must be used within a ThemeProvider");
   }
   const { isDarkMode } = themeContext;
 
   return (
     <>
-      <div className={`floating-drawer ${isOpen ? 'open' : ''}`}>
-        <div className="drawer-content">
-          <AudioPlayer />
+      <div className={`drawer ${isOpen ? 'open' : ''}`}>
+        <div className="drawer__content">
+          {children}
         </div>
       </div>
 
       <button
-        className={`floating-toggle ${isOpen ? 'open' : ''} ${isDarkMode ? "floating-toggle__night" : ""}`}
+        className={`drawer__toggle ${isOpen ? 'open' : ''} ${isDarkMode ? 'drawer__toggle__night' : ''}`}
         onClick={toggleDrawer}
+        aria-label="Toggle drawer"
       >
         {isOpen ? '⇚' : '⇛'}
       </button>

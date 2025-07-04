@@ -1,0 +1,17 @@
+.loading {
+  &-wrapper {
+    display: grid;
+    place-items: center;
+  }
+  &-text {
+    -webkit-background-clip: text;
+    animation: shimmer 2s linear infinite;
+    font-family: "Inter", "DM Sans", Arial, sans-serif;
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 100%;
+  }
+}

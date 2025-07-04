@@ -16,6 +16,10 @@
     &__night {
       @extend .login__header;
       filter: drop-shadow(-2px 1px 0px $night-bg-color2) drop-shadow(-10px 10px 10px #000) !important;
+      &__1 {
+        @extend .login__header__night;
+        transform: rotate(-5deg);
+      }
     }
     &__1 {
       @extend .login__header;
