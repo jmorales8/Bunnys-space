@@ -1,5 +1,4 @@
 import React, { useContext, useState, ReactNode } from 'react';
-import './floatingDrawer.scss';
 import { ThemeContext } from '../../context/ThemeContext';
 
 interface FloatingDrawerProps {
@@ -18,14 +17,14 @@ const FloatingDrawer: React.FC<FloatingDrawerProps> = ({ children }) => {
 
   return (
     <>
-      <div className={`floating-drawer ${isOpen ? 'open' : ''}`}>
-        <div className="drawer-content">
+      <div className={`drawer ${isOpen ? 'open' : ''}`}>
+        <div className="drawer__content">
           {children}
         </div>
       </div>
 
       <button
-        className={`floating-toggle ${isOpen ? 'open' : ''} ${isDarkMode ? 'floating-toggle__night' : ''}`}
+        className={`drawer__toggle ${isOpen ? 'open' : ''} ${isDarkMode ? 'drawer__toggle__night' : ''}`}
         onClick={toggleDrawer}
         aria-label="Toggle drawer"
       >

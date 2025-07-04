@@ -2,7 +2,6 @@ import { useState } from "react";
 import { AuroraText } from "../../../components/AuroraText/AuroraText";
 import { LinkSplit } from "../../../components/LinkSplit/LinkSplit";
 import { FloatingWords } from "../../../components/FloatingWords/FloatingWords";
-import { Drawer } from "../../../components/Drawer/VerticalDrawer";
 interface otherReplyProps {
   username: string;
   text: string;

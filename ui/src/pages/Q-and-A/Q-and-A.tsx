@@ -5,6 +5,7 @@ interface otherRepliesProps {
   username: string;
   response: string;
 }
+
 interface Q_And_A_MockDataProps {
   username: string;
   question: string;
@@ -12,6 +13,7 @@ interface Q_And_A_MockDataProps {
   otherReplies?: otherRepliesProps[] | null;
   date: Date;
 }
+
 const Q_And_A_MockData: Q_And_A_MockDataProps[] = [
   {
     username: "Sonic123",
@@ -39,7 +41,7 @@ export function QAndA() {
 
         return (
           <QuestionCard
-            key={username + date.toISOString()} // good practice for React lists
+            key={username + date.toISOString()}
             username={username}
             question={question}
             rabbitReply={rabbitReply}
