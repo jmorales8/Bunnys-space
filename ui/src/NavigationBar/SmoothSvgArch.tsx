@@ -45,7 +45,7 @@ export const SmoothSvgArch = ({colorMode}: SmoothSvgArch) => {
 
   return (
     <svg
-      viewBox="13 0 69 25"
+      viewBox="0 0 100 25"
       preserveAspectRatio="none"
       style={{
         width: "100%",
