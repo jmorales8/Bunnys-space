@@ -19,12 +19,12 @@ function App() {
   return (
     <ThemeProvider>
       <AppContent>
-        <div className="app__head">
+        {/* <div className="app__head">
           <FloatingDrawer>
             <AudioPlayer />
           </FloatingDrawer>
           <LoginButton />
-        </div>
+        </div> */}
         <NavigationBar />
         <Routes>
           <Route path="/login" element={<Login />} />
