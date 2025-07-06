@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   width: 80%;
-  height: 70vh;
+  height: 67vh;
   margin: 0 auto;
+  overflow: hidden;
   &__button {
     display: inline-block;
     outline: 0;
@@ -78,5 +79,28 @@
   }
   100% {
     transform: rotateX(64deg) scale(0.55, 0.3) translateY(-400vh);
+  }
+}
+
+@media only screen and (max-height: 1100px) {
+  .lore {
+    height: 62vh
+  }
+}
+
+@media only screen and (max-height: 950px) {
+  .lore {
+    height: 55vh
+  }
+}
+
+@media only screen and (max-height: 800px) {
+  .lore {
+    height: 48vh
+  }
+}
+@media only screen and (max-height: 700px) {
+  .lore {
+    height: 40vh
   }
 }
