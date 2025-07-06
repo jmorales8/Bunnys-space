@@ -20,6 +20,8 @@
     padding: 0 10px;
     font-size: 14px;
     width: fit-content;
+    bottom: 65px;
+    position: absolute;
     &:hover {
       background-image: linear-gradient(to right,#3ee08f,#52f4ec);
     }
