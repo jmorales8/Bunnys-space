@@ -9,14 +9,15 @@
       background-color: #5F5D92 !important;
     }
   }
-  &__head {
-    display: flex;
-    justify-content: flex-end;
-  }
   &__login {
     &__button {
+      position: absolute;
       width: 125px;
       cursor: pointer;
+      float: right;
+      top: 0;
+      right: 0;
+      z-index: 5;
     }
   }
 }
