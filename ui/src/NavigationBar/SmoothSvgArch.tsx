@@ -42,17 +42,17 @@ export const SmoothSvgArch = ({colorMode}: SmoothSvgArch) => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
+  const height = 15 * scale + 250
   return (
     <svg
       viewBox="0 0 100 25"
       preserveAspectRatio="none"
       style={{
         width: "100%",
-        height: "375px"
+        height: height
       }}
     >
-      <path className={colorMode ? "navBar__background__night" : "navBar__background"} d={`M0,25 Q50,${scale} 100,25 L100,0 L0,0 Z`} />
+      <path className={colorMode ? "navBar__background__night" : "navBar__background"} d={`M0,25 Q50,5 100,25 L100,0 L0,0 Z`} />
     </svg>
   );
 };

@@ -94,11 +94,11 @@ $baseurl: "../../public/images/";
   position: absolute;
   display: flex;
   width: 100%;
-  top: 160px;
+  top: 120px;
   justify-content: center;
   &__content {
     display: flex;
-    width: 957px;
+    width: 995px;
     justify-content: space-around;
   }
   &__button {
@@ -120,8 +120,10 @@ $baseurl: "../../public/images/";
     padding: 20px 69px; // Top/Bottom padding added here
     text-decoration: none;
     color: $light-font-color2;
+    font-weight: bolder;
     background: transparent;
-
+    font-size: larger;
+    font-family: cursive;
     &__label {
       transition: opacity 0.4s;
       pointer-events: none;
@@ -131,12 +133,26 @@ $baseurl: "../../public/images/";
     }
     &__night {
       @extend .navBar__button;
+      color: $night-font-color;
+      &:not(:first-child)::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 25px; // Fixed divider height
+        width: 1px;
+        background-color: $night-font-color2;
+
+      }
     }
   }
   &__background {
     fill: $light-bg-color2;
+    transition: 0.4s;
     &__night {
-      fill: $night-bg-color7;
+      fill: $night-bg-color4;
+      transition: 0.4s;
     }
   }
 }
