@@ -1,8 +1,6 @@
-import { ImgsOnNavBar } from "../components/ImgsOnNavBar/ImgsOnNavBar";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
-import { useEffect, useState } from "react";
 import { SmoothSvgArch } from "./SmoothSvgArch";
 
 interface NavButtons {
@@ -27,21 +25,22 @@ export function NavigationBar() {
   return (
     <>
       <div className="navBar">
+        <Link to="/home"><img src="images/Pillow_Logo.png" alt="pill_logo" className="navBar__logo"/></Link>
         <div className="navBar__content">
           {navButtons.map((button) => (
             <Link
               to={button.path}
-              className={isDarkMode ? "navBar__button__night" : "navBar__button"}
+              className={
+                isDarkMode ? "navBar__button__night" : "navBar__button"
+              }
               key={button.label}
             >
-              <span className="navBar__button__label">
-                {button.label}
-              </span>
+              <span className="navBar__button__label">{button.label}</span>
             </Link>
           ))}
         </div>
       </div>
-      <SmoothSvgArch colorMode={isDarkMode}/>
+      <SmoothSvgArch colorMode={isDarkMode} />
     </>
   );
 }
