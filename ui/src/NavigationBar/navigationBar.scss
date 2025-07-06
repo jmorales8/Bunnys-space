@@ -1,95 +1,6 @@
 @import ".././styles/variables.scss";
 $baseurl: "../../public/images/";
 
-// .navBar {
-//   display: flex;
-//   margin-bottom: 25px;
-//   flex-direction: column;
-//   width: 100%;
-//   align-items: center;
-//   &__content {
-//     display: flex;
-//     border-radius: 20px;
-//     background-image: linear-gradient($light-bg-color1, $light-bg-color2);
-//     border: 2px solid hotpink;
-//     max-width: 950px;
-//     width: 100%;
-//     justify-content: space-evenly;
-//     height: 35px;
-//     align-items: center;
-//     font-size: x-large;
-//     transition: 0.4s;
-//     &__night {
-//       @extend .navBar__content;
-//       background-image: linear-gradient($night-bg-color1, $night-bg-color2);
-//       border: 2px solid $night-bg-color7 !important;
-//     }
-//   }
-//   &__button {
-//     text-decoration: none;
-//     color: $light-font-color1;
-//     display: flex;
-//     transition: 0.4s;
-//     justify-content: center;
-//     &__night {
-//       @extend .navBar__button;
-//       color: $night-font-color;
-//     }
-//     &:hover {
-//       transform: rotate(-4deg);
-//     }
-//   }
-//   &__picture {
-//     width: 125px;
-//     height: 125px;
-//     background-size: 125px;
-//     background-image: url("#{$baseurl}goblin.png");
-//     &:hover {
-//       background-image: url("#{$baseurl}Pilbo_Goober.png");
-//     }
-//     &__necoarc {
-//       width: 125px;
-//       height: 125px;
-//       background-size: 125px;
-//       background-image: url("#{$baseurl}necoarc_pilow.png");
-//     }
-//     &__gokufeet {
-//       width: 125px;
-//       height: 125px;
-//       background-size: 125px;
-//       background-image: url("#{$baseurl}goku_feet.png");
-//     }
-//     &s {
-//       display: flex;
-//       justify-content: flex-end;
-//     }
-//   }
-// }
-
-// @media only screen and (max-width: 550px) {
-//   .navBar{
-//     &__content {
-//       flex-direction: column;
-//       align-items: center;
-//       width: 250px;
-//       min-height: 170px;
-//       padding: 5px 0px;
-//     }
-//     &__button {
-//       width: 200px;
-//       border-radius: 25px;
-//       &:hover {
-//         background-image: linear-gradient($light-bg-color1, $light-bg-color2);
-//       }
-//       &__night {
-//         &:hover {
-//           background-image: linear-gradient($night-bg-color1, $night-bg-color2);
-//         }
-//       }
-//     }
-//   }
-// }
-
 .navBar {
   position: absolute;
   display: flex;
@@ -108,7 +19,7 @@ $baseurl: "../../public/images/";
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      height: 25px; // Fixed divider height
+      height: 25px;
       width: 1px;
       background-color: $light-font-color1;
     }
@@ -117,7 +28,7 @@ $baseurl: "../../public/images/";
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 20px 69px; // Top/Bottom padding added here
+    padding: 20px 69px;
     text-decoration: none;
     color: $light-font-color2;
     font-weight: bolder;
@@ -140,7 +51,7 @@ $baseurl: "../../public/images/";
         left: 0;
         top: 50%;
         transform: translateY(-50%);
-        height: 25px; // Fixed divider height
+        height: 25px;
         width: 1px;
         background-color: $night-font-color2;
 

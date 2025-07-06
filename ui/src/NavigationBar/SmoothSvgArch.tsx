@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export function useWindowScale(): number {
   const [scale, setScale] = useState(0);
@@ -32,12 +32,11 @@ export const SmoothSvgArch = ({colorMode}: SmoothSvgArch) => {
     const handleResize = () => {
       const width = window.innerWidth;
 
-      // Example mapping: wider screens → taller arch
       const newHeight = Math.max(250, Math.min(500, width / 4));
       setSvgHeight(newHeight);
     };
 
-    handleResize(); // Initial set
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
