@@ -3,6 +3,7 @@
   flex-direction: column;
   min-height: 98vh;
   background-color: #eecbcb;
+  overflow-x: hidden !important;
   &__content {
     &__night {
       @extend .app;
@@ -11,13 +12,17 @@
   }
   &__login {
     &__button {
-      position: absolute;
+      position: fixed;
       width: 125px;
       cursor: pointer;
       float: right;
       top: 0;
       right: 0;
       z-index: 5;
+      &:hover {
+        right: 5px;
+        transition: 0.1s;
+      }
     }
   }
 }

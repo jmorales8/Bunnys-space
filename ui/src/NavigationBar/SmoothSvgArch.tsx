@@ -26,6 +26,7 @@ interface SmoothSvgArch {
 }
 export const SmoothSvgArch = ({colorMode}: SmoothSvgArch) => {
   const [svgHeight, setSvgHeight] = useState(500);
+  const [view, setView] = useState(false);
   const scale = useWindowScale();
 
   useEffect(() => {
@@ -41,7 +42,12 @@ export const SmoothSvgArch = ({colorMode}: SmoothSvgArch) => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  const height = 15 * scale + 250
+  let height;
+  if(window.innerWidth < 1060) {
+    height = scale + 200
+  } else {
+    height = 15 * scale + 200
+  }
   return (
     <svg
       viewBox="0 0 100 25"
@@ -51,7 +57,8 @@ export const SmoothSvgArch = ({colorMode}: SmoothSvgArch) => {
         height: height
       }}
     >
-      <path className={colorMode ? "navBar__background__night" : "navBar__background"} d={`M0,25 Q50,5 100,25 L100,0 L0,0 Z`} />
+      <path className={colorMode ? "navBar__long__background__night" : "navBar__long__background"} d={`M0,25 Q50,10 100,25 L100,0 L0,0 Z`} />
+      <path className={colorMode ? "navBar__short__background__night" : "navBar__short__background"} d={`M0,25 Q50,3 100,25 L100,0 L0,0 Z`} />
     </svg>
   );
 };
