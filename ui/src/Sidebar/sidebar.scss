@@ -22,6 +22,12 @@
     height: 60px;
     border-bottom: 2px solid;
     align-items: center;
+    background-color: $light-bg-color2;
+    transition: 0.4s;
+    &:hover {
+      background-color: $light-bg-color3;
+      opacity: .5;
+    }
     &s {
       display: flex;
       flex-direction: column;
