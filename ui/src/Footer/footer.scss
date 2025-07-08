@@ -57,6 +57,7 @@
     bottom: 0;
     width: -webkit-fill-available;
     flex-direction: row;
+    z-index: 4;
     /* Default desktop layout */
 
     &__night {
