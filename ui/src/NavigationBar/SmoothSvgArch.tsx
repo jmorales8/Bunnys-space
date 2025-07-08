@@ -51,7 +51,8 @@ export const SmoothSvgArch = ({colorMode}: SmoothSvgArch) => {
         height: height
       }}
     >
-      <path className={colorMode ? "navBar__background__night" : "navBar__background"} d={`M0,25 Q50,5 100,25 L100,0 L0,0 Z`} />
+      <path className={colorMode ? "navBar__background__night" : "navBar__background"} 
+      d={`M0,25 Q50,5 100,25 L100,0 L0,0 Z`} />
     </svg>
   );
 };

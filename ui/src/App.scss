@@ -103,3 +103,8 @@ img:hover {
     transform: rotate(0deg);
   }
 }
+@media only screen and (max-width: 550px) {
+  .app {
+    margin-bottom: 0;
+  }
+}
