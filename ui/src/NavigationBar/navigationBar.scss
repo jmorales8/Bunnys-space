@@ -7,8 +7,9 @@ $baseurl: "../../public/images/";
     display: flex;
     width: 100%;
     flex-direction: column;
-    top: 10px;
     align-items: center;
+    z-index: 4;
+    background: $light-bg-color2;
     &__content {
       display: flex;
       width: 995px;
@@ -16,6 +17,7 @@ $baseurl: "../../public/images/";
     }
     &__logo {
       cursor: pointer;
+      margin-top: 10px;
     }
     &__button {
       &:not(:first-child)::before {
@@ -33,7 +35,8 @@ $baseurl: "../../public/images/";
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      padding: 20px 69px;
+      padding-top: 20px;
+      padding-bottom: 20px;
       text-decoration: none;
       color: $light-font-color2;
       font-weight: bolder;
@@ -72,15 +75,16 @@ $baseurl: "../../public/images/";
     }
   }
   &__short {
-    position: absolute;
-    display: flex;
     width: 100%;
-    flex-direction: column;
-    top: 10px;
-    align-items: center;
+    display: flex;
+    position: fixed;
+    z-index: 5;
+    justify-content: center;
+    top: 5px;
     &__logo {
+      z-index: 4;
       cursor: pointer;
-      width: 125px;
+      width: 150px;
     }
     &__background {
       fill: $light-bg-color2;
@@ -91,21 +95,41 @@ $baseurl: "../../public/images/";
       }
     }
   }
+  &__moveable {
+    width: 100%;
+    display: flex;
+    position: fixed;
+    z-index: 5;
+    justify-content: center;
+    &__background {
+      fill: $light-bg-color2;
+      transition: 0.4s;
+      position: fixed;
+      &__night {
+      }
+    }
+  }
 }
 
-@media only screen and (max-width: 1059px){
-  .navBar__long{
+@media only screen and (max-width: 1059px) {
+  .navBar__long {
     display: none;
   }
-  .navBar__long__background{
+  .navBar__long__background {
+    display: none;
+  }
+  .header__svg__long {
     display: none;
   }
 }
-@media only screen and (min-width: 1060px){
-  .navBar__short{
+@media only screen and (min-width: 1060px) {
+  .navBar__short {
     display: none;
   }
-  .navBar__short__background{
+  .navBar__short__background {
+    display: none;
+  }
+  .header__svg__short {
     display: none;
   }
 }
