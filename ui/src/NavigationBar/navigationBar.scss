@@ -42,7 +42,8 @@ $baseurl: "../../public/images/";
       font-weight: bolder;
       background: transparent;
       font-size: larger;
-      font-family: cursive;
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+
       &__label {
         transition: opacity 0.4s;
         pointer-events: none;
