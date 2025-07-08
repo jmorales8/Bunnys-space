@@ -71,7 +71,7 @@ app.get('/discord', (req, res) => {
 app.get("/discord/img/:id", (req, res) => {
   const { id } = req.params;
   const sql = 'SELECT img FROM Discord WHERE serverID = ?';
-  discord_db.get(sql, [id], (err, row) => {
+  discord_db.get(sql, id, (err, row) => {
     if(err) {
       console.log(err);
       return res.sendStatus(500);
