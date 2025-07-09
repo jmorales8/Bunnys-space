@@ -37,23 +37,21 @@ export function NavigationBar() {
         style={{
           flexDirection: `${scrollY <= 100 ? "column" : "row"}`,
           position: `${scrollY <= 100 ? "absolute" : "fixed"}`,
-          }}>
-        <Link to="/home"><img src="images/Pillow_Logo.png" alt="pill_logo" className="navBar__long__logo"
-          style={{
-            width: `${scrollY <= 100 ? "175px" : "150px"}`,
-          }} /></Link>
+        }}>
+        <Link to="/home">
+          <img src="images/Pillow_Logo.png" alt="pill_logo" className="navBar__long__logo"
+          style={{width: `${scrollY <= 100 ? "175px" : "150px"}`}}/>
+        </Link>
         <div className="navBar__long__content">
           {navButtons.map((button) => (
             <Link
               to={button.path}
-              className={
-                isDarkMode ? "navBar__long__button__night" : "navBar__long__button"
-              }
+              className={isDarkMode ? "navBar__long__button__night" : "navBar__long__button"}
               key={button.label}
-            style={{
-              paddingLeft: `${scrollY <= 100 ? "69px" : "69px"}`,
-              paddingRight: `${scrollY <= 100 ? "69px" : "69px"}`
-            }}
+              style={{
+                paddingLeft: `${scrollY <= 100 ? "69px" : "69px"}`,
+                paddingRight: `${scrollY <= 100 ? "69px" : "69px"}`
+              }}
             >
               <span className="navBar__long__button__label">{button.label}</span>
             </Link>
@@ -61,8 +59,9 @@ export function NavigationBar() {
         </div>
       </div>
       <div className="navBar__short">
-        <Link to="/home"><img src="images/Pillow_Logo.png" alt="pill_logo" className="navBar__short__logo" /></Link>
-
+        <Link to="/home">
+          <img src="images/Pillow_Logo.png" alt="pill_logo" className="navBar__short__logo" />
+        </Link>
         <SidebarOverlay />
       </div>
       <SvgArch colorMode={isDarkMode} />

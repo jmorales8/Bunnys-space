@@ -6,7 +6,6 @@ export const SidebarOverlay: React.FC = () => {
   const [open, setOpen] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
 
-  // Close sidebar if clicked outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
@@ -23,15 +22,15 @@ export const SidebarOverlay: React.FC = () => {
 
   return (
     <div>
-      <button onClick={() => setOpen(true)} className="toggle-button">
+      <button onClick={() => setOpen(true)} className="sidebar__toggle__open">
         Open Sidebar
       </button>
-      {open && <div className="backdrop" />}
+      {open && <div className="sidebar__backdrop" />}
 
-      <div ref={sidebarRef} className={`sidebar ${open ? "open" : ""}`}>
+      <div ref={sidebarRef} className={`${open ? "sidebar__opened" : "sidebar"}`}>
         <button
           onClick={() => setOpen(false)}
-          className="toggle-button__inside"
+          className="sidebar__toggle__close"
         >
           Close
         </button>

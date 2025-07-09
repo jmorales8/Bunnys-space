@@ -26,52 +26,48 @@
     transition: 0.4s;
     &:hover {
       background-color: $light-bg-color3;
-      opacity: .5;
+      opacity: 0.5;
     }
     &s {
       display: flex;
       flex-direction: column;
-
     }
   }
-}
-
-.sidebar.open {
-  left: 0;
-  box-shadow: 12px 0 12px rgba(0, 0, 0, 0.2);
-}
-
-.backdrop {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-}
-
-.page-content {
-  padding: 20px;
-}
-
-.toggle-button {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 999; // ensures it stays above most elements
-  padding: 10px 16px;
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  &__inside {
-    @extend .toggle-button;
-    position: static;
-    padding: 16px 50px;
-    margin: 20px;
+  &__opened {
+    @extend .sidebar;
+    left: 0;
+    box-shadow: 12px 0 12px rgba(0, 0, 0, 0.2);
+  }
+  &__backdrop {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+  &__toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    padding: 10px 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    &__close {
+      @extend .sidebar__toggle;
+      position: static;
+      padding: 16px 50px;
+      margin: 20px;
+    }
+    &__open {
+      @extend .sidebar__toggle;
+    }
   }
 }

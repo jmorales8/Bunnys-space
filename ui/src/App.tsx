@@ -26,7 +26,6 @@ function App() {
           <LoginButton />
         </div>
         <NavigationBar />
-
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Navigate replace to="/home" />} />
