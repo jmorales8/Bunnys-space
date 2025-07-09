@@ -2,49 +2,24 @@
 $baseurl: "../../public/images/";
 
 .navBar {
-  position: absolute;
-  display: flex;
-  width: 100%;
-  top: 120px;
-  justify-content: center;
-  &__content {
+  &__long {
+    position: absolute;
     display: flex;
-    width: 995px;
-    justify-content: space-around;
-  }
-  &__button {
-    &:not(:first-child)::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      height: 25px;
-      width: 1px;
-      background-color: $light-font-color1;
-    }
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
     flex-direction: column;
-    padding: 20px 69px;
-    text-decoration: none;
-    color: $light-font-color2;
-    font-weight: bolder;
-    background: transparent;
-    font-size: larger;
-    font-family: cursive;
-    &__label {
-      transition: opacity 0.4s;
-      pointer-events: none;
+    align-items: center;
+    z-index: 3;
+    background: $light-bg-color2;
+    &__content {
+      display: flex;
+      width: 995px;
+      justify-content: space-around;
     }
-    &:hover .navBar__button__label {
-      opacity: 0.5;
+    &__logo {
+      cursor: pointer;
+      margin-top: 10px;
     }
-    &__night {
-      @extend .navBar__button;
-      color: $night-font-color;
+    &__button {
       &:not(:first-child)::before {
         content: "";
         position: absolute;
@@ -53,17 +28,109 @@ $baseurl: "../../public/images/";
         transform: translateY(-50%);
         height: 25px;
         width: 1px;
-        background-color: $night-font-color2;
-
+        background-color: $light-font-color1;
+      }
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      text-decoration: none;
+      color: $light-font-color2;
+      font-weight: bolder;
+      background: transparent;
+      font-size: larger;
+      font-family: cursive;
+      &__label {
+        transition: opacity 0.4s;
+        pointer-events: none;
+      }
+      &:hover .navBar__long__button__label {
+        opacity: 0.5;
+      }
+      &__night {
+        @extend .navBar__long__button;
+        color: $night-font-color;
+        &:not(:first-child)::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 25px;
+          width: 1px;
+          background-color: $night-font-color2;
+        }
+      }
+    }
+    &__background {
+      fill: $light-bg-color2;
+      transition: 0.4s;
+      &__night {
+        fill: $night-bg-color4;
+        transition: 0.4s;
       }
     }
   }
-  &__background {
-    fill: $light-bg-color2;
-    transition: 0.4s;
-    &__night {
-      fill: $night-bg-color4;
-      transition: 0.4s;
+  &__short {
+    display: flex;
+    position: fixed;
+    z-index: 4;
+    justify-content: center;
+    top: 5px;
+    right: 47%;
+    margin-right: -56px;
+    &__logo {
+      z-index: 4;
+      cursor: pointer;
+      width: 150px;
     }
+    &__background {
+      fill: $light-bg-color2;
+      transition: 0.4s;
+      &__night {
+        fill: $night-bg-color4;
+        transition: 0.4s;
+      }
+    }
+  }
+  &__moveable {
+    width: 100%;
+    display: flex;
+    position: fixed;
+    z-index: 5;
+    justify-content: center;
+    &__background {
+      fill: $light-bg-color2;
+      transition: 0.4s;
+      position: fixed;
+      &__night {
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1059px) {
+  .navBar__long {
+    display: none;
+  }
+  .navBar__long__background {
+    display: none;
+  }
+  .header__svg__long {
+    display: none;
+  }
+}
+@media only screen and (min-width: 1060px) {
+  .navBar__short {
+    display: none;
+  }
+  .navBar__short__background {
+    display: none;
+  }
+  .header__svg__short {
+    display: none;
   }
 }
