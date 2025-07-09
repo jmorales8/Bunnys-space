@@ -29,8 +29,8 @@ export function Commissions() {
     throw new Error("DarkMode must be used within a ThemeProvider");
   }
   const { isDarkMode } = themeContext;
-  const [openedVtuber, setOpenedVtuber] = useState("");
-  const [open, setOpen] = useState(false);
+  const [openedVtuber, setOpenedVtuber] = useState<string>("");
+  const [open, setOpen] = useState<boolean>(false);
   const handleOpenedVtuber = (openedVtuber: string) => {
     setOpenedVtuber(openedVtuber);
     setOpen(true);
@@ -48,9 +48,12 @@ export function Commissions() {
           />
         </div>
       ))}
-{open && (
+      {open && (
         <div className="commissions__modal" onClick={handleClose}>
-          <div className="commissions__modal__content" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="commissions__modal__content"
+            onClick={(e) => e.stopPropagation()}
+          >
             <img
               src={`/images/com-vtubers/${openedVtuber}.png`}
               alt={openedVtuber}
