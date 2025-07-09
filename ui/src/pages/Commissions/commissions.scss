@@ -20,7 +20,7 @@
       border: none;
     }
     &:hover::after {
-      content: '';
+      content: "";
       position: absolute;
       left: -2px;
       top: -2px;
@@ -61,6 +61,33 @@
     cursor: pointer;
     border: none;
     object-fit: contain;
+    &:hover {
+      scale: 1.1;
+      transition: 0.4;
+    }
+  }
+  &__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    &__content {
+      max-height: 90vh;
+      max-width: 90vw;
+      animation: zoom 0.5s ease;
+    }
+    &__image {
+      height: 80vh;
+      width: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
   }
 }
 
@@ -69,7 +96,6 @@
     grid-template-columns: auto auto auto;
   }
 }
-
 
 @media only screen and (max-width: 1250px) {
   .commissions {
@@ -103,5 +129,16 @@
   }
   100% {
     background-position: 0 0;
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }
