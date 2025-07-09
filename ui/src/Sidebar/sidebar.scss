@@ -9,10 +9,14 @@
   z-index: 1001;
   transition: right 0.35s ease;
   transition: 0.4s;
+  &__night {
+    @extend .sidebar;
+    background: $night-bg-color4;
+  }
   &__button {
     display: flex;
     text-decoration: none;
-    color: rgb(82, 14, 40);
+    color: $light-font-color2;
     font-weight: bolder;
     background: transparent;
     font-size: larger;
@@ -32,11 +36,32 @@
       display: flex;
       flex-direction: column;
     }
+    &__night {
+      @extend .sidebar__button;
+      color: $night-font-color2;
+      background-color: $night-bg-color4;
+      transition: 0.4s;
+      &:hover {
+        background-color: $night-bg-color7;
+        opacity: 0.5;
+      }
+    }
   }
   &__opened {
     @extend .sidebar;
     left: 0;
     box-shadow: 12px 0 12px rgba(0, 0, 0, 0.2);
+    &__night {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 320px;
+      height: 100%;
+      background-color: $night-bg-color4;
+      box-shadow: 12px 0 12px rgba(0, 0, 0, 0.2);
+      z-index: 1001;
+      transition: 0.4s;
+    }
   }
   &__backdrop {
     content: "";

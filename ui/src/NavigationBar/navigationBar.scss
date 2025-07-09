@@ -73,6 +73,10 @@ $baseurl: "../../public/images/";
         transition: 0.4s;
       }
     }
+    &__night {
+      @extend .navBar__long;
+      background: $night-bg-color4;
+    }
   }
   &__short {
     display: flex;

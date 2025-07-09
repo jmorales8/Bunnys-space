@@ -23,7 +23,7 @@ export function NavigationBar() {
     throw new Error("DarkMode must be used within a ThemeProvider");
   }
   const { isDarkMode } = themeContext;
-    const [scrollY, setScrollY] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -33,7 +33,7 @@ export function NavigationBar() {
   }, []);
   return (
     <>
-      <div className="navBar__long"
+      <div className={isDarkMode ? "navBar__long__night" : "navBar__long"}
         style={{
           flexDirection: `${scrollY <= 100 ? "column" : "row"}`,
           position: `${scrollY <= 100 ? "absolute" : "fixed"}`,
