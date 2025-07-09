@@ -18,7 +18,7 @@
       float: right;
       top: 0;
       right: 0;
-      z-index: 5;
+      z-index: 4;
       &:hover {
         right: 5px;
         transition: 0.1s;
@@ -107,5 +107,10 @@ img:hover {
 
   40%, 60% {
     transform: rotate(0deg);
+  }
+}
+@media only screen and (max-width: 550px) {
+  .app {
+    margin-bottom: 0;
   }
 }

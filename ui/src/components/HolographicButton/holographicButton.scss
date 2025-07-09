@@ -1,0 +1,81 @@
+.holographic__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  text-decoration: none;
+}
+
+.holographic__card {
+  width: auto;
+  padding: 0px 15px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  text-decoration: none;
+  font-size: 20px;
+  z-index: 2;
+
+  // Default (regular mode)
+  color: $light-font-color1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    transform: rotate(-45deg);
+    transition: all 0.5s ease;
+    opacity: 0;
+    background: linear-gradient(
+      0deg,
+      transparent,
+      transparent 30%,
+      rgba(255, 0, 144, 0.3)
+    );
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 0, 144, 0.3);
+
+    &::before {
+      opacity: 1;
+      transform: rotate(-45deg) translateY(104%);
+    }
+  }
+
+  // 🌓 Night mode overrides
+  &.night-mode {
+    color: $night-font-color;
+    &::before {
+      background: linear-gradient(
+        0deg,
+        transparent,
+        transparent 30%,
+        $night-bg-color2
+      );
+    }
+
+    &:hover {
+      box-shadow: 0 0 20px $night-bg-color2;
+    }
+  }
+}
+
+@media screen and (min-width: 550px) {
+  .holographic__card {
+    padding: none;
+
+    h2 {
+      font-size: 20px;
+    }
+  }
+}

@@ -75,12 +75,13 @@ $baseurl: "../../public/images/";
     }
   }
   &__short {
-    width: 100%;
     display: flex;
     position: fixed;
-    z-index: 5;
+    z-index: 4;
     justify-content: center;
     top: 5px;
+    right: 47%;
+    margin-right: -56px;
     &__logo {
       z-index: 4;
       cursor: pointer;
