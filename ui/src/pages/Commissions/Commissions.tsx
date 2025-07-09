@@ -2,26 +2,14 @@ import { useContext, useState } from "react";
 import "./commissions.scss";
 import { ThemeContext } from "../../context/ThemeContext";
 const vtubers = [
-  "Pillow",
-  "AkumaMiko",
-  "Anime4Days",
-  "Cecilia",
-  "BelleCoyote",
-  "Celeste",
-  "Goro",
-  "Liari",
-  "Hanakyo",
-  "Kyoharu",
-  "MissMidgely",
-  "MissMaple",
-  "KillahOrki",
-  "Sprixer",
-  "Misti",
-  "Yozzy",
-  "Natkiki",
-  "RelariaStorm",
-  "YukiShima",
-  "Sugie",
+  "Pillow", "akuma_miko", "anime4days",
+  "Atlamoon", "Azura", "BelleCoyote",
+  "Cinnafaun", "Feyre", "Fuoca",
+  "Hanakyo", "Hazy", "Maxxi",
+  "Miino", "Miss_Maple", "Nico",
+  "Nikki", "Aira", "Goro",
+  "Sasi", "sunnii" , "YukiShima",
+  "Papa_Lemon", "Phoenyx", "Reila",
 ];
 export function Commissions() {
   const themeContext = useContext(ThemeContext);
