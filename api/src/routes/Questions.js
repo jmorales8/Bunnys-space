@@ -30,6 +30,7 @@ router.post('/questions', auth, (req, res) => {
     });
   });
 });
+
 router.post('/questions/:questionId/responses', auth, (req, res) => {
   const { responseText } = req.body;
   const questionID = parseInt(req.params.questionId, 10); // Convert to number
