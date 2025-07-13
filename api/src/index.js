@@ -156,26 +156,6 @@ app.delete("/user", (req, res) => {
   res.send({ "Deleted: ": userValue });
 });
 
-app.get("/questions", (req, res) => {
-  user_db.all("SELECT * FROM Questions", [], (err, rows) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-      return;
-    }
-    res.json({ questions: rows });
-  });
-});
-
-app.get("/responses", (req, res) => {
-  user_db.all("SELECT * FROM Responses", [], (err, rows) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-      return;
-    }
-    res.json({ responses: rows });
-  });
-});
-
 // Use the authentication routes
 app.use("/api/auth", authRoutes);
 app.use("/api/auth", questionRoutes);
