@@ -11,7 +11,7 @@ interface QuestionCardProps {
   question: string;
   rabbitReply?: string | null;
   otherReplies: otherReplyProps[];
-  date: Date;
+  date: string;
 }
 
 export function QuestionCard({
@@ -33,7 +33,7 @@ export function QuestionCard({
           <span className="card__question__username">
             <AuroraText text={`@ ${username} asks:`} color1="#FF007F" color2="rgb(243, 114, 208)" color3="#FF007F" />
           </span>
-          <span className="card__date">{date.toLocaleDateString()}</span>
+          <span className="card__date">{date}</span>
         </div>
 
         <div className={isRepliesOpen || isKeyboardOpen ? "card__body-open" : "card__body"}>

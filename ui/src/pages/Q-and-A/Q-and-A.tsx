@@ -1,60 +1,72 @@
+import { useEffect, useState } from "react";
 import "./q-and-a.scss";
 import { QuestionCard } from "./QuestionCard/QuestionCard";
+import { text } from "stream/consumers";
 
-interface otherRepliesProps {
-  username: string;
-  response: string;
+export interface otherRepliesProps {
+  responseGiven: number;
+  responseId: number;
+  responseText: string;
+  responseUsername: string;
 }
 
-interface Q_And_A_MockDataProps {
+export interface Q_And_A_MockDataProps {
+  userId: number;
   username: string;
-  question: string;
+  questionAsked: string;
+  questionId: number;
+  questionText: string;
   rabbitReply?: string | null;
-  otherReplies?: otherRepliesProps[] | null;
-  date: Date;
+  responses?: otherRepliesProps[] | null;
 }
 
-const Q_And_A_MockData: Q_And_A_MockDataProps[] = [
-  {
-    username: "Sonic123",
-    question: "How often do you shave your butthole",
-    rabbitReply: "a lil bit",
-    otherReplies: [
-      { username: "plantGuy42", response: "I use glue." },
-      { username: "gardenQueen", response: "I prune mine weekly." },
-    ],
-    date: new Date("2025-06-14"),
-  },
-  {
-    username: "Shadow321",
-    question: "What do you do when life gives you lemons?",
-    rabbitReply: null,
-    otherReplies: null,
-    date: new Date("2025-06-14"),
-  },
-];
+type ApiResponse = {
+  Q_A: {
+    questions: Q_And_A_MockDataProps[];
+  };
+};
+
 export function QAndA() {
+  const [Q_A, setQA] = useState<Q_And_A_MockDataProps[]>([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/Q-A");
+        const result: ApiResponse = await response.json();
+        setQA(result.Q_A.questions);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <div className="QA">
-      {Q_And_A_MockData.map((data) => {
-        const { username, question, rabbitReply, otherReplies, date } = data;
-
-        return (
-          <QuestionCard
-            key={username + date.toISOString()}
-            username={username}
-            question={question}
-            rabbitReply={rabbitReply}
-            otherReplies={
-              otherReplies?.map((reply) => ({
-                username: reply.username,
-                text: reply.response,
-              })) ?? []
-            }
-            date={date}
-          />
-        );
-      })}
+      {loading ? (
+        <>loading</>
+      ) : (
+        Q_A.map((question) => {
+          const {questionId, username, questionText, questionAsked, responses} = question;
+          return (
+            <QuestionCard
+              key={questionId}
+              username={username}
+              question={questionText}
+              date={questionAsked}
+              rabbitReply={"bruh"}
+              otherReplies={
+                responses?.map((response) => ({
+                  username: response.responseUsername,
+                  text: response.responseText,
+                })) ?? []
+              }
+            />
+          );
+        })
+      )}
     </div>
   );
 }
