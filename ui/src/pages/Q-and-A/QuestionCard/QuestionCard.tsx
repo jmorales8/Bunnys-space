@@ -105,7 +105,7 @@ export function QuestionCard({
         >
           {isKeyboardOpen && (
             <div className="keyboard-content">
-              <div style={{ marginTop: "5px" }}>
+              <div style={{ marginTop: "5px", fontWeight: "bolder" }}>
                 <AuroraText text="Want to input your own thoughts??" color1="darkgreen" color2="rgb(82, 14, 40)" color3="darkgreen"/>
               </div>
               <textarea
