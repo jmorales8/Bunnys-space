@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import LiquidButton from "../../../components/LiquidButton/LiquidButton";
+import { PinkInput } from "../../../components/PinkInput/PinkInput";
 interface SignUpProps {
   isDarkmode: boolean;
 }
 
-export function SignUp({isDarkmode}: SignUpProps) {
+export function SignUp({ isDarkmode }: SignUpProps) {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -53,44 +54,30 @@ export function SignUp({isDarkmode}: SignUpProps) {
   };
   return (
     <>
-      <h3 className={isDarkmode ? "login__header__night": "login__header"}>New to the website?! Sign Up!!!</h3>
+      <h3 className={isDarkmode ? "login__header__night" : "login__header"}>
+        New to the website?! Sign Up!!!
+      </h3>
       <img src="/images/aaaa-scream.gif" className="login__scream" />
-      <div className="col-3 input-effect">
-        <input
-          className={`${isDarkmode ? "effect-20__night login__input__night": "effect-20"} ${username ? "has-content" : ""} login__input`}
-          type="text"
-          value={username}
-          onChange={handleUsernameChange}
-          placeholder="Username"
-        />
-        <span className="focus-border">
-          <i></i>
-        </span>
-      </div>
-      <div className="col-3 input-effect">
-        <input
-          className={`${isDarkmode ? "effect-20__night login__input__night": "effect-20"} ${email ? "has-content" : ""} login__input`}
-          type="text"
-          value={email}
-          onChange={handleEmailChange}
-          placeholder="Email"
-        />
-        <span className="focus-border">
-          <i></i>
-        </span>
-      </div>
-      <div className="col-3 input-effect">
-        <input
-          className={`${isDarkmode ? "effect-20__night login__input__night" : "effect-20 login__input"} ${password ? "has-content" : ""}`}
-          type="text"
-          value={password}
-          onChange={handlePasswordChange}
-          placeholder="Password"
-        />
-        <span className="focus-border">
-          <i></i>
-        </span>
-      </div>
+      <PinkInput
+        state={isDarkmode}
+        value={username}
+        onChange={handleUsernameChange}
+        placeholder="Username"
+      />
+      <PinkInput
+        state={isDarkmode}
+        value={email}
+        onChange={handleEmailChange}
+        placeholder="Email"
+      />
+
+      <PinkInput
+        state={isDarkmode}
+        value={password}
+        onChange={handlePasswordChange}
+        placeholder="Password"
+      />
+
       <LiquidButton
         text="Create An Account!!!"
         onClick={fetchRegister}

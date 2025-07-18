@@ -79,21 +79,7 @@ export const SvgArch = ({ colorMode }: SmoothSvgArch) => {
           d={`M0,25 Q50,10 100,25 L100,0 L0,0 Z`}
         />
       </svg>
-      <svg
-        viewBox="0 0 100 25"
-        preserveAspectRatio="none"
-        style={{width: "100%", height: "290px", position: "fixed", zIndex: "2"}}
-        className="header__svg__short"
-      >
-        <path
-          className={
-            colorMode
-              ? "navBar__short__background__night"
-              : "navBar__short__background"
-          }
-          d="M0,10 L100,10 L100,0 L0,0 Z"
-        />
-      </svg>
+      <div className={colorMode ? "navBar__short__moveable__night" : "navBar__short__moveable"}/>
       <svg
         viewBox="0 0 100 25"
         preserveAspectRatio="none"

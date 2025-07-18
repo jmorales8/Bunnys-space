@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
 import LiquidButton from "../../../components/LiquidButton/LiquidButton";
 import { ThemeContext } from "../../../context/ThemeContext";
+import { PinkInput } from "../../../components/PinkInput/PinkInput";
 
 interface SignInProps {
   isDarkmode: boolean;
 }
-export function SignIn({isDarkmode}: SignInProps) {
+export function SignIn({ isDarkmode }: SignInProps) {
   const [userValue, setUserValue] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loginMessage, setLoginMessage] = useState<string>("");
@@ -53,38 +54,33 @@ export function SignIn({isDarkmode}: SignInProps) {
   return (
     <>
       <>
-      <h3 className={isDarkmode ? "login__header__night__1" : "login__header__1"}>Have An Account Already?! Sign In!!!</h3>
+        <h3
+          className={
+            isDarkmode ? "login__header__night__1" : "login__header__1"
+          }
+        >
+          Have An Account Already?! Sign In!!!
+        </h3>
         <img src="/images/terraria-bunny1.gif" className="login__bunnies" />
-        <div className="col-3 input-effect">
-          <input
-            className={`${isDarkmode ? "effect-20__night login__input__night": "effect-20"} ${userValue ? "has-content" : ""} login__input`}
-            type="text"
-            value={userValue}
-            onChange={handleUserValueChange}
-            placeholder="Username or Email"
-          />
-          <span className="focus-border">
-            <i></i>
-          </span>
-        </div>
+        <PinkInput
+          state={isDarkmode}
+          value={userValue}
+          onChange={handleUserValueChange}
+          placeholder="Username or Email"
+        />
+
         <img
           src="/images/terreria-bunnyFLIPPEd.gif"
           className="login__bunnies"
         />
-        <div className="col-3 input-effect">
-          <input
-            className={`${isDarkmode ? "effect-20__night login__input__night": "effect-20"} ${password ? "has-content" : ""} login__input`}
-            type="text"
-            value={password}
-            onChange={handlePasswordChange}
-            placeholder="Password"
-          />
-          <span className="focus-border">
-            <i></i>
-          </span>
-        </div>
+        <PinkInput
+          state={isDarkmode}
+          value={password}
+          onChange={handlePasswordChange}
+          placeholder="Password"
+        />
       </>
-       <LiquidButton
+      <LiquidButton
         text="Sign in!!!"
         onClick={fetchRegister}
         disabled={isDisabled}
