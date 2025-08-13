@@ -11,6 +11,7 @@ import questionRoutes from "./routes/Questions.js";
 import User from "./models/Users.js";
 import { commission_db } from "./factorydb/Commissiondb.js";
 import { discord_db } from "./factorydb/Discorddb.js";
+import commissionsRoutes from "./routes/Commissions.js";
 
 // Load environment variables
 dotenv.config();
@@ -23,7 +24,7 @@ app.use(bodyParser.json());
 
 // Use the authentication routes
 app.use("/auth", authRoutes);
-
+app.use("/commissions", commissionsRoutes);
 // Example of a protected route
 app.get("/protected", auth, (req, res) => {
   res.send({ message: "This is a protected route", user: req.user });
