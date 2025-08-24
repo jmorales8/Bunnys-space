@@ -1,15 +1,32 @@
 import { useContext, useState } from "react";
-import "./commissions.scss";
 import { ThemeContext } from "../../context/ThemeContext";
+import { Link } from "react-router-dom";
+import { LinkSplit } from "../../components/LinkSplit/LinkSplit";
 const vtubers = [
-  "Pillow", "akuma_miko", "anime4days",
-  "Atlamoon", "Azura", "BelleCoyote",
-  "Cinnafaun", "Feyre", "Fuoca",
-  "Hanakyo", "Hazy", "Maxxi",
-  "Miino", "Miss_Maple", "Nico",
-  "Nikki", "Aira", "Goro",
-  "Sasi", "sunnii" , "YukiShima",
-  "Papa_Lemon", "Phoenyx", "Reila",
+  "Pillow",
+  "akuma_miko",
+  "anime4days",
+  "Atlamoon",
+  "Azura",
+  "BelleCoyote",
+  "Cinnafaun",
+  "Feyre",
+  "Fuoca",
+  "Hanakyo",
+  "Hazy",
+  "Maxxi",
+  "Miino",
+  "Miss_Maple",
+  "Nico",
+  "Nikki",
+  "Aira",
+  "Goro",
+  "Sasi",
+  "sunnii",
+  "YukiShima",
+  "Papa_Lemon",
+  "Phoenyx",
+  "Reila",
 ];
 export function Commissions() {
   const themeContext = useContext(ThemeContext);
@@ -25,31 +42,48 @@ export function Commissions() {
   };
   const handleClose = () => setOpen(false);
   return (
-    <div className="commissions">
-      {vtubers.map((vtuber) => (
-        <div className={isDarkMode ? "border__night" : "border"} key={vtuber}>
+    <>
+      <span className="commissions__apply">
+        <Link to="/comission-apply" className="commissions__apply__link">
           <img
-            className="commissions__vtubers"
-            alt={vtuber}
-            src={`/images/com-vtubers/${vtuber}.png`}
-            onClick={() => handleOpenedVtuber(vtuber)}
+            src="/images/erwin_goober.gif"
+            alt="erwin"
+            style={{ width: "50px", paddingRight: "10px"}}
           />
-        </div>
-      ))}
-      {open && (
-        <div className="commissions__modal" onClick={handleClose}>
-          <div
-            className="commissions__modal__content"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <LinkSplit text=" Want a commission? " />
+          <img
+            src="/images/erwin_goober.gif"
+            alt="erwin"
+            style={{ width: "50px", paddingLeft: "10px"}}
+          />
+        </Link>
+      </span>
+      <div className="commissions">
+        {vtubers.map((vtuber) => (
+          <div className={isDarkMode ? "border__night" : "border"} key={vtuber}>
             <img
-              src={`/images/com-vtubers/${openedVtuber}.png`}
-              alt={openedVtuber}
-              className="commissions__modal__image"
+              className="commissions__vtubers"
+              alt={vtuber}
+              src={`/images/com-vtubers/${vtuber}.png`}
+              onClick={() => handleOpenedVtuber(vtuber)}
             />
           </div>
-        </div>
-      )}
-    </div>
+        ))}
+        {open && (
+          <div className="commissions__modal" onClick={handleClose}>
+            <div
+              className="commissions__modal__content"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={`/images/com-vtubers/${openedVtuber}.png`}
+                alt={openedVtuber}
+                className="commissions__modal__image"
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 }

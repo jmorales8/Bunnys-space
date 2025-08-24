@@ -14,15 +14,14 @@ import AudioPlayer from "./components/Sound/Player";
 import FloatingDrawer from "./components/FloatingDrawer/FloatingDrawer";
 import { Login } from "./pages/Login/Login";
 import { QAndA } from "./pages/Q-and-A/Q-and-A";
+import { Apply } from "./pages/Commissions/Apply/Apply";
 
 function App() {
   return (
     <ThemeProvider>
       <AppContent>
         <div className="app__head">
-          <FloatingDrawer>
-            <AudioPlayer />
-          </FloatingDrawer>
+
           <LoginButton />
         </div>
         <NavigationBar />
@@ -33,6 +32,7 @@ function App() {
           <Route path="/lore" element={<Lore />} />
           <Route path="/twitch" element={<Twitch />} />
           <Route path="/commissions" element={<Commissions />} />
+          <Route path="/comission-apply" element={<Apply />} />
           <Route path="/discord" element={<Discord />} />
           <Route path="/Q-and-A" element={<QAndA />} />
         </Routes>
