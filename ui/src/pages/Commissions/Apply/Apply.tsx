@@ -136,7 +136,7 @@ export function Apply() {
     <form
       onSubmit={handleSubmit}
       encType="multipart/form-data"
-      style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "center" }}
+      style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "center", marginBottom: "120px" }}
     >
       <div style={{ display: "flex", flexDirection: "column", width: "min(600px, 90%)", alignItems: "center"}}>
         How should we contact you?!
@@ -172,8 +172,8 @@ export function Apply() {
       {/* Map all file inputs & previews */}
       {FILE_FIELDS.map(({ key, label, required }) => (
         <div key={key} style={{ width: "min(800px, 90%)", display: "flex", flexDirection: "column", gap: 8, alignItems: "center" }}>
-          <label>
-            {label}
+          <label className="custom-file-upload">
+              {label}
             <input
               type="file"
               required={!!required}

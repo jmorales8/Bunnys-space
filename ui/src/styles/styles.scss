@@ -1,6 +1,7 @@
 // NavBar
 @import "../NavigationBar/navigationBar.scss";
 @import "../Sidebar/sidebar.scss";
+
 //Footer
 @import "../Footer/footer.scss";
 
@@ -32,6 +33,10 @@
 //Q-And-A
 @import "../pages/Q-and-A/q-and-a.scss";
 @import "../pages/Q-and-A/QuestionCard/questionCard.scss";
+
+// Commissions
+@import "../pages/Commissions/commissions.scss";
+@import "../pages/Commissions/Apply/apply.scss";
 
 // Login
 @import "../pages/Login/login.scss";

@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import "./commissions.scss";
 import { ThemeContext } from "../../context/ThemeContext";
 import { Link } from "react-router-dom";
 import { LinkSplit } from "../../components/LinkSplit/LinkSplit";
