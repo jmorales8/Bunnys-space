@@ -21,7 +21,6 @@ function App() {
     <ThemeProvider>
       <AppContent>
         <div className="app__head">
-
           <LoginButton />
         </div>
         <NavigationBar />

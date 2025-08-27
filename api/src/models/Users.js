@@ -4,11 +4,9 @@ import bcrypt from "bcryptjs";
 const User = {
   create: (username, email, password, callback) => {
     const hashedPassword = bcrypt.hashSync(password, 10);
-    const hashedEmail = bcrypt.hashSync(email, 10);
-    console.log("Creating user:", username);
     user_db.run(
       "INSERT INTO Users (username, email, password) VALUES (?, ?, ?)",
-      [username, hashedEmail, hashedPassword],
+      [username, email, hashedPassword], // store email in plaintext
       function (err) {
         if (err) {
           console.error("Error inserting user:", err);
@@ -43,9 +41,18 @@ const User = {
       callback(err, row);
     });
   },
+  findByUsernameOrEmail: (userValue, callback) => {
+    const sql = userValue.includes("@")
+      ? "SELECT * FROM Users WHERE email = ?"
+      : "SELECT * FROM Users WHERE username = ?";
+    user_db.get(sql, [userValue], (err, row) => {
+      if (err) return callback(err);
+      callback(null, row);
+    });
+  },
   getQuestionsAndAnswers(callback) {
-  user_db.all(
-    `SELECT
+    user_db.all(
+      `SELECT
       Questions.questionID,
       Questions.questionText,
       Questions.questionAsked,
@@ -62,41 +69,41 @@ const User = {
     JOIN Users AS askers ON Questions.userID = askers.userID
     LEFT JOIN Responses ON Responses.questionID = Questions.questionID
     LEFT JOIN Users AS responders ON Responses.userID = responders.userID`,
-    [],
-    (err, rows) => {
-      if (err) {
-        callback(err);
-        return;
-      }
-
-      const questionsMap = {};
-
-      for (const row of rows) {
-        if (!questionsMap[row.questionID]) {
-          questionsMap[row.questionID] = {
-            userId: row.questionUserID,
-            username: row.questionUsername,
-            questionId: row.questionID,
-            questionText: row.questionText,
-            questionAsked: row.questionAsked,
-            responses: [],
-          };
+      [],
+      (err, rows) => {
+        if (err) {
+          callback(err);
+          return;
         }
 
-        if (row.responseID) {
-          questionsMap[row.questionID].responses.push({
-            responseText: row.responseText,
-            responseId: row.responseID,
-            responseUsername: row.responseUsername, // this should now work
-            responseGiven: row.responseGiven,
-          });
-        }
-      }
+        const questionsMap = {};
 
-      callback(null, { questions: Object.values(questionsMap) });
-    }
-  );
-},
+        for (const row of rows) {
+          if (!questionsMap[row.questionID]) {
+            questionsMap[row.questionID] = {
+              userId: row.questionUserID,
+              username: row.questionUsername,
+              questionId: row.questionID,
+              questionText: row.questionText,
+              questionAsked: row.questionAsked,
+              responses: [],
+            };
+          }
+
+          if (row.responseID) {
+            questionsMap[row.questionID].responses.push({
+              responseText: row.responseText,
+              responseId: row.responseID,
+              responseUsername: row.responseUsername, // this should now work
+              responseGiven: row.responseGiven,
+            });
+          }
+        }
+
+        callback(null, { questions: Object.values(questionsMap) });
+      }
+    );
+  },
   getAllInfo: (callback) => {
     user_db.all(
       `

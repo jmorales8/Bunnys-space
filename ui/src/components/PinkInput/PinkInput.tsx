@@ -4,6 +4,7 @@ interface PinkInputProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
+  type?: string;
 }
 
 export function PinkInput({
@@ -11,6 +12,7 @@ export function PinkInput({
   value,
   onChange,
   placeholder,
+  type,
 }: PinkInputProps) {
   return (
     <div className="col-3 input-effect">
@@ -18,7 +20,7 @@ export function PinkInput({
         className={`${
           state ? "effect-20__night login__input__night" : "effect-20"
         } ${value ? "has-content" : ""} login__input`}
-        type="text"
+        type={type == undefined ? "text" : "password"}
         value={value}
         onChange={onChange}
         placeholder={placeholder}

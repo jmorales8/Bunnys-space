@@ -1,91 +1,55 @@
-import React, { useState, useContext } from "react";
+// src/pages/SignIn/SignIn.tsx
+import React, { useState } from "react";
 import LiquidButton from "../../../components/LiquidButton/LiquidButton";
-import { ThemeContext } from "../../../context/ThemeContext";
 import { PinkInput } from "../../../components/PinkInput/PinkInput";
+import { useAuth } from "../../../auth/AuthProvider";
 
-interface SignInProps {
-  isDarkmode: boolean;
-}
+interface SignInProps { isDarkmode: boolean; }
+
 export function SignIn({ isDarkmode }: SignInProps) {
-  const [userValue, setUserValue] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [loginMessage, setLoginMessage] = useState<string>("");
-  const isDisabled = (userValue && password) == "";
+  const { login, state } = useAuth();
+  const [userValue, setUserValue] = useState("");
+  const [password, setPassword] = useState("");
+  const [msg, setMsg] = useState("");
 
-  const handleUserValueChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setUserValue(event.target.value);
-  };
+  const disabled = !userValue || !password || state === "loading";
 
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
-
-  const fetchRegister = async () => {
+  const onSubmit = async () => {
+    setMsg("");
     try {
-      const response = await fetch("/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json", // Set Content-Type header
-        },
-        body: JSON.stringify({
-          userValue: userValue,
-          password: password,
-        }),
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const result = await response.json();
-      if (result.token) {
-        setLoginMessage(`You logged in as ${userValue}`);
-      } else {
-        setLoginMessage("Login successful, but no token received.");
-      }
-
-      console.log("Login successful:", result);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      setLoginMessage("Login failed. Please check your credentials.");
+      await login({ userValue, password }); // sets cookie server-side, updates context
+      setMsg(`You logged in as ${userValue}`);
+    } catch (e: any) {
+      setMsg(e.message || "Login failed. Please check your credentials.");
     }
   };
 
   return (
     <>
-      <>
-        <h3
-          className={
-            isDarkmode ? "login__header__night__1" : "login__header__1"
-          }
-        >
-          Have An Account Already?! Sign In!!!
-        </h3>
-        <img src="/images/terraria-bunny1.gif" className="login__bunnies" />
-        <PinkInput
-          state={isDarkmode}
-          value={userValue}
-          onChange={handleUserValueChange}
-          placeholder="Username or Email"
-        />
+      <h3 className={isDarkmode ? "login__header__night__1" : "login__header__1"}>
+        Have An Account Already?! Sign In!!!
+      </h3>
+      <img src="/images/terraria-bunny1.gif" className="login__bunnies" />
 
-        <img
-          src="/images/terreria-bunnyFLIPPEd.gif"
-          className="login__bunnies"
-        />
-        <PinkInput
-          state={isDarkmode}
-          value={password}
-          onChange={handlePasswordChange}
-          placeholder="Password"
-        />
-      </>
-      <LiquidButton
-        text="Sign in!!!"
-        onClick={fetchRegister}
-        disabled={isDisabled}
+      <PinkInput
+        state={isDarkmode}
+        value={userValue}
+        onChange={(e) => setUserValue(e.target.value)}
+        placeholder="Username or Email"
       />
-      {loginMessage && <div className="login__message">{loginMessage}</div>}
+
+      <img src="/images/terreria-bunnyFLIPPEd.gif" className="login__bunnies" />
+
+      <PinkInput
+        state={isDarkmode}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+        type="password"
+      />
+
+      <LiquidButton text="Sign in!!!" onClick={onSubmit} disabled={disabled} />
+      {msg && <div className="login__message">{msg}</div>}
     </>
   );
 }

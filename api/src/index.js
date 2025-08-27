@@ -12,13 +12,19 @@ import User from "./models/Users.js";
 import { commission_db } from "./factorydb/Commissiondb.js";
 import { discord_db } from "./factorydb/Discorddb.js";
 import commissionsRoutes from "./routes/Commissions.js";
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 // Load environment variables
 dotenv.config();
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-
+app.use(cors({
+  origin: 'http://localhost:3000', // your frontend origin
+  credentials: true               // allow cookies to be sent
+}));
+app.use(cookieParser());
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
 

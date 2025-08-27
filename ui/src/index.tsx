@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AuthProvider } from "./auth/AuthProvider";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
@@ -14,7 +15,9 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <Router basename={process.env.PUBLIC_URL}>
-        <App />
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </Router>
     </QueryClientProvider>
   </React.StrictMode>

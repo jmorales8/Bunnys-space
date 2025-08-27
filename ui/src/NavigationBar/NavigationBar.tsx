@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { SvgArch } from "./SvgArch";
 import { SidebarOverlay } from "../Sidebar/Sidebar";
+import { useAuth } from "../auth/AuthProvider";
 
 interface NavButtons {
   label: string;
@@ -18,6 +19,7 @@ export const navButtons: NavButtons[] = [
 ];
 
 export function NavigationBar() {
+  const { state, user, logout } = useAuth();
   const themeContext = useContext(ThemeContext);
   if (!themeContext) {
     throw new Error("DarkMode must be used within a ThemeProvider");
@@ -59,6 +61,18 @@ export function NavigationBar() {
         </div>
       </div>
       <div className="navBar__short">
+        {state === "loading" && <span>…</span>}
+        {state === "authenticated" && user && (
+          <div className="nav__right">
+            <span>Logged in as {user.username}</span>
+            <button onClick={logout}>Logout</button>
+          </div>
+        )}
+        {state === "anonymous" && (
+          <div className="nav__right">
+            anonymous
+          </div>
+        )}
         <Link to="/home">
           <img src="images/Pillow_Logo.png" alt="pill_logo" className="navBar__short__logo" />
         </Link>
