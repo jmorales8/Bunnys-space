@@ -1,12 +1,27 @@
-input[type="file"] {
-  display: none;
+.apply {
+  &__header {
+    font-family: "Wendy One";
+    font-size: x-large;
+    color: $light-font-color2;
+    transition: 0.4s;
+    &__night {
+      @extend .apply__header;
+      color: $night-font-color2;
+    }
+  }
 }
 
-.custom-file-upload {
-  border: 1px solid $light-font-color2;
-  background: $light-bg-color2;
-  border-radius: 10px;
-  display: inline-block;
-  padding: 6px 12px;
-  cursor: pointer;
+/* MOBILE view */
+@media only screen and (max-width: 1060px) {
+
+  .apply {
+    &__info {
+      &__long {
+        display: none !important;
+      }
+      &__short {
+        display: flex !important;
+      }
+    }
+  }
 }
