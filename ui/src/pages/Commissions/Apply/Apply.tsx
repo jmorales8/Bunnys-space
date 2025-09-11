@@ -1,6 +1,8 @@
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { PinkInput } from "../../../components/PinkInput/PinkInput";
 import { ThemeContext } from "../../../context/ThemeContext";
+import { ReusableFileInput } from "../../../components/FileInputs/FileInputs"; // <-- import
+import LiquidButton from "../../../components/LiquidButton/LiquidButton";
 
 type FileField =
   | "refImageOne"
@@ -25,18 +27,8 @@ export function Apply() {
   const [description, setDescription] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
-  // One previews object instead of 6 states
-  const [previews, setPreviews] = useState<Record<FileField, string | undefined>>({
-    refImageOne: undefined,
-    refImageTwo: undefined,
-    refImageThree: undefined,
-    poseImageOne: undefined,
-    poseImageTwo: undefined,
-    extraImage: undefined,
-  });
-
-  // Single ref map for all inputs (filled via callback refs)
-  const fileRefs = useRef<Record<FileField, HTMLInputElement | null>>({
+  // Single source of truth for selected files
+  const [files, setFiles] = useState<Record<FileField, File | null>>({
     refImageOne: null,
     refImageTwo: null,
     refImageThree: null,
@@ -49,24 +41,6 @@ export function Apply() {
   if (!themeContext) throw new Error("DarkMode must be used within a ThemeProvider");
   const { isDarkMode } = themeContext;
 
-  // Generic file change handler
-  const handleFileChange = (field: FileField) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    setPreviews((prev) => {
-      // revoke previous URL for this field (avoid leaks)
-      if (prev[field]) URL.revokeObjectURL(prev[field]!);
-      return { ...prev, [field]: file ? URL.createObjectURL(file) : undefined };
-    });
-  };
-
-  // Clean up all object URLs on unmount
-  useEffect(() => {
-    return () => {
-      Object.values(previews).forEach((url) => url && URL.revokeObjectURL(url));
-    };
-  }, [previews]);
-
-  // Reusable class for text inputs
   const inputClass = useMemo(
     () =>
       `${isDarkMode ? "effect-20__night login__input__night" : "effect-20"} ${
@@ -75,26 +49,46 @@ export function Apply() {
     [isDarkMode]
   );
 
+  const hasFile = (field: FileField) => !!files[field];
+
+  const canShow = (field: FileField) => {
+    switch (field) {
+      case "refImageOne":
+        return true;
+      case "refImageTwo":
+        return hasFile("refImageOne");
+      case "refImageThree":
+        return hasFile("refImageTwo");
+      case "poseImageOne":
+        return hasFile("refImageOne");
+      case "poseImageTwo":
+        return hasFile("poseImageOne");
+      case "extraImage":
+        return hasFile("refImageOne");
+      default:
+        return true;
+    }
+  };
+
+  const formValid =
+    email.trim() !== "" &&
+    OC.trim() !== "" &&
+    description.trim() !== "" &&
+    hasFile("refImageOne");
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Ensure required file present
-    const requiredRef = fileRefs.current.refImageOne;
-    if (!requiredRef?.files?.[0]) {
-      alert("Please select Reference Image 1 (required).");
-      return;
-    }
+    if (!formValid) return;
 
     const fd = new FormData();
-    // Text fields (names must match backend)
     fd.set("email", email);
     fd.set("commissionOC", OC);
     fd.set("commissionText", description);
-    // If you have auth: fd.set("userID", String(userId));
 
-    // Append files by iterating config
+    // Append files that exist
     for (const { key } of FILE_FIELDS) {
-      const f = fileRefs.current[key]?.files?.[0];
+      const f = files[key];
       if (f) fd.append(key, f);
     }
 
@@ -107,22 +101,16 @@ export function Apply() {
 
       alert("Commission submitted!");
 
-      // Reset form
       setEmail("");
       setOC("");
       setDescription("");
-      FILE_FIELDS.forEach(({ key }) => {
-        const ref = fileRefs.current[key];
-        if (ref) ref.value = "";
-      });
-      // Revoke previews and reset
-      setPreviews({
-        refImageOne: undefined,
-        refImageTwo: undefined,
-        refImageThree: undefined,
-        poseImageOne: undefined,
-        poseImageTwo: undefined,
-        extraImage: undefined,
+      setFiles({
+        refImageOne: null,
+        refImageTwo: null,
+        refImageThree: null,
+        poseImageOne: null,
+        poseImageTwo: null,
+        extraImage: null,
       });
     } catch (err: any) {
       console.error(err);
@@ -138,28 +126,51 @@ export function Apply() {
       encType="multipart/form-data"
       style={{ display: "flex", flexDirection: "column", gap: 16, alignItems: "center", marginBottom: "120px" }}
     >
-      <div style={{ display: "flex", flexDirection: "column", width: "min(600px, 90%)", alignItems: "center"}}>
-        How should we contact you?!
-        <PinkInput
-          state={isDarkMode}
-          value={email}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-          placeholder="Email"
-        />
+      <div className="apply__info__long" style={{display: "flex", alignItems: "end", justifyContent: "space-between", width: "1040px"}}>
+        <div style={{ display: "flex", flexDirection: "column", width: "min(600px, 90%)", alignItems: "center"}}>
+          <div className={isDarkMode ? "apply__header__night" : "apply__header"}>How should we contact you?!</div>
+          <PinkInput
+            state={isDarkMode}
+            value={email}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            placeholder="Email"
+          />
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", width: "min(600px, 90%)", alignItems: "center" }}>
+          <div className={isDarkMode ? "apply__header__night" : "apply__header"}>Who is the OC?!</div>
+          <PinkInput
+            state={isDarkMode}
+            value={OC}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setOC(e.target.value)}
+            placeholder="Who are we drawing?!"
+          />
+        </div>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", width: "min(600px, 90%)", alignItems: "center" }}>
-        Who is the OC?!
-        <PinkInput
-          state={isDarkMode}
-          value={OC}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setOC(e.target.value)}
-          placeholder="Who are we drawing?!"
-        />
-      </div>
+      <div className="apply__info__short" style={{display: "none", flexDirection: "column", width: "100%", alignItems: "center"}}>
+        <div style={{ display: "flex", flexDirection: "column", width: "min(600px, 90%)", marginBottom: "10px", alignItems: "center"}}>
+          <div className={isDarkMode ? "apply__header__night" : "apply__header"}>How should we contact you?!</div>
+          <PinkInput
+            state={isDarkMode}
+            value={email}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            placeholder="Email"
+          />
+        </div>
 
+        <div style={{ display: "flex", flexDirection: "column", width: "min(600px, 90%)", alignItems: "center" }}>
+          <div className={isDarkMode ? "apply__header__night" : "apply__header"}>Who is the OC?!</div>
+          <PinkInput
+            state={isDarkMode}
+            value={OC}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setOC(e.target.value)}
+            placeholder="Who are we drawing?!"
+          />
+        </div>
+      </div>
       <div style={{ display: "flex", flexDirection: "column", width: "min(800px, 90%)", alignItems: "center" }}>
-        Describe the commission!
+        <div className={isDarkMode ? "apply__header__night" : "apply__header"}>Describe the commission!</div>
         <textarea
           value={description}
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(e.target.value)}
@@ -169,33 +180,27 @@ export function Apply() {
         />
       </div>
 
-      {/* Map all file inputs & previews */}
+      {/* File inputs using the reusable component */}
       {FILE_FIELDS.map(({ key, label, required }) => (
-        <div key={key} style={{ width: "min(800px, 90%)", display: "flex", flexDirection: "column", gap: 8, alignItems: "center" }}>
-          <label className="custom-file-upload">
-              {label}
-            <input
-              type="file"
-              required={!!required}
-              ref={(el) => (fileRefs.current[key] = el)}
-              onChange={handleFileChange(key)}
-            />
-          </label>
-          {previews[key] && (
-            <img
-              src={previews[key]}
-              width={400}
-              height={400}
-              alt={key}
-              style={{ objectFit: "cover", borderRadius: 8 }}
-            />
-          )}
-        </div>
+        <ReusableFileInput
+          key={key}
+          label={label}
+          file={files[key]}
+          required={!!required}
+          visible={canShow(key)}
+          onChange={(file: any) =>
+            setFiles((prev) => ({ ...prev, [key]: file }))
+          }
+          accept="image/*"
+          disabled={submitting}
+        />
       ))}
 
-      <button type="submit" disabled={submitting}>
-        {submitting ? "Submitting..." : "Submit"}
-      </button>
+      <LiquidButton
+        text={submitting ? "Submitting..." : "Submit"}
+        disabled={submitting || !formValid}
+      />
     </form>
   );
 }
+

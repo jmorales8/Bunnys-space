@@ -1,3 +1,6 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Wendy+One&display=swap');
+
 // NavBar
 @import "../NavigationBar/navigationBar.scss";
 @import "../Sidebar/sidebar.scss";
@@ -15,6 +18,7 @@
 @import "../components/FloatingDrawer/floatingDrawer.scss";
 @import "../components/HolographicButton/holographicButton.scss";
 @import "../components/PinkInput/pinkInput.scss";
+@import "../components/FileInputs/fileinputs.scss";
 
 // Home
 @import "../pages/Home/home.scss";

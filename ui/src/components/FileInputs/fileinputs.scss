@@ -1,0 +1,43 @@
+input[type="file"] {
+  display: none;
+}
+
+.fileInputs {
+  width: min(800px, 90%);
+  display: flex;
+  flex-direction: column;
+  gap: 8;
+  align-items: center;
+  &__button {
+    margin-bottom: 5px;
+    color: $light-font-color2;
+    font-family: "Wendy One";
+    font-weight: 100;
+    border: 2px $light-font-color1;
+    border-style: inset;
+    background: $light-bg-color15;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      background: $light-bg-color6;
+    }
+    &:active {
+      background: $light-bg-color15;
+    }
+    &__night {
+      @extend .fileInputs__button;
+      background: $night-bg-color3;
+      color: $night-font-color2;
+      border-color: $night-bg-color5;
+      &:hover {
+        background: $night-bg-color9;
+      }
+      &:active {
+        background: $night-bg-color2;
+      }
+    }
+  }
+}
