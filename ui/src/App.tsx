@@ -24,17 +24,19 @@ function App() {
           <LoginButton />
         </div>
         <NavigationBar />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Navigate replace to="/home" />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/lore" element={<Lore />} />
-          <Route path="/twitch" element={<Twitch />} />
-          <Route path="/commissions" element={<Commissions />} />
-          <Route path="/comission-apply" element={<Apply />} />
-          <Route path="/discord" element={<Discord />} />
-          <Route path="/Q-and-A" element={<QAndA />} />
-        </Routes>
+        <main className="app__main">
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Navigate replace to="/home" />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/lore" element={<Lore />} />
+            <Route path="/twitch" element={<Twitch />} />
+            <Route path="/commissions" element={<Commissions />} />
+            <Route path="/comission-apply" element={<Apply />} />
+            <Route path="/discord" element={<Discord />} />
+            <Route path="/Q-and-A" element={<QAndA />} />
+          </Routes>
+        </main>
         <Footer />
       </AppContent>
     </ThemeProvider>

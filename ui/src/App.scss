@@ -1,13 +1,16 @@
 .app {
   display: flex;
   flex-direction: column;
-  min-height: 98vh;
+  min-height: 100dvh;
   background-color: #eecbcb;
   &__content {
     &__night {
       @extend .app;
       background-color: #5F5D92 !important;
     }
+  }
+  &__main {
+    flex: 1 0 auto;
   }
   &__login {
     &__button {
