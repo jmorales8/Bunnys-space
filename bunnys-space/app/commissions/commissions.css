@@ -1,0 +1,70 @@
+/* Commissions.css */
+
+/* Hover glow effect (replacement for .border:hover::after) */
+.com-border {
+  position: relative;
+  border-radius: 70px;
+  z-index: 0;
+}
+
+/* remove the normal border on hover (you did border:none on hover) */
+.com-border:hover {
+  border-color: transparent;
+}
+
+/* the animated blurred gradient behind */
+.com-border:hover::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    45deg,
+    #fb0094,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #ff0000,
+    #fb0094,
+    #0000ff,
+    #00ff00,
+    #ffff00,
+    #ff0000
+  );
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: -2;
+  animation: steam 20s linear infinite;
+  filter: blur(50px);
+}
+
+/* your zoom animation for the modal content */
+.com-modal-content {
+  animation: zoom 0.5s ease;
+}
+
+/* Keyframes from your SCSS */
+@keyframes steam {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

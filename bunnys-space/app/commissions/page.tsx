@@ -1,8 +1,10 @@
-"use client"
+"use client";
 
+import "./commissions.css";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { LinkSplit } from "../components/LinkSplit";
+
 const vtubers = [
   "Pillow",
   "akuma_miko",
@@ -29,55 +31,100 @@ const vtubers = [
   "Phoenyx",
   "Reila",
 ];
+
 export default function Commissions() {
   const themeContext = useContext(ThemeContext);
   if (!themeContext) {
     throw new Error("DarkMode must be used within a ThemeProvider");
   }
   const { isDarkMode } = themeContext;
+
   const [openedVtuber, setOpenedVtuber] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
-  const handleOpenedVtuber = (openedVtuber: string) => {
-    setOpenedVtuber(openedVtuber);
+
+  const handleOpenedVtuber = (vtuber: string) => {
+    setOpenedVtuber(vtuber);
     setOpen(true);
   };
   const handleClose = () => setOpen(false);
+
   return (
     <>
-      <span className="commissions__apply">
-          <img
-            src="/images/erwin_goober.gif"
-            alt="erwin"
-            style={{ width: "50px", paddingRight: "10px"}}
-          />
-          <LinkSplit text=" Want a commission? " destination="comissions-apply"/>
-          <img
-            src="/images/erwin_goober.gif"
-            alt="erwin"
-            style={{ width: "50px", paddingLeft: "10px"}}
-          />
+      {/* Apply row */}
+      <span className="flex justify-center mb-2">
+        <img
+          src="/images/erwin_goober.gif"
+          alt="erwin"
+          className="w-[50px] pr-[10px]"
+        />
+        <LinkSplit text=" Want a commission? " href="comissions-apply" />
+        <img
+          src="/images/erwin_goober.gif"
+          alt="erwin"
+          className="w-[50px] pl-[10px]"
+        />
       </span>
-      <div className="commissions">
+
+      {/* Grid */}
+      <div
+        className="
+          grid justify-items-center items-center gap-5 mb-[100px]
+          transition-[transform,opacity] duration-[400ms]
+          grid-cols-1
+          sm:grid-cols-2
+          lg:grid-cols-3
+          2xl:grid-cols-4
+        "
+      >
         {vtubers.map((vtuber) => (
-          <div className={isDarkMode ? "border__night" : "border"} key={vtuber}>
+          <div
+            key={vtuber}
+            className={[
+              "com-border", // local CSS for glow hover
+              "my-[10px]",
+              "border-[3px] border-double border-black",
+              "rounded-[70px]",
+            ].join(" ")}
+          >
             <img
-              className="commissions__vtubers"
               alt={vtuber}
               src={`/images/com-vtubers/${vtuber}.png`}
               onClick={() => handleOpenedVtuber(vtuber)}
+              className="
+                block relative z-[1]
+                rounded-[60px]
+                w-[300px] p-[15px] m-0
+                cursor-pointer object-contain
+                transition-transform duration-[400ms]
+                hover:scale-110
+                max-[500px]:w-full max-[500px]:max-w-[325px] max-[500px]:h-auto
+              "
             />
           </div>
         ))}
+
+        {/* Modal */}
         {open && (
-          <div className="commissions__modal" onClick={handleClose}>
+          <div
+            onClick={handleClose}
+            className="
+              fixed inset-0 z-[1000]
+              flex items-center justify-center
+              bg-black/60
+            "
+          >
             <div
-              className="commissions__modal__content"
               onClick={(e) => e.stopPropagation()}
+              className="com-modal-content max-h-[90vh] max-w-[90vw]"
             >
               <img
                 src={`/images/com-vtubers/${openedVtuber}.png`}
                 alt={openedVtuber}
-                className="commissions__modal__image"
+                className="
+                  h-[80vh] w-auto
+                  rounded-xl
+                  shadow-[0_0_20px_rgba(255,255,255,0.2)]
+                "
               />
             </div>
           </div>
