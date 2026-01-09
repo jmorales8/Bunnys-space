@@ -1,65 +1,128 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import "./commission/commission.css";
+import { useState } from "react";
+import { LinkSplit } from "./components/LinkSplit/LinkSplit";
+
+const vtubers = [
+  "Pillow",
+  "akuma_miko",
+  "anime4days",
+  "Atlamoon",
+  "Azura",
+  "BelleCoyote",
+  "Cinnafaun",
+  "Feyre",
+  "Fuoca",
+  "Hanakyo",
+  "Hazy",
+  "Maxxi",
+  "Miino",
+  "Miss_Maple",
+  "Nico",
+  "Nikki",
+  "Aira",
+  "Goro",
+  "Sasi",
+  "sunnii",
+  "YukiShima",
+  "Papa_Lemon",
+  "Phoenyx",
+  "Reila",
+];
+
+export default function Commissions() {
+  const [openedVtuber, setOpenedVtuber] = useState<string>("");
+  const [open, setOpen] = useState<boolean>(false);
+
+  const handleOpenedVtuber = (vtuber: string) => {
+    setOpenedVtuber(vtuber);
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      {/* Apply row */}
+      <span className="flex justify-center mb-2">
+        <img
+          src="/images/erwin_goober.gif"
+          alt="erwin"
+          className="w-[50px] pr-[10px]"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <LinkSplit text=" Want a commission? " href="commission" />
+        <img
+          src="/images/erwin_goober.gif"
+          alt="erwin"
+          className="w-[50px] pl-[10px]"
+        />
+      </span>
+
+      {/* Grid */}
+      <div
+        className="
+          grid justify-items-center items-center gap-5 mb-[100px]
+          transition-[transform,opacity] duration-[400ms]
+          grid-cols-1
+          sm:grid-cols-2
+          lg:grid-cols-3
+          2xl:grid-cols-4
+        "
+      >
+        {vtubers.map((vtuber) => (
+          <div
+            key={vtuber}
+            className={[
+              "com-border", // local CSS for glow hover
+              "my-[10px]",
+              "border-[3px] border-double border-black",
+              "rounded-[70px]",
+            ].join(" ")}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+            <img
+              alt={vtuber}
+              src={`/images/com-vtubers/${vtuber}.png`}
+              onClick={() => handleOpenedVtuber(vtuber)}
+              className="
+                block relative z-[1]
+                rounded-[60px]
+                w-[300px] p-[15px] m-0
+                cursor-pointer object-contain
+                transition-transform duration-[400ms]
+                hover:scale-110
+                max-[500px]:w-full max-[500px]:max-w-[325px] max-[500px]:h-auto
+              "
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          </div>
+        ))}
+
+        {/* Modal */}
+        {open && (
+          <div
+            onClick={handleClose}
+            className="
+              fixed inset-0 z-[1000]
+              flex items-center justify-center
+              bg-black/60
+            "
           >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="com-modal-content max-h-[90vh] max-w-[90vw]"
+            >
+              <img
+                src={`/images/com-vtubers/${openedVtuber}.png`}
+                alt={openedVtuber}
+                className="
+                  h-[80vh] w-auto
+                  rounded-xl
+                  shadow-[0_0_20px_rgba(255,255,255,0.2)]
+                "
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 }

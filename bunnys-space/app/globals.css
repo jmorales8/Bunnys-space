@@ -4,11 +4,10 @@
 :root {
   /* app background / text */
   --bg-main: #eecbcb;
+  --bg-secondary: rgb(252, 162, 177);
   --text-main: darkgreen;
-
+  --text-secondary: rgb(82, 14, 40);
   /* link split default colors (light) */
-  --ls-c1: darkgreen;
-  --ls-c2: rgb(82, 14, 40);
 }
 
 .dark {

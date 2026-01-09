@@ -27,8 +27,8 @@ export function LinkSplit({
       className={`link-split ${className}`}
       style={
         {
-          ["--ls-c1" as any]: color1,
-          ["--ls-c2" as any]: color2,
+          ["--text-main" as any]: color1,
+          ["--text-secondary" as any]: color2,
         } as React.CSSProperties
       }
     >

@@ -8,10 +8,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        textmain: "var(--text-main)",
+        textsecondary: "var(--text-secondary)",
         font1: "var(--font-1)",
         font2: "var(--font-2)",
         linkfont: "var(--link-font)",
         bgmain: "var(--bg-main)",
+        bgsecondary: "var(--bg-secondary)",
         bg1: "var(--bg-1)",
         bg2: "var(--bg-2)",
         bg3: "var(--bg-3)",
