@@ -17,13 +17,9 @@
   padding: 7px 14px;
   transition: 0.4s;
   width: 300px;
-  background: rgb(243, 185, 224);
-  &__night {
-    @extend .effect-20;
-    background: #2d2990;
-    border: 2px solid #8c89d2;
-  }
+  background: rgb(243, 185, 224) !important;
 }
+
 .effect-20 ~ .focus-border:before,
 .effect-20 ~ .focus-border:after {
   content: "";
@@ -34,11 +30,6 @@
   height: 2px;
   background-color: rgb(222, 133, 198);
   transition: 0.3s;
-}
-
-.effect-20__night ~ .focus-border:before,
-.effect-20__night ~ .focus-border:after {
-  background-color: #161543;
 }
 
 .effect-20 ~ .focus-border:after {
@@ -57,11 +48,6 @@
   height: 0;
   background-color: rgb(222, 133, 198);
   transition: 0.4s;
-}
-
-.effect-20__night ~ .focus-border i:before,
-.effect-20__night ~ .focus-border i:after {
-  background-color: #161543;
 }
 
 .effect-20 ~ .focus-border i:after {
@@ -83,4 +69,28 @@
 .has-content.effect-20 ~ .focus-border i:after {
   height: 100%;
   transition: 0.4s;
+}
+/* Make textarea behave like the PinkInput */
+.effect-20.textarea-like {
+  min-height: 150px;       /* like your old min-h */
+  padding-top: 12px;       /* a bit more comfy than input */
+  padding-bottom: 12px;
+  line-height: 1.4;
+  field-sizing: content;
+  overflow: hidden;
+  min-width: 150px;
+  max-width: 150px;
+}
+
+/* Important: textarea doesn't inherit input's box-model in some sets */
+textarea.effect-20,
+textarea.effect-20__night {
+  width: 100%;
+
+  box-sizing: border-box;
+  font-family: math;       /* matches your login__input */
+  font-size: large;
+  letter-spacing: 1px;
+  outline: none;
+  background: transparent; /* matches input style */
 }

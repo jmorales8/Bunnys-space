@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { PinkInput } from "../components/PinkInput/PinkInput";
-
+import "./commission.css"
 type FileField =
   | "refImageOne"
   | "refImageTwo"
@@ -166,14 +166,16 @@ export default function Apply() {
       </div>
 
       {/* Description */}
-      <div className="flex w-[min(800px,90%)] flex-col items-center gap-2">
-        <p className={`text-lg font-medium ${panelText}`}>Describe the commission!</p>
+      <div className="col-3 w-full">
         <textarea
           value={description}
-          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(e.target.value)}
-          className={textareaClass}
+          onChange={(e) => setDescription(e.target.value)}
           placeholder="What do you think?!"
+          className="login__textarea"
         />
+        <span className="focus-border">
+          <i></i>
+        </span>
       </div>
 
       {/* File inputs + previews */}

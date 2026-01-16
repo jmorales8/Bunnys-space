@@ -22,6 +22,6 @@
 html,
 body {
   background: var(--bg-main);
-  color: var(--text-main);
+  color: var(--text-secondary);
   min-height: 100%;
 }

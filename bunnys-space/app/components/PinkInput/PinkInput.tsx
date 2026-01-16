@@ -16,7 +16,7 @@ export function PinkInput({
   type,
 }: PinkInputProps) {
   return (
-    <div className="col-3 input-effect">
+    <div className="col-3 ">
       <input
         className={`${
           state ? "effect-20__night login__input__night" : "effect-20"

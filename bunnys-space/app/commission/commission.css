@@ -68,3 +68,37 @@
     opacity: 1;
   }
 }
+
+.login__input {
+  color: rgb(82, 14, 40);
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  font-family: math;
+  font-size: large;
+}
+
+.login__textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 12px 14px;
+
+  font-family: math;
+  font-size: large;
+  letter-spacing: 1px;
+  color: var(--text-secondary, #111);
+
+  background-color: rgb(243, 185, 224);
+  border: 2px solid rgb(218, 175, 206); /* zinc-300-ish */
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login__textarea::placeholder {
+  color: #a1a1aa; /* zinc-400 */
+}
+
+.login__textarea:focus {
+  border-color: rgb(222, 133, 198); /* pink-500 */
+}
