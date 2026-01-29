@@ -1,11 +1,15 @@
 import React from "react";
-import "./pinkInput.css"
+import "./pinkInput.css";
+
 interface PinkInputProps {
   state: boolean;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   type?: string;
+  name: string;
+  id?: string;
+  required?: boolean;
 }
 
 export function PinkInput({
@@ -13,15 +17,21 @@ export function PinkInput({
   value,
   onChange,
   placeholder,
-  type,
+  type = "text",
+  name,
+  id,
+  required,
 }: PinkInputProps) {
   return (
-    <div className="col-3 ">
+    <div className="col-3">
       <input
         className={`${
           state ? "effect-20__night login__input__night" : "effect-20"
         } ${value ? "has-content" : ""} login__input`}
-        type={type == undefined ? "text" : "password"}
+        type={type}
+        name={name}
+        id={id ?? name}
+        required={required}
         value={value}
         onChange={onChange}
         placeholder={placeholder}

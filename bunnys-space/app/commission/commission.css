@@ -91,7 +91,7 @@
   background-color: rgb(243, 185, 224);
   border: 2px solid rgb(218, 175, 206); /* zinc-300-ish */
   outline: none;
-  resize: vertical;
+  resize: both;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 

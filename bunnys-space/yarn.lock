@@ -1724,6 +1724,11 @@ for-each@^0.3.3, for-each@^0.3.5:
   dependencies:
     is-callable "^1.2.7"
 
+forminit@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/forminit/-/forminit-0.2.4.tgz#b7ebb2de2b5e32044f01ef14ad166ec7aa79be57"
+  integrity sha512-p7GyP2dz4zIONMmETANUBK36KFr+Td8qwOX6Zn/+eeBvf023Zr5aRv2d46bsFlFRhwrhnpojizw9tHwhAvplYw==
+
 fraction.js@^5.3.4:
   version "5.3.4"
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-5.3.4.tgz#8c0fcc6a9908262df4ed197427bdeef563e0699a"
