@@ -14,15 +14,19 @@ export default function LoginPage() {
         className="w-80 space-y-4"
         onSubmit={async (e) => {
           e.preventDefault();
+          setError("");
 
           const res = await signIn("credentials", {
             email,
             password,
-            redirect: true,
+            redirect: false,
             callbackUrl: "/admin",
           });
 
-          if (res?.error) setError("Invalid credentials");
+          if (!res) return setError("Login failed");
+          if (res.error) return setError("Invalid credentials");
+
+          window.location.href = res.url ?? "/admin";
         }}
       >
         <h1 className="text-xl font-bold">Admin Login</h1>
