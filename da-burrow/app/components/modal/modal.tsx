@@ -7,13 +7,19 @@ type FlowDirection = "up" | "down" | "left" | "right";
 type FlowPanelProps = {
   direction?: FlowDirection;
   delay?: number;
+  bgColor?: string;
   children: React.ReactNode;
+  width?: number;
+  height?: number;
 };
 
 export default function FlowPanel({
   direction = "up",
   delay = 300,
+  bgColor = "black",
   children,
+  width = 150,
+  height = 150,
 }: FlowPanelProps) {
   const [visible, setVisible] = useState(false);
 
@@ -32,10 +38,17 @@ export default function FlowPanel({
     right: "-translate-x-16 opacity-0",
   };
 
+
   return (
     <div
+      style={{
+        width: `${width}px`,
+        height: `${height}px`,
+      }}
       className={`
-        transition-all duration-700 ease-out
+        transition-all duration-700 
+        ease-out bg-${bgColor} 
+        rounded-xl
         ${visible ? "translate-x-0 translate-y-0 opacity-100" : hiddenClass[direction]}
       `}
     >

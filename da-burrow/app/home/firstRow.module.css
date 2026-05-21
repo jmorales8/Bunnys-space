@@ -1,0 +1,24 @@
+
+.constantTiltShake1 {
+  animation: tilt-shaking1 8s infinite;
+}
+
+.constantTiltShake2 {
+  animation: tilt-shaking2 8s infinite;
+}
+
+@keyframes tilt-shaking1 {
+  0% { transform: rotate(-5deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+  100% { transform: rotate(-5deg); }
+}
+
+@keyframes tilt-shaking2 {
+  0% { transform: rotate(5deg); }
+  25% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}

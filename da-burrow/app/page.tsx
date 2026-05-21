@@ -1,13 +1,10 @@
 "use client";
 
 import Image from "next/image";
-
-import { useState } from "react";
 import FlowModal from "./components/modal/modal";
-export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
-  const items = ["Card One", "Card Two", "Card Three"];
+import { FirstRow } from "./home/FirstRow";
 
+export default function Home() {
   return (
     <div>
       <div className="fixed inset-0 -z-10">
@@ -21,12 +18,12 @@ export default function Home() {
           className="object-cover"
         />
       </div>
-      <main className="p-8">
-        <FlowModal direction="up">
-          <>
-          I fardedd
-          </>
-        </FlowModal>
+      <main>
+        <div className="w-screen h-screen flex justify-center p-10">
+          <FlowModal direction="up" width={1250}>
+              <FirstRow />
+          </FlowModal>
+        </div>
       </main>
     </div>
   );
