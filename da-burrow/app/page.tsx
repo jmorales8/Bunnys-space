@@ -3,6 +3,8 @@
 import Image from "next/image";
 import FlowModal from "./components/modal/modal";
 import { FirstRow } from "./home/FirstRow";
+import { NavBar } from "./components/NavBar/NavBar";
+import { SecondRow } from "./home/SecondRow";
 
 export default function Home() {
   return (
@@ -19,9 +21,11 @@ export default function Home() {
         />
       </div>
       <main>
-        <div className="w-screen h-screen flex justify-center p-10">
-          <FlowModal direction="up" width={1250}>
-              <FirstRow />
+        <div className="flex justify-center p-10">
+          <FlowModal direction="down" width={1250}>
+            <NavBar />
+            <FirstRow />
+            <SecondRow />
           </FlowModal>
         </div>
       </main>

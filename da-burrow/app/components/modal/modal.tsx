@@ -14,7 +14,7 @@ type FlowPanelProps = {
 };
 
 export default function FlowPanel({
-  direction = "up",
+  direction = "down",
   delay = 300,
   bgColor = "black",
   children,
@@ -43,12 +43,13 @@ export default function FlowPanel({
     <div
       style={{
         width: `${width}px`,
-        height: `${height}px`,
+        minHeight: `${height}px`,
       }}
       className={`
         transition-all duration-700 
         ease-out bg-${bgColor} 
-        rounded-xl
+        overflow-y-auto
+        max-h-none
         ${visible ? "translate-x-0 translate-y-0 opacity-100" : hiddenClass[direction]}
       `}
     >

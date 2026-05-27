@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-
 type BouncingImageProps = {
   src: string;
   alt: string;
@@ -99,8 +98,8 @@ export default function BouncingImage({
   }, [startX, startY, velocityX, velocityY]);
 
   return (
-    <div ref={imgRef} className={`absolute ${className}`}>
-      <Image src={src} alt={alt} fill className="object-contain" />
+    <div ref={imgRef} className={`absolute ${className}`}>       
+        <Image src={src} alt={alt} fill className="object-contain" />
     </div>
   );
 }
