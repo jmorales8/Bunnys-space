@@ -6,6 +6,10 @@
   animation: tilt-shaking2 8s infinite;
 }
 
+path {
+  fill: transparent;
+}
+
 @keyframes tilt-shaking1 {
   0% { transform: rotate(-5deg); }
   25% { transform: rotate(5deg); }

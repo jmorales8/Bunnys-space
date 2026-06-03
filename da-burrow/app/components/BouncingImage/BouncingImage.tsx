@@ -99,7 +99,7 @@ export default function BouncingImage({
 
   return (
     <div ref={imgRef} className={`absolute ${className}`}>       
-        <Image src={src} alt={alt} fill className="object-contain" />
+      <Image src={src} alt={alt} fill className="object-contain" sizes="auto" />
     </div>
   );
 }

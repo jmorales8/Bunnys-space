@@ -15,7 +15,7 @@ export default function Home() {
           alt="Background"
           fill
           priority
-          quality={80}
+          quality={75}
           sizes="100vw"
           className="object-cover"
         />
