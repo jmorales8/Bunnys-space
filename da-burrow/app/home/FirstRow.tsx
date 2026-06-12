@@ -20,13 +20,14 @@ export function FirstRow() {
           velocityY={0.5}
         />
       </div>
-      <div className="flex items-center justify-center shrink-0 w-[150px]">
+      <div className="flex items-center justify-center w-[180px] sm:w-[300px]">
         <Image
-          src="/necoarc_pillow.png"
+          src="/giphy.gif"
           alt="pillow"
-          width={150}
+          width={75}
           height={150}
           priority
+          className="rounded-[20px] sm:w-[300px] w-[175px] object-cover"
         />
       </div>
 
