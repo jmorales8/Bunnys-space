@@ -9,7 +9,7 @@ export function NavBar() {
 				max-[1200px]:max-w-[600px]
 				mx-auto
 				pb-4">
-			<LiquidButton text="Home" href="/"/>
+			<LiquidButton text="Home" href="/home"/>
 			<LiquidButton text="Discord" href="/discord"/>
 			<LiquidButton text="Commissions" href="/commissions"/>
 			<LiquidButton text="Lore" href="/lore"/>

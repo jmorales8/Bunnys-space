@@ -26,6 +26,10 @@ img:hover {
   perspective: 1000px;
 }
 
+.nonImageHover:hover {
+  animation: none;
+}
+
 @keyframes shake {
   10%, 90% {
     transform: rotate(0deg);

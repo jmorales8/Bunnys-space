@@ -2,21 +2,21 @@
 
 import { useEffect, useState } from "react";
 
+let hasAnimatedOnce = false;
+
 type FlowDirection = "up" | "down" | "left" | "right";
 
 type FlowPanelProps = {
   direction?: FlowDirection;
   delay?: number;
-  bgColor?: string;
   children: React.ReactNode;
   width?: number;
   height?: number;
 };
 
-export default function FlowPanel({
+export default function FlowModal({
   direction = "down",
   delay = 300,
-  bgColor = "black",
   children,
   width = 150,
   height = 150,
@@ -24,7 +24,13 @@ export default function FlowPanel({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (hasAnimatedOnce) {
+      setVisible(true);
+      return;
+    }
+
     const timer = setTimeout(() => {
+      hasAnimatedOnce = true;
       setVisible(true);
     }, delay);
 
@@ -38,7 +44,6 @@ export default function FlowPanel({
     right: "-translate-x-16 opacity-0",
   };
 
-
   return (
     <div
       style={{
@@ -46,11 +51,13 @@ export default function FlowPanel({
         minHeight: `${height}px`,
       }}
       className={`
-        transition-all duration-700 
-        ease-out bg-${bgColor} 
-        overflow-y-auto
-        max-h-none
-        ${visible ? "translate-x-0 translate-y-0 opacity-100" : hiddenClass[direction]}
+        transition-all duration-700 ease-out
+        overflow-y-auto max-h-none
+        ${
+          visible
+            ? "translate-x-0 translate-y-0 opacity-100"
+            : hiddenClass[direction]
+        }
       `}
     >
       {children}

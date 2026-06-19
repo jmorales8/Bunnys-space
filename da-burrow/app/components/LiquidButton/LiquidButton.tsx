@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import styles from "./liquidButton.module.css";
+import Link from "next/link";
 
 interface LiquidButtonProps {
   text?: string;
@@ -235,9 +236,9 @@ export default function LiquidButton({
   }, [disabled]);
 
   return (
-    <a
+    <Link
       ref={containerRef}
-      href={disabled ? undefined : href}
+      href={href || "#"}
       onClick={(e) => {
         if (disabled) {
           e.preventDefault();
@@ -253,6 +254,6 @@ export default function LiquidButton({
     >
       <span className={styles.inner }>{text}</span>
       <canvas ref={canvasRef} className={styles.canvas} />
-    </a>
+    </Link>
   );
 }

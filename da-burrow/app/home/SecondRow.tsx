@@ -38,6 +38,8 @@ export function SecondRow() {
 								priority
 								className="hidden md:block
 								object-cover
+								width-auto
+								height-auto
 								xl:h-[350px] 
 								lg:h-[275px] 
 								md:h-[260px]"
