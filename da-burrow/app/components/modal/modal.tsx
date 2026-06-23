@@ -10,7 +10,7 @@ type FlowPanelProps = {
   direction?: FlowDirection;
   delay?: number;
   children: React.ReactNode;
-  width?: number;
+  width?: number | string;
   height?: number;
 };
 

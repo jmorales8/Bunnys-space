@@ -28,6 +28,7 @@ export function FirstRow() {
           height={150}
           priority
           className="rounded-[20px] sm:w-[300px] w-[175px] object-cover"
+          unoptimized
         />
       </div>
 
