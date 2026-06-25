@@ -1,0 +1,36 @@
+.btnLiquid {
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  height: 60px;
+  border-radius: 30px;
+  color: rgb(255, 255, 255);
+  font: 700 14px/60px "Droid Sans", sans-serif;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition-duration: 0.4s;
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+}
+
+.canvas {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  bottom: -50px;
+  left: -50px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  background-color: rgb(245, 153, 215);
+}
