@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import FlowModal from "../Modal/modal";
+import FlowModal from "../modal/modal";
 import { NavBar } from "../NavBar/NavBar";
 import { FirstRow } from "../../home/FirstRow";
 
@@ -26,7 +26,7 @@ export default function AppShell({
 
       <main>
         <div className="flex justify-center p-10">
-          <FlowModal direction="down" width={1250}>
+          <FlowModal direction="down" width={1500}>
             <NavBar />
             <FirstRow />
             {children}
