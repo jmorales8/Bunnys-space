@@ -24,10 +24,10 @@ export function SecondRow() {
 								width={280}
 								height={350}
 								priority
-								className="rounded-[30px] 
-								xl:h-[350px] 
-								lg:h-[275px] 
-								md:h-[225px] 
+								className="rounded-[30px]
+								xl:h-[350px]
+								lg:h-[275px]
+								md:h-[225px]
 								object-cover"
 							/>
 							<Image
@@ -40,8 +40,8 @@ export function SecondRow() {
 								object-cover
 								width-auto
 								height-auto
-								xl:h-[350px] 
-								lg:h-[275px] 
+								xl:h-[350px]
+								lg:h-[275px]
 								md:h-[260px]"
 							/>
 						</div>
@@ -57,6 +57,7 @@ export function SecondRow() {
 						width={50}
 						height={50}
 						className="pl-2 rotate-y-180"
+						unoptimized
 					/>
 					<div className="flex text-center text-shadow-lg">Hiya New Friends!</div>
 					<Image
@@ -64,6 +65,7 @@ export function SecondRow() {
 						alt="pillow"
 						width={50}
 						height={50}
+						unoptimized
 						className="pl-2"
 					/>
 				</div>
@@ -72,6 +74,7 @@ export function SecondRow() {
 					alt="pillow"
 					width={50}
 					height={50}
+					unoptimized
 					className="pr-2" />
 				<div className="flex text-center justify-center items-end text-shadow-lg font-bold italic text-lg md:text-xl text-black pl-3 pr-3">
 					<ul>

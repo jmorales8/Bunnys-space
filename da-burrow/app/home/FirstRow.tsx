@@ -1,8 +1,8 @@
 import Image from "next/image";
 import BouncingImage from "../components/BouncingImage/BouncingImage";
-
+import "../globals.css"
 export function FirstRow() {
-	
+
   return (
     <div className="flex border-4 border-solid border-[#ffc8e9] h-[250px] overflow-hidden bg-gradient-to-l from-[#f28989] via-[#f28989] to-[#b8ffc6]">
       <div className="relative flex-1 overflow-hidden">
