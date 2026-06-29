@@ -1,0 +1,30 @@
+.embla {
+  width: 100%;
+  min-width: 0;
+}
+
+.embla__viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.embla__slide {
+  flex: 0 0 33.333333%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.embla__slide img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

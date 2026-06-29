@@ -20,7 +20,7 @@ export default function DiscordPage() {
             <div className="hidden md:flex relative w-full h-full justify-center items-center">
               <div className="flex mb-10 lg:mb-0 justify-center">
                 <Image
-                  src={`/pillvroid${dialogOptions}.png`}
+                  src={`/discord/pillvroid${dialogOptions}.png`}
                   alt="Discord Logo"
                   width={611}
                   height={600}
@@ -32,7 +32,7 @@ export default function DiscordPage() {
               <div className="w-1/2 flex -ml-[5%] z-10 flex-col animate-1s items-center">
                 <Modal direction="left" width={"100%"} height={250}>
                   <Image
-                    src={`/dialogue${dialogOptions}.png`}
+                    src={`/discord/dialogue${dialogOptions}.png`}
                     alt="text"
                     width={490}
                     height={250}
@@ -52,7 +52,7 @@ export default function DiscordPage() {
                 )}
               </div>
               <Image
-                src={`/pillcool.png`}
+                src='/pillcool.png'
                 alt="Discord Logo"
                 width={150}
                 height={150}
@@ -64,18 +64,18 @@ export default function DiscordPage() {
               <div className="flex flex-col justify-center pl-3 w-full">
                 <div className="relative flex justify-center w-full ">
                   <Image
-                    src={`/pillvroid${dialogOptions}.png`}
+                    src={`/discord/pillvroid${dialogOptions}.png`}
                     alt="Discord Logo"
-                    width={600}
+                    width={510}
                     height={600}
-                    className="object-contain mt-[-25px] w-[75vw] max-w-[590px]"
+                    className="object-contain mt-[-25px] w-[75vw] max-w-[510px]"
                     unoptimized
                     loading="eager"
                   />
                   <div className="absolute left-[55%] top-[45%] -translate-y-1/2 z-10 animate-1s">
                     <Modal direction="left" width="100%" height={150}>
                       <Image
-                        src={`/dialogue${dialogOptions}.png`}
+                        src={`/discord/dialogue${dialogOptions}.png`}
                         alt="text"
                         width={490}
                         height={250}
@@ -95,7 +95,7 @@ export default function DiscordPage() {
                     </button>
                   )}
                   <Image
-                    src={`/pillcool.png`}
+                    src='/pillcool.png'
                     alt="Discord Logo"
                     width={75}
                     height={75}
@@ -115,14 +115,13 @@ export default function DiscordPage() {
                     </div>
                   )}
                   <Image
-                    src={`/pillcool.png`}
+                    src='pillcool.png'
                     alt="Discord Logo"
                     width={100}
                     height={100}
                     className="object-contain mt-5"
                     unoptimized
                   />
- 
                 </div>
               </div>
             </div>

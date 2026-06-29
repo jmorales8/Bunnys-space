@@ -52,7 +52,7 @@ export function SecondRow() {
 			<div className="flex-1 flex flex-col justify-start pt-3 items-center column-1 ">
 				<div className="flex items-center text-2xl font-bold italic">
 					<Image
-						src="/happy_goober.gif"
+						src="/home/happy_goober.gif"
 						alt="pillow"
 						width={50}
 						height={50}
@@ -61,7 +61,7 @@ export function SecondRow() {
 					/>
 					<div className="flex text-center text-shadow-lg">Hiya New Friends!</div>
 					<Image
-						src="/happy_goober.gif"
+						src="/home/happy_goober.gif"
 						alt="pillow"
 						width={50}
 						height={50}
@@ -70,7 +70,7 @@ export function SecondRow() {
 					/>
 				</div>
 				<Image
-					src="/erwin_goober.gif"
+					src="/home/erwin_goober.gif"
 					alt="pillow"
 					width={50}
 					height={50}
