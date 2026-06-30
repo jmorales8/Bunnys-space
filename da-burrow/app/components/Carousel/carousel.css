@@ -6,6 +6,7 @@
 .embla__viewport {
   width: 100%;
   overflow: hidden;
+  flex: 1;
 }
 
 .embla__container {
@@ -14,17 +15,65 @@
 }
 
 .embla__slide {
-  flex: 0 0 33.333333%;
+
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 0 1rem;
   box-sizing: border-box;
 }
 
+@media only screen and (min-width: 768px) {
+  .embla__slide {
+    flex: 0 0 50%;
+  }
+}
+@media only screen and  (min-width: 1024px) {
+  .embla__slide {
+    flex: 0 0 33.3333%;
+  }
+}
+
+@media only screen and  (min-width: 1280px) {
+  .embla__slide {
+    flex: 0 0 25%;
+  }
+}
+
 .embla__slide img {
-  display: block;
+  width: auto;
   max-width: 100%;
   height: auto;
+  max-height: 220px;
+  border-radius: 5%;
+}
+
+.embla__slideImage {
+  cursor: pointer;
+}
+
+.embla__controls {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.embla__button {
+  flex: 0 0 auto;
+  cursor: pointer;
+  font-size: 2rem;
+  background: transparent;
+  border: none;
+}
+
+.commissions__modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background-color: rgb(0 0 0 / 80%);
 }
