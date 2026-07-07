@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-let hasAnimatedOnce = false;
-
 type FlowDirection = "up" | "down" | "left" | "right";
 
 type FlowPanelProps = {
@@ -24,13 +22,7 @@ export default function FlowModal({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (hasAnimatedOnce) {
-      setVisible(true);
-      return;
-    }
-
     const timer = setTimeout(() => {
-      hasAnimatedOnce = true;
       setVisible(true);
     }, delay);
 

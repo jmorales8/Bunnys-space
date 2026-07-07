@@ -21,7 +21,7 @@ export default function CommissionsPage() {
               unoptimized
             />
           </div>
-          <div className="w-[50%] max-w-150 text-black font-bold text-shadow-lg text-wrap">
+          <div className="w-[50%] text-center max-w-150 text-black font-bold text-shadow-lg text-wrap">
             Want a commission? Please DM me either in my Discord DM's or message
             me in Twitter
             <Link

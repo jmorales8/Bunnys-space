@@ -6,7 +6,7 @@ export function SecondRow() {
 		flex flex-col md:flex-row
 		border-4 border-t-0 border-solid border-[#ffc8e9]
 		bg-gradient-to-l from-[#f28989] via-[#f28989] to-[#b8ffc6]
-		h-[1000px] md:h-[600px] lg:h-[500px]
+		h-[1350px] xs:h-[1000px] sm:h-[900px] md:h-[600px] lg:h-[500px]
 		">
 
 			<div className="flex-1 flex pt-3 justify-center">

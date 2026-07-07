@@ -252,7 +252,7 @@ export default function LiquidButton({
       }}
       className={`${styles.btnLiquid} ${disabled ? styles.disabled : ""}`}
     >
-      <span className={styles.inner }>{text}</span>
+      <span className={styles.inner}>{text}</span>
       <canvas ref={canvasRef} className={styles.canvas} />
     </Link>
   );

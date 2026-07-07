@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import FlowModal from "../modal/modal";
 import { NavBar } from "../NavBar/NavBar";
 import { FirstRow } from "../../home/FirstRow";
@@ -10,6 +11,8 @@ export default function AppShell({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
   return (
     <>
       <div className="fixed inset-0 -z-10">
@@ -26,7 +29,7 @@ export default function AppShell({
 
       <main>
         <div className="flex justify-center p-10">
-          <FlowModal direction="down" width={1500}>
+          <FlowModal key={pathname} direction="down" width={1500}>
             <NavBar />
             <FirstRow />
             {children}
